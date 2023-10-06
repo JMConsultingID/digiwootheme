@@ -347,6 +347,7 @@ background: rgba(93, 179, 59, 0.29);
 .page-template-digiwoo-checkout .stripe-card-element{ width: 100%!important; }
 .page-template-digiwoo-checkout .wc-stripe-elements-field {
     width: 100%!important;
+    height: 40px;
 }
 
 .page-template-digiwoo-checkout.woocommerce-page form .fast-checkout-billing .form-row-first, 
