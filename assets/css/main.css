@@ -351,3 +351,13 @@ background: rgba(93, 179, 59, 0.29);
 .page-template-digiwoo-checkout.woocommerce-page form .form-row-first, .page-template-digiwoo-checkout.woocommerce-page form .form-row-last{
   width: 100%!important;
 }
+
+.page-template-digiwoo-checkout #billing_country_field .select2-selection, 
+.page-template-digiwoo-checkout #billing_state_field .select2-selection {
+    border: 1px solid #EAEAEA;
+    background: #F5F5F5;
+    height: 50px;
+    border-radius: 12px;
+    padding: 10px;
+}
+
