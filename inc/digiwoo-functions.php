@@ -109,6 +109,7 @@ add_filter('woocommerce_get_item_data', 'display_cart_item_add_ons', 10, 2);
 function clear_cart() {
     WC()->cart->empty_cart();
     wp_send_json_success();
+    WC()->cart->add_to_cart(19);
 }
 add_action('wp_ajax_clear_cart', 'clear_cart');
 add_action('wp_ajax_nopriv_clear_cart', 'clear_cart');
