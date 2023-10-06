@@ -313,7 +313,7 @@ background: rgba(93, 179, 59, 0.29);
   border-bottom: none!important;
 }
 
-.page-template-digiwoo-checkout .fast-checkout-payment-wocoommerce .woocommerce-checkout .wrp input:checked~.checkmark {
+.page-template-digiwoo-checkout .woocommerce-checkout .wrp input:checked~.checkmark, .page-template-digiwoo-checkout .woocommerce-checkout .checkmark  {
     border-radius: 100%!important;
     background-color: #297d11!important;
 }
