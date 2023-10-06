@@ -31,7 +31,7 @@ while ( have_posts() ) :
 			<!-- Cart Items -->
         <div class="fast-checkout-cart">
             <?php
-            // echo do_shortcode('[woocommerce_cart]');
+             echo do_shortcode('[woocommerce_cart]');
             ?>
         </div>
 
