@@ -32,6 +32,8 @@
 			    $('input[name="product"][value="19"]').prop('checked', true);
 				$('input[name="product"][value="19"]').closest('.fast-checkout-radio-select-product').addClass('active');
 
+				$('input[name="add-on-trading[]"]').prop('disabled', false);
+
 			    // Call the updateTotalOrder function
 			    updateTotalOrder();
             }
