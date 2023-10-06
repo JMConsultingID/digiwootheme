@@ -372,5 +372,5 @@ background: rgba(93, 179, 59, 0.29);
 
 .page-template-digiwoo-checkout.woocommerce-page form .fast-checkout-payment-wocoommerce .form-row-first, 
 .page-template-digiwoo-checkout.woocommerce-page form .fast-checkout-payment-wocoommerce .form-row-last{
-  width: 100%!important;
+  width: 50%!important;
 }
