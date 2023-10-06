@@ -362,3 +362,10 @@ background: rgba(93, 179, 59, 0.29);
     padding: 10px;
 }
 
+#payment div.form-row {
+    padding: 5px;
+}
+
+.page-template-digiwoo-checkout .fast-checkout-payment-wocoommerce #payment div.form-row {
+    padding: 5px;
+}
