@@ -27,22 +27,8 @@
 	            
 	        });
 
-	    $.ajax({
-	        url: digiwoScriptVars.ajax_url,
-	        type: 'POST',
-	        data: {
-	            action: 'clear_cart'
-	        },
-	        success: function(response) {
-	            if (response.success) {
-	                console.log('Cart cleared successfully');
-	            } else {
-	                console.log('Failed to clear cart');
-	            }
-	        }
-	    });
-
-	    $('input[name="add-on-trading"]').prop('disabled', true);
+	    
+	    
 
 	    // Function to update the total order
 	    function formatCurrency(value) {
@@ -70,21 +56,18 @@
 	        $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
 	    }
 
+	    // Check the radio button for category id 1375
+	    $('input[name="product-category"][value="1375"]').prop('checked', true);
+	    // Check the radio button for product id 24
+	    $('input[name="product"][value="24"]').prop('checked', true);
+
+	    $('input[name="add-on-trading"]').prop('disabled', true);
+
+	    // Call the updateTotalOrder function
+	    updateTotalOrder();
+
 	    $('input[name="product-category"]').change(function() {	    	
 	        var categoryID = $(this).val();
-	        $('.fast-checkout-radio-select-category').removeClass('active');
-	        $('input[name="add-on-trading[]"]').prop('checked', false);
-
-	        // Clear all radio buttons
-	        $('input[name="product"]').prop('checked', false);
-
-	        // Clear all checkboxes
-	        $('input[name="add-on-trading[]"]').prop('checked', false);
-
-	        // Clear all select dropdowns
-	        $('select').prop('selectedIndex', 0);
-
-	        $('input[name="add-on-trading"]').prop('disabled', true);
 
 	        $('.fast-checkout-radio-select-add-ons').removeClass('active');
 
@@ -133,7 +116,6 @@
 	        });
 	        
 	    });
-
 
 
 	    $(document).on('change', 'input[name="product"]', function() {

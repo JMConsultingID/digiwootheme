@@ -20,12 +20,15 @@ function enqueue_digiwoo_scripts() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 20);
 
-function remove_selected_add_ons_after_order($order_id) {
-    if (WC()->session) {
-        WC()->session->__unset('selected_add_ons');
+function empty_cart_and_add_product_on_page_load() {
+    if (is_page('your-page-slug')) { // Ganti 'your-page-slug' dengan slug halaman Anda
+        WC()->cart->empty_cart();
+        
+        // Tambahkan produk dengan ID 24 ke keranjang
+        WC()->cart->add_to_cart(24);
     }
 }
-add_action('woocommerce_new_order', 'remove_selected_add_ons_after_order');
+add_action('wp', 'empty_cart_and_add_product_on_page_load');
 
 function fetch_products_by_category() {
     $category_id = $_POST['category_id'];
