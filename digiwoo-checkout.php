@@ -261,9 +261,7 @@ while ( have_posts() ) :
 		    <!-- Payment Methods -->
 			<div class="fast-checkout-payment-wocoommerce">
 				<?php
-			    do_action('woocommerce_checkout_before_order_review');
-			    do_action('woocommerce_checkout_order_review');  // Ini menampilkan metode pembayaran
-			    do_action('woocommerce_checkout_after_order_review');
+			    do_action('woocommerce_checkout_order_review');
 			    ?>
 			</div>
 
