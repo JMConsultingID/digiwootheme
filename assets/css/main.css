@@ -317,3 +317,12 @@ background: rgba(93, 179, 59, 0.29);
     border-radius: 100%!important;
     background-color: #297d11!important;
 }
+
+.page-template-digiwoo-checkout .woocommerce-checkout .woocommerce-checkout .wrp .checkmark:after {
+    top: 3px!important;
+    left: 4px!important;
+    width: 8px!important;
+    height: 8px!important;
+    border-radius: 50%!important;
+    background: #fff!important;
+}
