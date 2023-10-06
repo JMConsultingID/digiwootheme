@@ -14,7 +14,7 @@
 	jQuery(document).ready(function($) {
 		var categoryID = 1375;
 	        $.ajax({
-	            url: myScriptVars.ajax_url,
+	            url: digiwoScriptVars.ajax_url,
 	            type: 'POST',
 	            data: {
 	                action: 'fetch_products_by_category',
@@ -28,7 +28,7 @@
 	        });
 
 	    $.ajax({
-	        url: myScriptVars.ajax_url,
+	        url: digiwoScriptVars.ajax_url,
 	        type: 'POST',
 	        data: {
 	            action: 'clear_cart'
@@ -92,7 +92,7 @@
 	        $('.fast-checkout-radio-select-add-ons').removeClass('active');
 
 	        $.ajax({
-		        url: myScriptVars.ajax_url,
+		        url: digiwoScriptVars.ajax_url,
 		        type: 'POST',
 		        data: {
 		            action: 'clear_cart'
@@ -121,7 +121,7 @@
 	            $(this).closest('.fast-checkout-radio-select-category').addClass('active');
 	        }
 	        $.ajax({
-	            url: myScriptVars.ajax_url,
+	            url: digiwoScriptVars.ajax_url,
 	            type: 'POST',
 	            data: {
 	                action: 'fetch_products_by_category',
@@ -151,7 +151,7 @@
 	        }
 		    // First, clear the cart
 		    $.ajax({
-		        url: myScriptVars.ajax_url,
+		        url: digiwoScriptVars.ajax_url,
 		        type: 'POST',
 		        data: {
 		            action: 'clear_cart'
@@ -160,7 +160,7 @@
 		            if (response.success) {
 		                // Now, add the selected product to the cart
 		                $.ajax({
-		                    url: myScriptVars.ajax_url,
+		                    url: digiwoScriptVars.ajax_url,
 		                    type: 'POST',
 		                    data: {
 		                        action: 'add_product_to_cart',
@@ -172,7 +172,7 @@
 		                           	jQuery(document.body).trigger('update_checkout');
 		                            jQuery(document.body).trigger('wc_fragment_refresh');
 		                           	console.log('updtaet checked');
-		                           	$.get(myScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
+		                           	$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
 						                $('.woocommerce-checkout-review-order-table').replaceWith(data);
 						            });
 						            $('#place_order').prop('disabled', false);
@@ -214,7 +214,7 @@
 		    var mainProductPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);  		
 
 		    $.ajax({
-		        url: myScriptVars.ajax_url,
+		        url: digiwoScriptVars.ajax_url,
 		        type: 'POST',
 		        data: {
 		            action: 'handle_add_on_product',
@@ -224,7 +224,7 @@
 		        },
 		        success: function(response) {
 		            if (response.success) {
-		            	$.get(myScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
+		            	$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
 						                $('.woocommerce-checkout-review-order-table').replaceWith(data);
 						            });
 		                updateTotalOrder();
