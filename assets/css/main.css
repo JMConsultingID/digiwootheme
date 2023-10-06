@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap');
+
+body.page-template-digiwoo-checkout{
+  font-family: 'Jost', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30.96px;
+  color: #1B7006;
+}
+
+body.page-template-digiwoo-checkout a{
+  color: #1B7006;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 767px) {
+.sticky {
+    position: fixed;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    top: 50px;
+}
+}
+.spinner-order-total{
+  margin: 0 auto;
+}
+.is-sticky {
+  padding: 30px;
+}
+.custom-loader {
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  border:4px solid;
+  border-color:#1B7006;;
+  border-right-color: #5DB33B;
+  animation:s2 1s infinite linear;
+}
+@keyframes s2 {to{transform: rotate(1turn)}}
+
+ul.payment_methods{
+  list-style: none!important;
+  padding-left: 0px!important;
+}
+
+.fast-checkout-text-color-style-1{
+  color: #1B7006;
+}
+
+.fast-checkout-text-color-style-2{
+  color: #F5F5F5;
+}
+
+.fast-checkout-box-color-style-1{
+  background: #60B63D;
+}
+
+.fast-checkout-box-color-style-2{
+  border-radius: 7px;
+background: rgba(93, 179, 59, 0.29); 
+}
+
+.fast-checkout-box-color-style-3{
+  background: #3CD503;
+}
+
+.fast-checkout-border-style-1{
+  border-radius: 12px;
+  border: 3px solid #3B8429;
+}
+
+.fast-checkout-border-style-2{
+  border-radius: 12px;
+  border: 3px solid #5DB33B;
+}
+
+.fast-checkout-border-style-3{
+  border-radius: 22px;
+  border: 5px solid #36AB08;
+}
+
+.woocommerce-checkout-review-order-table, .woocommerce-checkout-review-order {
+  display: none !important;
+}
+
+#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment{
+  background: transparent;
+}
+
+.fast-checkout-text{
+  color: #1B7006;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30.96px;
+}
+
+.fast-checkout-title{
+  color: #1B7006;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 61.92px; /* 61.92px */
+}
+
+
+
+.fast-checkout-title-price{
+  font-size: 61px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 104.92px;
+}
+
+.fast-checkout-title-add-on, .fast-checkout-title-product, .fast-checkout-title-category, .fast-checkout-title-payment-method{
+  color: #1B7006;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+
+
+.fast-checkout-payment li.wc_payment_method{
+  margin-bottom: 30px;
+}
+.fast-checkout-payment li.wc_payment_method label{
+  color: #1B7006;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.fast-checkout-title-product-price{
+  width: 80px;
+  color: #1B7006;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 34.4px; /* 34.4px */
+}
+
+.fast-checkout-option{
+
+}
+
+.fast-checkout-radio-select{
+      padding: 20px 10px;
+}
+
+.fast-checkout-radio-select span.input-checkbox{
+    display: block;
+    margin-left: 50px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.fast-checkout-radio-select span.input-price{
+    width: 80px;
+    color: #1B7006;
+    text-align: center;
+    font-family: Jost;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34.4px; /* 34.4px */
+}
+
+.fast-checkout-radio-select input[type="radio"], 
+.fast-checkout-radio-select input[type="checkbox"],
+.fast-checkout-payment input[type="radio"]{
+      -webkit-appearance:none;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border:4px solid #3CD503;
+    border-radius:50%;
+    outline:none;
+    margin: -8px 10px;
+}
+
+.fast-checkout-radio-select input[type='radio']:before, 
+.fast-checkout-radio-select input[type="checkbox"]:before,
+.fast-checkout-payment input[type='radio']:before{
+    content:'';
+    display:block;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    border:4px solid #fff;    
+}
+
+.fast-checkout-radio-select input[type='radio']:checked:before,
+.fast-checkout-radio-select input[type="checkbox"]:checked:before
+ {
+    width:100%;
+    height:100%;
+    background:#F5F5F5;
+    border:4px solid #60B63D;
+}
+
+.fast-checkout-radio-select input[type='radio']:checked,
+.fast-checkout-radio-select input[type="checkbox"]:checked{
+    border:4px solid #F5F5F5;
+}
+
+.fast-checkout-payment input[type='radio']:checked {
+  background:#1B7006;
+}
+
+.fast-checkout-place-order .place-order #place_order{
+    border: 3px solid #5DB33B;
+    background: #5DB33B;
+    color: #fff;
+    width: 100%;
+    border-radius: 12px;
+}
+
+.fast-checkout-place-order .place-order .woocommerce-form__label-for-checkbox{
+  padding-left: 5px;
+}
+
+.fast-checkout-radio-select:hover{
+  border-radius: 12px;
+  border: 3px solid #5DB33B;
+  background: #60B63D;
+  color: #fff;
+}
+
+.fast-checkout-radio-select-category.active,
+.fast-checkout-radio-select-product.active,
+.fast-checkout-radio-select-add-ons.active{
+  border-radius: 12px;
+  border: 3px solid #5DB33B;
+  background: #60B63D;
+  color: #fff;
+}
+
+.fast-checkout-radio-select.active span.fast-checkout-box-color-style-2 {
+    background: rgba(255, 255, 255, 0.29);
+}
+
+.fast-checkout-radio-select:hover span.fast-checkout-box-color-style-2 {
+    background: rgba(255, 255, 255, 0.29);
+}
+
+.fast-checkout-radio-select:hover input[type='radio'],
+.fast-checkout-radio-select:hover input[type='checkbox'],
+.fast-checkout-payment:hover input[type='checkbox']
+{
+    border:4px solid #F5F5F5;
+    background:transparent;
+}
+
+.fast-checkout-radio-select:hover input[type='radio']:before,
+.fast-checkout-radio-select:hover input[type='checkbox']:before,
+.fast-checkout-payment:hover input[type='checkbox']:before{
+    background:transparent;
+    border:4px solid #60B63D;
+}
+
+.fast-checkout-radio-select:hover input[type='radio']:checked,
+.fast-checkout-radio-select:hover input[type='checkbox']:checked,
+.fast-checkout-payment:hover input[type='checkbox']:checked{
+    background:#F5F5F5;
+}
+
+.fast-checkout-billing .woocommerce-billing-fields input, .fast-checkout-billing .woocommerce-billing-fields select{
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  background: #F5F5F5;
+}
+
+.fast-checkout-billing .woocommerce-billing-fields select:active,
+.fast-checkout-billing .woocommerce-billing-fields select:focus,
+.fast-checkout-billing .woocommerce-billing-fields select:focus-visible{
+  border: 1px solid #EAEAEA;
+  outline: none;
+}
+
+.page-template-digiwoo-checkout input[type="radio"][disabled] {
+    opacity: 0.5; /* Makes the checkbox semi-transparent */
+    cursor: not-allowed; /* Shows a "not allowed" cursor when hovering */
+}
+
+.page-template-digiwoo-checkout input[type="radio"][disabled] + label {
+    opacity: 0.5; /* Makes the checkbox semi-transparent */
+    cursor: not-allowed; /* Shows a "not allowed" cursor when hovering */
+}
+
+.page-template-digiwoo-checkout input[type="checkbox"][disabled] {
+    opacity: 0.5; /* Makes the checkbox semi-transparent */
+    cursor: not-allowed; /* Shows a "not allowed" cursor when hovering */
+}
+
+/* If your checkbox has a label associated with it */
+.page-template-digiwoo-checkout input[type="checkbox"][disabled] + label {
+    opacity: 0.5; /* Makes the label semi-transparent */
+    cursor: not-allowed; /* Shows a "not allowed" cursor when hovering */
+}
+
+.page-template-digiwoo-checkout header#site-header{
+  display: none;
+}
+
+.page-template-digiwoo-checkout .fast-checkout-payment-wocoommerce .wc_payment_methods{
+  border-bottom: none;
+}
+
+.page-template-digiwoo-checkout .fast-checkout-payment-wocoommerce .woocommerce-checkout .wrp input:checked~.checkmark {
+    border-radius: 100%;
+    background-color: #297d11;
+}
