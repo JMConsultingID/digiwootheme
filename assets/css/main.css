@@ -396,4 +396,11 @@ background: rgba(93, 179, 59, 0.29);
 .page-template-digiwoo-checkout.woocommerce-checkout .wrp .labels, .woocommerce-checkout .wrp label {
     margin-bottom: 50px;
 }
+
+}
+
+@media screen and (max-width: 370px) {
+.page-template-digiwoo-checkout.woocommerce-page .form-row label {
+    font-size: 13px!important;
+}  
 }
