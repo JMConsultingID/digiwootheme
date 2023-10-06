@@ -337,3 +337,7 @@ background: rgba(93, 179, 59, 0.29);
     font-size: 25px!important;
     font-weight: 500!important;
 }
+
+.page-template-digiwoo-checkout.woocommerce-checkout .woocommerce-SavedPaymentMethods{
+  display: none!important;
+}
