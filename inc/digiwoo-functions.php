@@ -18,7 +18,7 @@ function enqueue_digiwoo_scripts() {
             ));
     }    
 }
-add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 20);
+add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 80);
 
 function empty_cart_and_add_product_on_page_load() {
     if (is_page('your-page-slug')) { // Ganti 'your-page-slug' dengan slug halaman Anda
