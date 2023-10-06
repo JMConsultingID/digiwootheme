@@ -74,6 +74,7 @@
 	        $('.fast-checkout-radio-select-category').removeClass('active');
 	        $('.fast-checkout-radio-select-add-ons').removeClass('active');
 	        $('input[name="add-on-trading[]"]').prop('checked', false);
+	        $('input[name="product]"]').prop('checked', false);
 
 		    updateTotalOrder();
 
