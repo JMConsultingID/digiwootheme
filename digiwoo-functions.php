@@ -1,5 +1,32 @@
 <?php
 
+// function enqueue_child_theme_styles() {
+//     wp_register_style('fast-checkout-style', get_stylesheet_directory_uri() . '/main.css', array(), '1.0.1', 'all');
+//     wp_enqueue_style('fast-checkout-style');
+// }
+// add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
+
+function enqueue_digiwoo_scripts() {
+    if (is_page_template('digiwoo-checkout.php')) {
+            // Enqueue Bootstrap CSS
+            wp_enqueue_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css', array(), '4.6.2', false);
+            wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js', array('jquery'), '4.6.2', true);
+            wp_enqueue_script('digiwoo_script', get_stylesheet_directory_uri() . '/js/fast-checkout.js', array('jquery'), '1.0', true);
+
+            wp_localize_script('digiwoo_script', 'digiwoScriptVars', array(
+                'ajax_url' => admin_url('admin-ajax.php')
+            ));
+    }    
+}
+add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 20);
+
+function remove_selected_add_ons_after_order($order_id) {
+    if (WC()->session) {
+        WC()->session->__unset('selected_add_ons');
+    }
+}
+add_action('woocommerce_new_order', 'remove_selected_add_ons_after_order');
+
 function fetch_products_by_category() {
     $category_id = $_POST['category_id'];
     $args = array(
@@ -33,42 +60,6 @@ function fetch_products_by_category() {
 }
 add_action('wp_ajax_fetch_products_by_category', 'fetch_products_by_category');
 add_action('wp_ajax_nopriv_fetch_products_by_category', 'fetch_products_by_category');
-
-function enqueue_bootstrap() {
-    if (is_page_template('digiwoo-checkout.php')) {
-        // Enqueue Bootstrap CSS
-        wp_enqueue_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css', array(), '4.6.2');
-        wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js', array('jquery'), '4.6.2', true);      
-    }
-}
-add_action('wp_enqueue_scripts', 'enqueue_bootstrap');
-
-function enqueue_my_scripts() {
-    wp_enqueue_script('my-script', get_stylesheet_directory_uri() . '/js/fast-checkout.js', array('jquery'), '1.0', true);
-
-    // Mendaftarkan variabel global untuk JavaScript
-    wp_localize_script('my-script', 'myScriptVars', array(
-        'ajax_url' => admin_url('admin-ajax.php')
-    ));
-}
-add_action('wp_enqueue_scripts', 'enqueue_my_scripts',50);
-
-
-
-function enqueue_child_theme_styles() {
-    wp_register_style('fast-checkout-style', get_stylesheet_directory_uri() . '/main.css', array(), '1.0.1', 'all');
-    wp_enqueue_style('fast-checkout-style');
-}
-add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
-
-
-function remove_selected_add_ons_after_order($order_id) {
-    if (WC()->session) {
-        WC()->session->__unset('selected_add_ons');
-    }
-}
-add_action('woocommerce_new_order', 'remove_selected_add_ons_after_order');
-
 
 
 function digiwoo_add_product_to_cart() {
