@@ -14,17 +14,6 @@ body.page-template-digiwoo-checkout a{
   text-decoration: none;
 }
 
-@media screen and (min-width: 767px) {
-.sticky {
-    position: fixed;
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -ms-sticky;
-    position: -o-sticky;
-    position: sticky;
-    top: 50px;
-}
-}
 .spinner-order-total{
   margin: 0 auto;
 }
@@ -380,4 +369,22 @@ background: rgba(93, 179, 59, 0.29);
 
 .page-template-digiwoo-checkout.woocommerce-page .form-row label {
     font-size: 14px!important;
+}
+
+@media screen and (min-width: 767px) {
+.sticky {
+    position: fixed;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    top: 50px;
+}
+}
+
+@media screen and (max-width: 340px) {
+.page-template-digiwoo-checkout.woocommerce-checkout .wrp .labels, .woocommerce-checkout .wrp label {
+    margin-bottom: 50px;
+}
 }
