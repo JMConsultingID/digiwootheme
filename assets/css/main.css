@@ -348,8 +348,8 @@ background: rgba(93, 179, 59, 0.29);
     width: 100%!important;
 }
 
-.page-template-digiwoo-checkout.woocommerce-page .fast-checkout-billing form .form-row-first, 
-.page-template-digiwoo-checkout.woocommerce-page .fast-checkout-billing form .form-row-last{
+.page-template-digiwoo-checkout.woocommerce-page form .fast-checkout-billing .form-row-first, 
+.page-template-digiwoo-checkout.woocommerce-page form .fast-checkout-billing .form-row-last{
   width: 100%!important;
 }
 
