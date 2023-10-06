@@ -15,6 +15,9 @@
 	// Kemudian tambahkan class "active" pada elemen terdekat dengan class .fast-checkout-radio-select-category
 	$('input[name="product-category"][value="1375"]').closest('.fast-checkout-radio-select-category').addClass('active');
 
+	$('input[name="product"][value="19"]').prop('checked', true);
+	$('input[name="product"][value="19"]').closest('.fast-checkout-radio-select-product').addClass('active');
+
 
 	jQuery(document).ready(function($) {
 		var categoryID = 1375;
@@ -30,8 +33,7 @@
 	                $('#products-radio-container').html(response);
 	                // Check the radio button for category id 1375
 	    
-				    // Check the radio button for product id 24
-				    $('input[name="product"][value="19"]').prop('checked', true);
+				    
 
 				    $('input[name="add-on-trading"]').prop('disabled', true);
 
