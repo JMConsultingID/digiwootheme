@@ -73,22 +73,6 @@
 
 	        $('.fast-checkout-radio-select-add-ons').removeClass('active');
 
-	        $.ajax({
-		        url: digiwoScriptVars.ajax_url,
-		        type: 'POST',
-		        data: {
-		            action: 'clear_cart'
-		        },
-		        success: function(response) {
-		            if (response.success) {
-		            	updateTotalOrder();
-		                console.log('Cart cleared successfully');
-		            } else {
-		                console.log('Failed to clear cart');
-		            }
-		        }
-		    });
-
 		    updateTotalOrder();
 
 	        if ($(this).val() == '1375') {
