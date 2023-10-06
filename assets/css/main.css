@@ -403,4 +403,7 @@ background: rgba(93, 179, 59, 0.29);
 .page-template-digiwoo-checkout.woocommerce-page .form-row label {
     font-size: 13px!important;
 }  
+.page-template-digiwoo-checkout.woocommerce-page form .fast-checkout-payment-wocoommerce .form-row-first #stripe-exp-element{
+  margin-top: 18px;
+}
 }
