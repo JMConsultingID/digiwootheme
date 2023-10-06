@@ -10,13 +10,12 @@
 	        sidebar.classList.remove('sticky');
 	    }
 	});
-
-	$('input[name="product-category"][value="1375"]').prop('checked', true);
-	// Kemudian tambahkan class "active" pada elemen terdekat dengan class .fast-checkout-radio-select-category
-	$('input[name="product-category"][value="1375"]').closest('.fast-checkout-radio-select-category').addClass('active');
-
+	
 
 	jQuery(document).ready(function($) {
+	$('input[name="product-category"][value="1375"]').prop('checked', true);
+	$('input[name="product-category"][value="1375"]').closest('.fast-checkout-radio-select-category').addClass('active');
+
 		var categoryID = 1375;
 	        $.ajax({
 	            url: digiwoScriptVars.ajax_url,
