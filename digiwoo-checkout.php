@@ -19,8 +19,6 @@ while ( have_posts() ) :
 	<div class="page-content">
 		<?php the_content(); ?>
 
-		<?php if ( is_checkout() ) { ?>
-		
 		<!--Custom Checkout Start -->
 		<form name="checkout" method="post" class="checkout woocommerce-checkout <?php echo esc_attr( $extra_class ); ?>" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
@@ -300,7 +298,7 @@ while ( have_posts() ) :
 	</form>
 	<!--Custom Checkout End -->
 	<?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
-	<?php } ?>
+
 	</div>
 	<!--Page Content End -->
 	<div class="fast-checkout-spacer"></div>
