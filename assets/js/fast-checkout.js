@@ -16,7 +16,7 @@
 		$('input[name="product-category"][value="1375"]').prop('checked', true);
 		$('input[name="product-category"][value="1375"]').closest('.fast-checkout-radio-select-category').addClass('active');
 		$('.no-time-limit').show(); // Show the div
-		
+
 		var categoryID = 1375;
         $.ajax({
             url: digiwoScriptVars.ajax_url,
@@ -141,13 +141,9 @@
 		                           	$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
 						                $('.woocommerce-checkout-review-order-table').replaceWith(data);
 						            });
-						            $('#place_order').prop('disabled', false);
-						            $('.woocommerce-billing-fields input, .woocommerce-billing-fields select').prop('disabled', false);
 						            $('input[name="add-on-trading[]"]').prop('disabled', false);
-						        	} else {
-		                        	$('#place_order').prop('disabled', true);
-		                        	$('.woocommerce-billing-fields input, .woocommerce-billing-fields select').prop('disabled', true);
-
+						        	
+						        } else {
 		                            alert('There was an error adding the product to the cart.');
 		                        }
 		                        $('.spinner-order-total').hide();
