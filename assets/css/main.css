@@ -318,7 +318,7 @@ background: rgba(93, 179, 59, 0.29);
     background-color: #297d11!important;
 }
 
-.page-template-digiwoo-checkout .woocommerce-checkout .woocommerce-checkout .wrp .checkmark:after {
+.woocommerce-checkout .wrp .checkmark:after {
     top: 3px!important;
     left: 4px!important;
     width: 8px!important;
