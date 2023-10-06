@@ -83,7 +83,10 @@
 	        } else {
 	            $('.no-time-limit').hide(); // Hide the div for other categories
 	            $('input[name="add-on-trading[]"][value="no-time-limit"]').prop('checked', false);
+	            $('input[name="product"]').prop('checked', false);
 	        }
+
+	        updateTotalOrder();
 
 	        // Then, add .active class to the parent div of the checked radio
 	        if ($(this).is(':checked')) {
