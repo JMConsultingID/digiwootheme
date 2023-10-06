@@ -80,6 +80,7 @@
 
 	        if ($(this).val() == '1375') {
 	            $('.no-time-limit').show(); // Show the div
+	            $('input[name="product"]').prop('checked', false);
 	        } else {
 	            $('.no-time-limit').hide(); // Hide the div for other categories
 	            $('input[name="add-on-trading[]"][value="no-time-limit"]').prop('checked', false);
