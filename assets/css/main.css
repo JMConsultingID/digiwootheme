@@ -384,6 +384,10 @@ background: rgba(93, 179, 59, 0.29);
 }
 
 @media screen and (max-width: 480px) {
+.fast-checkout-title-add-on, .fast-checkout-title-product, .fast-checkout-title-category, .fast-checkout-title-payment-method{
+  font-size: 20px;
+}
+
 .page-template-digiwoo-checkout.woocommerce-checkout .wrp .labels, .woocommerce-checkout .wrp label {
     margin-bottom: 50px;
 }
