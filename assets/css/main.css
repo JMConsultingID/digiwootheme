@@ -387,7 +387,12 @@ background: rgba(93, 179, 59, 0.29);
 .fast-checkout-title-add-on, .fast-checkout-title-product, .fast-checkout-title-category, .fast-checkout-title-payment-method{
   font-size: 20px;
 }
-
+.page-template-digiwoo-checkout.woocommerce-page form .form-row-last{
+  float: none;
+}
+.page-template-digiwoo-checkout.woocommerce-page .form-row {
+    margin-right: 0;margin-left: 0;
+}
 .page-template-digiwoo-checkout.woocommerce-checkout .wrp .labels, .woocommerce-checkout .wrp label {
     margin-bottom: 50px;
 }
