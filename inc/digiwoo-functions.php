@@ -6,6 +6,16 @@
 // }
 // add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
 
+add_filter( 'woocommerce_is_checkout', 'custom_is_checkout' );
+
+function custom_is_checkout( $is_checkout ) {
+    if ( /* Kondisi Anda untuk halaman checkout kustom */ ) {
+        return true;
+    }
+    return $is_checkout;
+}
+
+
 function enqueue_digiwoo_scripts() {
     if (is_page_template('digiwoo-checkout.php')) {
             // Enqueue Bootstrap CSS
