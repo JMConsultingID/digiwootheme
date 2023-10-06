@@ -15,7 +15,8 @@
 	jQuery(document).ready(function($) {
 		$('input[name="product-category"][value="1375"]').prop('checked', true);
 		$('input[name="product-category"][value="1375"]').closest('.fast-checkout-radio-select-category').addClass('active');
-
+		$('.no-time-limit').show(); // Show the div
+		
 		var categoryID = 1375;
         $.ajax({
             url: digiwoScriptVars.ajax_url,
