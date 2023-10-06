@@ -270,6 +270,7 @@ while ( have_posts() ) :
 			        }
 			        ?>
 			    </ul>
+			    <?php do_action( 'woocommerce_checkout_order_review' ); ?>
 			</div>
 
 			<div class="fast-checkout-place-order">
