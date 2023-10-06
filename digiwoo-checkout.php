@@ -258,22 +258,11 @@ while ( have_posts() ) :
 
 		    <!-- Payment Methods -->
 			<div class="fast-checkout-payment">
-			    <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-
-	<div id="order_review" class="woocommerce-checkout-review-order">
-		<?php do_action( 'sellkit-checkout-before-order-summary' ); ?>
-
-		<?php do_action( 'sellkit-bundled-products-position' ); ?>
-
-		<div id="sellkit-checkout-widget-order-review-wrap" >
-			<h4 class="sellkit-checkout-order-review-heading header heading">
-				<?php esc_html_e( 'Your order', 'woocommerce' ); ?>
-			</h4>
-			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
-		</div>
-	</div>
-
-	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+				<?php
+			    do_action('woocommerce_checkout_before_order_review');
+			    do_action('woocommerce_checkout_order_review');  // Ini menampilkan metode pembayaran
+			    do_action('woocommerce_checkout_after_order_review');
+			    ?>
 			</div>
 
 			<div class="fast-checkout-place-order">
