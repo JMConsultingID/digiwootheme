@@ -44,8 +44,6 @@
 
 	    $('#place_order').prop('disabled', true);
 	    $('input[name="add-on-trading"]').prop('disabled', true);
-	    $('.woocommerce-billing-fields input, .woocommerce-billing-fields select').prop('disabled', true);
-
 
 	    // Function to update the total order
 	    function formatCurrency(value) {
