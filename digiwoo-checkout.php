@@ -18,7 +18,6 @@ while ( have_posts() ) :
 <main id="content" <?php post_class( 'site-main' ); ?>>
 	<div class="page-content">
 		<?php the_content(); ?>
-		<?php do_action( 'woocommerce_before_checkout_form', $checkout ); ?>
 
 		<!--Custom Checkout Start -->
 		<form name="checkout" method="post" class="checkout woocommerce-checkout <?php echo esc_attr( $extra_class ); ?>" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
