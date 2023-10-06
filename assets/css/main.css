@@ -313,14 +313,24 @@ background: rgba(93, 179, 59, 0.29);
   border-bottom: none!important;
 }
 
-.page-template-digiwoo-checkout .woocommerce-checkout .wrp input:checked~.checkmark, .page-template-digiwoo-checkout .woocommerce-checkout .checkmark  {
+.page-template-digiwoo-checkout.woocommerce-checkout .wrp input:checked~.checkmark, .page-template-digiwoo-checkout .woocommerce-checkout .checkmark  {
     border-radius: 100%!important;
-    background-color: #297d11!important;
+    background-color: transparent;
+    -webkit-appearance: none!important;
+    width: 32px!important;
+    height: 32px!important;
+    flex-shrink: 0!important;
+    border: 4px solid #3CD503!important;
 }
 
 .woocommerce-checkout .wrp .checkmark:after {
-    top: 3px!important;
-    left: 4px!important;
-    width: 8px!important;
-    height: 8px!important;
+    top: 0px!important;
+    left: 0px!important;
+    width: 100%!important;
+    height: 100%!important;
+    background: #427b27!important;
+}
+
+.page-template-digiwoo-checkout.woocommerce-checkout .wrp .labels, .woocommerce-checkout .wrp label {
+    margin-left: 30px;
 }
