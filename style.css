@@ -300,10 +300,6 @@ background: rgba(93, 179, 59, 0.29);
   outline: none;
 }
 
-.page-template-digiwoo-checkout input[type='radio'] {
-
-}
-
 .page-template-digiwoo-checkout input[type="radio"][disabled] {
     opacity: 0.5; /* Makes the checkbox semi-transparent */
     cursor: not-allowed; /* Shows a "not allowed" cursor when hovering */
