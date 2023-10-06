@@ -28,6 +28,7 @@
             	$('.radio-category').hide();
                 $('#products-radio-container').html(response);
                 // Check the radio button for category id 1375
+                $('input[name="product"]').prop('disabled', false);
     
 			    $('input[name="product"][value="19"]').prop('checked', true);
 				$('input[name="product"][value="19"]').closest('.fast-checkout-radio-select-product').addClass('active');
