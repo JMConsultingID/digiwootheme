@@ -11,6 +11,8 @@
 	    }
 	});
 
+	$('input[name="product-category"][value="1375"]').prop('checked', true);
+
 	jQuery(document).ready(function($) {
 		var categoryID = 1375;
 	        $.ajax({
@@ -23,6 +25,15 @@
 	            success: function(response) {
 	            	$('.radio-category').hide();
 	                $('#products-radio-container').html(response);
+	                // Check the radio button for category id 1375
+	    
+				    // Check the radio button for product id 24
+				    $('input[name="product"][value="24"]').prop('checked', true);
+
+				    $('input[name="add-on-trading"]').prop('disabled', true);
+
+				    // Call the updateTotalOrder function
+				    updateTotalOrder();
 	            }
 	            
 	        });
@@ -55,16 +66,7 @@
 	        $('#total-order-value').text(formatCurrency(total));
 	        $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
 	    }
-
-	    // Check the radio button for category id 1375
-	    $('input[name="product-category"][value="1375"]').prop('checked', true);
-	    // Check the radio button for product id 24
-	    $('input[name="product"][value="24"]').prop('checked', true);
-
-	    $('input[name="add-on-trading"]').prop('disabled', true);
-
-	    // Call the updateTotalOrder function
-	    updateTotalOrder();
+    
 
 	    $('input[name="product-category"]').change(function() {	    	
 	        var categoryID = $(this).val();
