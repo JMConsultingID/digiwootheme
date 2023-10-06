@@ -341,3 +341,5 @@ background: rgba(93, 179, 59, 0.29);
 .page-template-digiwoo-checkout ul.woocommerce-SavedPaymentMethods{
   display: none!important;
 }
+
+.stripe-card-group { width: 100%!important; }
