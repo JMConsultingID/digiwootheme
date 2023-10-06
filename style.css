@@ -319,3 +319,7 @@ background: rgba(93, 179, 59, 0.29);
     opacity: 0.5; /* Makes the label semi-transparent */
     cursor: not-allowed; /* Shows a "not allowed" cursor when hovering */
 }
+
+.page-template-digiwoo-checkout header#site-header{
+	display: none;
+}
