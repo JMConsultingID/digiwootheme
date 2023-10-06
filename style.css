@@ -30,26 +30,6 @@ body.page-template-digiwoo-checkout a{
   text-decoration: none;
 }
 
-body.page-template-digiwoo-checkout #header{
-  display: none;
-}
-
-body.page-template-digiwoo-checkout #footer{
-  display: none;
-}
-
-body.page-template-digiwoo-checkout hr{
-  display: none;
-}
-
-body.page-template-digiwoo-checkout input[type=date], input[type=email], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=url], select, textarea {
-    width: 100%;
-    border: 1px solid #666;
-    border-radius: 3px;
-    padding: 0.5rem 1rem;
-    transition: all .3s;
-}
-
 @media screen and (min-width: 767px) {
 .sticky {
     position: fixed;
@@ -338,8 +318,4 @@ background: rgba(93, 179, 59, 0.29);
 .page-template-digiwoo-checkout input[type="checkbox"][disabled] + label {
     opacity: 0.5; /* Makes the label semi-transparent */
     cursor: not-allowed; /* Shows a "not allowed" cursor when hovering */
-}
-
-.fast-checkout-spacer{
-  margin: 100px 0px;
 }
