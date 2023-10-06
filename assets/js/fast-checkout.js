@@ -42,7 +42,6 @@
 	        }
 	    });
 
-	    $('#place_order').prop('disabled', true);
 	    $('input[name="add-on-trading"]').prop('disabled', true);
 
 	    // Function to update the total order
