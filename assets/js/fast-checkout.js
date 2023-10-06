@@ -69,7 +69,7 @@
 
 	    $('input[name="product-category"]').change(function() {	    	
 	        var categoryID = $(this).val();
-	        ('.fast-checkout-radio-select-category').removeClass('active');
+	        $('.fast-checkout-radio-select-category').removeClass('active');
 	        $('.fast-checkout-radio-select-add-ons').removeClass('active');
 
 		    updateTotalOrder();
