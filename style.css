@@ -103,6 +103,10 @@ background: rgba(93, 179, 59, 0.29);
 	display: none !important;
 }
 
+#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment{
+	background: transparent;
+}
+
 .fast-checkout-text{
   color: #1B7006;
   font-size: 18px;
