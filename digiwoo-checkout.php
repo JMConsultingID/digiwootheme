@@ -260,22 +260,7 @@ while ( have_posts() ) :
 			<div class="fast-checkout-payment-wocoommerce">
 				<?php
 			    do_action('woocommerce_checkout_before_order_review');
-			    ?>
-
-			    <ul class="wc_payment_methods payment_methods methods">
-			        <?php
-			        $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
-			        if (!empty($available_gateways)) {
-			            foreach ($available_gateways as $gateway) {
-			                wc_get_template('checkout/payment-method.php', array('gateway' => $gateway));
-			            }
-			        } else {
-			            echo '<li>' . esc_html__('Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce') . '</li>';
-			        }
-			        ?>
-			    </ul>
-
-			    <?php
+			    do_action('woocommerce_checkout_order_review');  // Ini menampilkan metode pembayaran
 			    do_action('woocommerce_checkout_after_order_review');
 			    ?>
 			</div>
