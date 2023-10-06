@@ -332,5 +332,8 @@ background: rgba(93, 179, 59, 0.29);
 }
 
 .page-template-digiwoo-checkout.woocommerce-checkout .wrp .labels, .woocommerce-checkout .wrp label {
-    margin-left: 30px;
+    margin-left: 30px!important;
+    color: #1B7006!important;
+    font-size: 25px!important;
+    font-weight: 500!important;
 }
