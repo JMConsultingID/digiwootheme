@@ -28,7 +28,7 @@
 	                // Check the radio button for category id 1375
 	    
 				    // Check the radio button for product id 24
-				    $('input[name="product"][value="24"]').prop('checked', true);
+				    $('input[name="product"][value="19"]').prop('checked', true);
 
 				    $('input[name="add-on-trading"]').prop('disabled', true);
 
