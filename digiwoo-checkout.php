@@ -26,7 +26,7 @@ while ( have_posts() ) :
 		    <div class="container">
 		        <div class="row">
 
-		<div class="col-md-8">
+		<div class="col-md-7">
 
 			<!-- Cart Items -->
         <div class="fast-checkout-cart">
@@ -239,7 +239,7 @@ while ( have_posts() ) :
 
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-5">
 
 			<div class="is-sticky fast-checkout-border-style-2" id="stickySidebar">
 
