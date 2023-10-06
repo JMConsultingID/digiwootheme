@@ -20,7 +20,7 @@ while ( have_posts() ) :
 		<?php the_content(); ?>
 		
 		<!--Custom Checkout Start -->
-		<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
+		<form name="checkout" method="post" class="checkout woocommerce-checkout <?php echo esc_attr( $extra_class ); ?>" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
 		<div class="bootstrap-wrapper">
 		    <div class="container">
@@ -258,19 +258,22 @@ while ( have_posts() ) :
 
 		    <!-- Payment Methods -->
 			<div class="fast-checkout-payment">
-			    <ul class="wc_payment_methods payment_methods methods">
-			        <?php
-			        $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
-			        if (!empty($available_gateways)) {
-			            foreach ($available_gateways as $gateway) {
-			                wc_get_template('checkout/payment-method.php', array('gateway' => $gateway));
-			            }
-			        } else {
-			            echo '<li>' . esc_html__('Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce') . '</li>';
-			        }
-			        ?>
-			    </ul>
-			    <?php do_action( 'woocommerce_checkout_order_review' ); ?>
+			    <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+
+	<div id="order_review" class="woocommerce-checkout-review-order">
+		<?php do_action( 'sellkit-checkout-before-order-summary' ); ?>
+
+		<?php do_action( 'sellkit-bundled-products-position' ); ?>
+
+		<div id="sellkit-checkout-widget-order-review-wrap" >
+			<h4 class="sellkit-checkout-order-review-heading header heading">
+				<?php esc_html_e( 'Your order', 'woocommerce' ); ?>
+			</h4>
+			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+		</div>
+	</div>
+
+	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 			</div>
 
 			<div class="fast-checkout-place-order">
@@ -305,14 +308,11 @@ while ( have_posts() ) :
 
 	</form>
 	<!--Custom Checkout End -->
+	<?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
 	</div>
 	<!--Page Content End -->
 	<div class="fast-checkout-spacer"></div>
 </main>
-
-<script type="text/javascript">
-
-</script>
 	<?php
 endwhile;
 get_footer();
