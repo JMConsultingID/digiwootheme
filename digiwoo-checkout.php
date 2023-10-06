@@ -8,14 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-do_action( 'woocommerce_before_checkout_form', $checkout );
-
-// If checkout registration is disabled and not logged in, the user cannot checkout.
-if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
-	echo esc_html( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) ) );
-	return;
-}
-
 global $woocommerce;
 
 get_header();
@@ -26,6 +18,7 @@ while ( have_posts() ) :
 <main id="content" <?php post_class( 'site-main' ); ?>>
 	<div class="page-content">
 		<?php the_content(); ?>
+		<?php do_action( 'woocommerce_before_checkout_form', $checkout ); ?>
 
 		<!--Custom Checkout Start -->
 		<form name="checkout" method="post" class="checkout woocommerce-checkout <?php echo esc_attr( $extra_class ); ?>" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
@@ -147,13 +140,91 @@ while ( have_posts() ) :
 
 				    	<div class="row px-2">
 
-				    	<div class="col-1">
-				<?php do_action( 'woocommerce_checkout_billing' ); ?>
-			</div>
+				    	<!-- Email Address -->
+				    	<div class="col-md-12">
+				        <p class="form-row form-row-wide" id="billing_email_field" data-priority="110">
+				            <label for="billing_email" class=""><?php esc_html_e('Email address', 'woocommerce'); ?>&nbsp;<abbr class="required" title="required">*</abbr></label>
+				            <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="<?php echo esc_attr($checkout->get_value('billing_email')); ?>" autocomplete="email">
+				        </p>
+				    	</div>
 
-			<div class="col-2">
-				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
-			</div>
+				        <!-- First Name -->
+				        <div class="col-md-6">
+				        <p class="form-row form-row-first" id="billing_first_name_field" data-priority="10">
+				            <label for="billing_first_name" class=""><?php esc_html_e('First name', 'woocommerce'); ?>&nbsp;<abbr class="required" title="required">*</abbr></label>
+				            <input type="text" class="input-text " name="billing_first_name" id="billing_first_name" placeholder="" value="<?php echo esc_attr($checkout->get_value('billing_first_name')); ?>" autocomplete="given-name" >
+				        </p>
+				        </div>
+
+				        <!-- Last Name -->
+				        <div class="col-md-6">
+				        <p class="form-row form-row-last" id="billing_last_name_field" data-priority="20">
+				            <label for="billing_last_name" class=""><?php esc_html_e('Last name', 'woocommerce'); ?>&nbsp;<abbr class="required" title="required">*</abbr></label>
+				            <input type="text" class="input-text " name="billing_last_name" id="billing_last_name" placeholder="" value="<?php echo esc_attr($checkout->get_value('billing_last_name')); ?>" autocomplete="family-name">
+				        </p>
+				        </div>
+
+				        <!-- Phone -->
+				        <div class="col-md-12">
+				        <p class="form-row form-row-wide" id="billing_phone_field" data-priority="100">
+				            <label for="billing_phone" class=""><?php esc_html_e('Phone', 'woocommerce'); ?>&nbsp;<abbr class="required" title="required">*</abbr></label>
+				            <input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder="" value="<?php echo esc_attr($checkout->get_value('billing_phone')); ?>" autocomplete="tel">
+				        </p>
+				        </div>
+
+				         <!-- Address Line 1 -->
+				         <div class="col-md-12">
+				        <p class="form-row form-row-wide" id="billing_address_1_field" data-priority="50">
+				            <label for="billing_address_1" class=""><?php esc_html_e('Street address', 'woocommerce'); ?>&nbsp;<abbr class="required" title="required">*</abbr></label>
+				            <input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="House number and street name" value="<?php echo esc_attr($checkout->get_value('billing_address_1')); ?>" autocomplete="address-line1">
+				        </p>
+				        </div>
+
+				        <!-- Country -->
+				        <div class="col-md-6">
+				        <p class="form-row form-row-wide" id="billing_country_field" data-priority="40">
+				            <label for="billing_country" class=""><?php esc_html_e('Country', 'woocommerce'); ?>&nbsp;<abbr class="required" title="required">*</abbr></label>
+				            <?php
+				            $countries = WC()->countries->get_countries();
+
+							if ($countries) { ?>
+							    <select name="billing_country" id="billing_country" class="country_to_state country_select" autocomplete="country">
+							        <?php foreach ($countries as $code => $name) : ?>
+							            <option value="<?php echo esc_attr($code); ?>" <?php selected($checkout->get_value('billing_country'), $code); ?>>
+							                <?php echo esc_html($name); ?>
+							            </option>
+							        <?php endforeach; ?>
+							    </select>
+							<?php }
+
+
+				           ?>
+				        </p>
+				        </div>
+
+				        <!-- State/County -->
+				        <div class="col-md-6">
+				        <p class="form-row form-row-wide" id="billing_state_field" data-priority="80">
+				            <label for="billing_state" class=""><?php esc_html_e('State / County', 'woocommerce'); ?>&nbsp;<abbr class="required" title="required">*</abbr></label>
+				            <input type="text" class="input-text " name="billing_state" id="billing_state" placeholder="" value="<?php echo esc_attr($checkout->get_value('billing_state')); ?>">
+				        </p>
+				        </div>
+
+				        <!-- City -->
+				        <div class="col-md-6">
+				        <p class="form-row form-row-wide" id="billing_city_field" data-priority="70">
+				            <label for="billing_city" class=""><?php esc_html_e('Town / City', 'woocommerce'); ?>&nbsp;<abbr class="required" title="required">*</abbr></label>
+				            <input type="text" class="input-text " name="billing_city" id="billing_city" placeholder="" value="<?php echo esc_attr($checkout->get_value('billing_city')); ?>" autocomplete="address-level2">
+				        </p>
+				        </div>
+
+				        <!-- Zip/Postal Code -->
+				        <div class="col-md-6">
+				        <p class="form-row form-row-wide" id="billing_postcode_field" data-priority="90">
+				            <label for="billing_postcode" class=""><?php esc_html_e('Postcode / ZIP', 'woocommerce'); ?>&nbsp;<abbr class="required" title="required">*</abbr></label>
+				            <input type="text" class="input-text " name="billing_postcode" id="billing_postcode" placeholder="" value="<?php echo esc_attr($checkout->get_value('billing_postcode')); ?>" autocomplete="postal-code">
+				        </p>
+				        </div>
 
 
 				    </div>
@@ -204,11 +275,8 @@ while ( have_posts() ) :
 
 			    <?php wc_get_template('checkout/terms.php'); ?>
 
-			    <?php do_action('woocommerce_review_order_before_submit'); ?>
 
 			    <button type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="<?php esc_attr_e('Place order', 'woocommerce'); ?>" data-value="<?php esc_attr_e('Complete Order', 'woocommerce'); ?>"><?php echo esc_html(apply_filters('woocommerce_order_button_text', __('Complete Order', 'woocommerce'))); ?></button>
-
-			    <?php do_action('woocommerce_review_order_after_submit'); ?>
 
 			    <?php wp_nonce_field('woocommerce-process_checkout', 'woocommerce-process-checkout-nonce'); ?>
 			</div>
