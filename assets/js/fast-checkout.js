@@ -13,36 +13,33 @@
 	
 
 	jQuery(document).ready(function($) {
-	$('input[name="product-category"][value="1375"]').prop('checked', true);
-	$('input[name="product-category"][value="1375"]').closest('.fast-checkout-radio-select-category').addClass('active');
+		$('input[name="product-category"][value="1375"]').prop('checked', true);
+		$('input[name="product-category"][value="1375"]').closest('.fast-checkout-radio-select-category').addClass('active');
 
 		var categoryID = 1375;
-	        $.ajax({
-	            url: digiwoScriptVars.ajax_url,
-	            type: 'POST',
-	            data: {
-	                action: 'fetch_products_by_category',
-	                category_id: categoryID
-	            },
-	            success: function(response) {
-	            	$('.radio-category').hide();
-	                $('#products-radio-container').html(response);
-	                // Check the radio button for category id 1375
-	    
-				    $('input[name="product"][value="19"]').prop('checked', true);
-					$('input[name="product"][value="19"]').closest('.fast-checkout-radio-select-product').addClass('active');
+        $.ajax({
+            url: digiwoScriptVars.ajax_url,
+            type: 'POST',
+            data: {
+                action: 'fetch_products_by_category',
+                category_id: categoryID
+            },
+            success: function(response) {
+            	$('.radio-category').hide();
+                $('#products-radio-container').html(response);
+                // Check the radio button for category id 1375
+    
+			    $('input[name="product"][value="19"]').prop('checked', true);
+				$('input[name="product"][value="19"]').closest('.fast-checkout-radio-select-product').addClass('active');
 
 
-				    $('input[name="add-on-trading"]').prop('disabled', true);
+			    $('input[name="add-on-trading"]').prop('disabled', true);
 
-				    // Call the updateTotalOrder function
-				    updateTotalOrder();
-	            }
-	            
-	        });
-
-	    
-	    
+			    // Call the updateTotalOrder function
+			    updateTotalOrder();
+            }
+            
+        });
 
 	    // Function to update the total order
 	    function formatCurrency(value) {
@@ -73,7 +70,7 @@
 
 	    $('input[name="product-category"]').change(function() {	    	
 	        var categoryID = $(this).val();
-
+	        ('.fast-checkout-radio-select-category').removeClass('active');
 	        $('.fast-checkout-radio-select-add-ons').removeClass('active');
 
 		    updateTotalOrder();
