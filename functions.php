@@ -35,4 +35,4 @@ function hello_elementor_child_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'hello_elementor_child_scripts_styles', 20 );
 
-include get_stylesheet_directory() . '/digiwoo-functions.php';
+include get_stylesheet_directory() . '/inc/digiwoo-functions.php';
