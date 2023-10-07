@@ -37,7 +37,8 @@
 				$('input[name="product"][value="22"]').prop('checked', true);
 				$('input[name="product"][value="22"]').closest('.fast-checkout-radio-select-product').addClass('active');
 
-				$('input[name="add-on-trading[]"]').prop('disabled', false);
+				$('input[name="add-on-trading[]"]').prop('disabled', false);				
+				$('.fast-checkout-radio-select-add-ons').removeClass('fast-checkout-btn-disable');
 
 			    // Call the updateTotalOrder function
 			    updateTotalOrder();
@@ -78,6 +79,7 @@
 	        $('.fast-checkout-radio-select-add-ons').removeClass('active');
 	        $('input[name="add-on-trading[]"]').prop('checked', false);
 	        $('input[name="add-on-trading[]"]').prop('disabled', true);
+	        $('.fast-checkout-radio-select-add-ons').addClass('fast-checkout-btn-disable');
 
 		    updateTotalOrder();
 
@@ -145,7 +147,7 @@
 		                        if (response.success) {
 		                           	jQuery(document.body).trigger('update_checkout');
 						            $('input[name="add-on-trading[]"]').prop('disabled', false);
-						        	
+						        	$('.fast-checkout-radio-select-add-ons').removeClass('fast-checkout-btn-disable');
 						        } else {
 		                            alert('There was an error adding the product to the cart.');
 		                        }

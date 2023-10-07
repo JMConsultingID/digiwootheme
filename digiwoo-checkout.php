@@ -108,7 +108,7 @@ while ( have_posts() ) :
 				    </div>
 				  </label>
 
-				  <label class="col-sm-8 btn">
+				  <label class="col-sm-8 btn no-time-limit">
 				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left fast-checkout-btn-disable">
 				    <div class="d-flex justify-content-between lh-condensed">
 				      <div>
