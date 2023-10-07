@@ -48,7 +48,7 @@ while ( have_posts() ) :
 	            $uncategorized = get_term_by('slug', 'uncategorized', 'product_cat');
 	            $product_categories = get_terms('product_cat', array('include' => array(16, 17), 'hide_empty' => 0));
 	            foreach ($product_categories as $category) {
-	            		echo '<label class="w-100 btn btn-outline-secondary py-4 my-3 rounded mx-1 fast-checkout-radio-select fast-checkout-radio-select-category fast-checkout-border-style-1 fast-checkout-title-category text-left">';
+	            		echo '<label class="w-100 btn btn-outline-success py-4 my-3 rounded mx-1 fast-checkout-radio-select fast-checkout-radio-select-category fast-checkout-border-style-1 fast-checkout-title-category text-left">';
 	            		echo '<i class="far fa-circle fa-lg mr-2"></i>';
 	            		echo '<input type="radio" name="product-category" class="fast-checkout-radio-input" id="cat-' . $category->term_id . '" value="' . $category->term_id . '">' . $category->name;
 	                    echo '</label>';
