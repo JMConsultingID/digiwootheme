@@ -83,7 +83,7 @@ while ( have_posts() ) :
 	        	<div class="add-on-trading">
 				<div class="row btn-group btn-group-toggle w-100 radio-input add-on-trading-input" data-toggle="buttons" role="group" aria-label="First group">
 				  <label class="col-sm-8 btn">
-				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left ">
+				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left fast-checkout-btn-disable">
 				    <div class="d-flex justify-content-between lh-condensed">
 				      <div>
 				          <i class="far fa-circle fa-lg mr-2"></i>
@@ -96,7 +96,7 @@ while ( have_posts() ) :
 				  </label>
 
 				  <label class="col-sm-8 btn">
-				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left ">
+				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left fast-checkout-btn-disable">
 				    <div class="d-flex justify-content-between lh-condensed">
 				      <div>
 				          <i class="far fa-circle fa-lg mr-2"></i>
@@ -109,7 +109,7 @@ while ( have_posts() ) :
 				  </label>
 
 				  <label class="col-sm-8 btn">
-				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left ">
+				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left fast-checkout-btn-disable">
 				    <div class="d-flex justify-content-between lh-condensed">
 				      <div>
 				          <i class="far fa-circle fa-lg mr-2"></i>
@@ -122,7 +122,7 @@ while ( have_posts() ) :
 				  </label>
 
 				  <label class="col-sm-8 btn">
-				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left ">
+				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left fast-checkout-btn-disable">
 				    <div class="d-flex justify-content-between lh-condensed">
 				      <div>
 				          <i class="far fa-circle fa-lg mr-2"></i>
@@ -135,7 +135,7 @@ while ( have_posts() ) :
 				  </label>
 
 				  <label class="col-sm-8 btn">
-				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left ">
+				    <div class="w-100 btn btn-outline-success py-3 my-3 px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left fast-checkout-btn-disable">
 				    <div class="d-flex justify-content-between lh-condensed">
 				      <div>
 				          <i class="far fa-circle fa-lg mr-2"></i>

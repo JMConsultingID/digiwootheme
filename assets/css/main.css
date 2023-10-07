@@ -72,6 +72,11 @@ background: rgba(93, 179, 59, 0.29);
   border: 5px solid #36AB08;
 }
 
+.fast-checkout-btn-disable{
+    opacity: 0.3;
+    cursor: no-drop;
+}
+
 .woocommerce-checkout-review-order-table, .woocommerce-checkout-review-order {
   display: none !important;
 }
