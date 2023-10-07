@@ -116,7 +116,7 @@ while ( have_posts() ) :
 				          <input type="checkbox" name="add-on-trading[]" value="no-time-limit" data-percentage="0.05" disabled>No time limit
 				          <span class="d-block ml-4 px-4 input-checkbox">Unlimited</span>
 				      </div>
-				      <span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 py-4 px-2 py-1 input-price">+5%</span>
+				      <span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 py-3 px-2 py-1 input-price">+5%</span>
 				    </div>
 				    </div>
 				  </label>
