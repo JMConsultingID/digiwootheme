@@ -88,7 +88,7 @@ while ( have_posts() ) :
 				      <div>
 				          <i class="far fa-circle fa-lg mr-2"></i>
 				          <input type="checkbox" name="add-on-trading[]" value="increase-profit" data-percentage="0.20" disabled>Increase profit split
-				          <span class="d-block ml-4 px-3 input-checkbox">90/10</span>
+				          <span class="d-block ml-4 px-4 input-checkbox">90/10</span>
 				      </div>
 				      <span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 py-3 px-2 py-1 input-price">+20%</span>
 				    </div>
@@ -101,7 +101,7 @@ while ( have_posts() ) :
 				      <div>
 				          <i class="far fa-circle fa-lg mr-2"></i>
 				          <input type="checkbox" name="add-on-trading[]" value="increase-leverage" data-percentage="0.25" disabled>Increase leverage
-				          <span class="d-block ml-4 px-3 input-checkbox">1:100</span>
+				          <span class="d-block ml-4 px-4 input-checkbox">1:100</span>
 				      </div>
 				      <span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 py-3 px-2 py-1 input-price">+25%</span>
 				    </div>
@@ -116,7 +116,7 @@ while ( have_posts() ) :
 				          <input type="checkbox" name="add-on-trading[]" value="no-time-limit" data-percentage="0.05" disabled>No time limit
 				          <span class="d-block ml-4 px-3 input-checkbox">Unlimited</span>
 				      </div>
-				      <span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 py-3 px-2 py-1 input-price">+5%</span>
+				      <span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 py-4 px-2 py-1 input-price">+5%</span>
 				    </div>
 				    </div>
 				  </label>
@@ -127,7 +127,7 @@ while ( have_posts() ) :
 				      <div>
 				          <i class="far fa-circle fa-lg mr-2"></i>
 				          <input type="checkbox" name="add-on-trading[]" value="bi-weekly-payouts" data-percentage="0.05" disabled>Bi weekly payouts
-				          <span class="d-block ml-4 px-3 input-checkbox">Instead of Monthly</span>
+				          <span class="d-block ml-4 px-4 input-checkbox">Instead of Monthly</span>
 				      </div>
 				      <span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 py-3 px-2 py-1 input-price">+5%</span>
 				    </div>
@@ -140,7 +140,7 @@ while ( have_posts() ) :
 				      <div>
 				          <i class="far fa-circle fa-lg mr-2"></i>
 				          <input type="checkbox" name="add-on-trading[]" value="raw-spreads" data-percentage="0.20" disabled>Raw spreads
-				          <span class="d-block ml-4 px-3 input-checkbox"></span>
+				          <span class="d-block ml-4 px-4 input-checkbox"></span>
 				      </div>
 				      <span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 py-3 px-2 py-1 input-price">+20%</span>
 				    </div>
