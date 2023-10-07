@@ -58,7 +58,7 @@ background: rgba(93, 179, 59, 0.29);
 }
 
 .fast-checkout-border-style-1{
-  border-radius: 12px;
+  border-radius: 12px!important;
   border: 3px solid #3B8429;
 }
 
