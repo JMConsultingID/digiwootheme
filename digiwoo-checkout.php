@@ -50,7 +50,7 @@ while ( have_posts() ) :
 	            $product_categories = get_terms('product_cat', array('include' => array(16, 17), 'hide_empty' => 0));
 	            foreach ($product_categories as $category) {
 	            		echo '<label class="btn btn-outline-success py-3 my-3 rounded mx-1 fast-checkout-radio-select fast-checkout-radio-select-category fast-checkout-border-style-1 fast-checkout-title-category text-left">';
-	            		echo '<i class="far fa-dot-circle fa-lg"></i>';
+	            		echo '<i class="far fa-dot-circle fa-lg mr-3"></i>';
 	            		echo '<input type="radio" name="product-category" class="fast-checkout-radio-input" id="cat-' . $category->term_id . '" value="' . $category->term_id . '">' . $category->name;
 	                    echo '</label>';
 	                }
