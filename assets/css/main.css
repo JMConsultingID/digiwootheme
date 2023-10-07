@@ -380,6 +380,10 @@ background: rgba(93, 179, 59, 0.29);
     font-size: 14px!important;
 }
 
+.page-template-digiwoo-checkout.woocommerce-page .form-row.place-order{
+    display: none;
+}
+
 @media screen and (min-width: 767px) {
 .sticky {
     position: fixed;
