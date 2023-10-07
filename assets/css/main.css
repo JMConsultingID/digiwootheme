@@ -349,6 +349,20 @@ background: rgba(93, 179, 59, 0.29);
     padding: 10px;
 }
 
+.page-template-digiwoo-checkout.woocommerce-checkout #payment div.payment_box {
+    padding: 0!important;
+    margin: 0!important;
+    background-color: transparent!important;
+}
+
+.page-template-digiwoo-checkout.woocommerce-checkout #payment div.payment_box::before{
+    display: none;
+}
+
+.page-template-digiwoo-checkout.woocommerce-checkout #payment div.payment_box #stripe-payment-data {
+    margin-left: 3px!important;
+}
+
 .page-template-digiwoo-checkout.woocommerce-page form .fast-checkout-billing .form-row-first, 
 .page-template-digiwoo-checkout.woocommerce-page form .fast-checkout-billing .form-row-last{
   width: 100%!important;
