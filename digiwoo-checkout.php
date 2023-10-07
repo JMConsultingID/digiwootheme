@@ -67,7 +67,7 @@ while ( have_posts() ) :
 	            <div class="radio-input" style="margin-top:10px; margin-bottom:10px;">
 
 
-	            <div id="products-radio-container" class="row ">            	
+	            <div  id="products-radio-container" class="row btn-group btn-group-toggle w-100" data-toggle="buttons" role="group" aria-label="First group">           	
 					<div class="radio-category">
 						<div class="row" style="margin:0px;">
 
@@ -76,7 +76,6 @@ while ( have_posts() ) :
 	            </div>
 	            </div>
 	        </div>
-
 
 	        <h3>Addons</h3>
 	        <p>Tailor your account to suit your trading style and preference.</p>
