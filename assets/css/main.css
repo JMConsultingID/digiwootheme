@@ -74,7 +74,7 @@ background: rgba(93, 179, 59, 0.29);
 
 .fast-checkout-btn-disable{
     opacity: 0.3;
-    cursor: no-drop;
+    cursor: no-drop!important;
 }
 
 .woocommerce-checkout-review-order-table, .woocommerce-checkout-review-order {

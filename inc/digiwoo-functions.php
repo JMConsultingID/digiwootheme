@@ -29,8 +29,8 @@ function empty_cart_and_add_product_on_page_load() {
         WC()->cart->empty_cart();
         
         // Tambahkan produk dengan ID 24 ke keranjang
-        //WC()->cart->add_to_cart(19);
-        WC()->cart->add_to_cart(22);
+        WC()->cart->add_to_cart(19);
+        //WC()->cart->add_to_cart(22);
     }
 }
 add_action('wp', 'empty_cart_and_add_product_on_page_load');

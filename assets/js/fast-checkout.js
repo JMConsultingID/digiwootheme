@@ -31,11 +31,11 @@
                 // Check the radio button for category id 1375
                 $('input[name="product"]').prop('disabled', false);
     
-			    //$('input[name="product"][value="19"]').prop('checked', true);
-				//$('input[name="product"][value="19"]').closest('.fast-checkout-radio-select-product').addClass('active');
+			    $('input[name="product"][value="19"]').prop('checked', true);
+				$('input[name="product"][value="19"]').closest('.fast-checkout-radio-select-product').addClass('active');
 
-				$('input[name="product"][value="22"]').prop('checked', true);
-				$('input[name="product"][value="22"]').closest('.fast-checkout-radio-select-product').addClass('active');
+				//$('input[name="product"][value="22"]').prop('checked', true);
+				//$('input[name="product"][value="22"]').closest('.fast-checkout-radio-select-product').addClass('active');
 
 				$('input[name="add-on-trading[]"]').prop('disabled', false);				
 				$('.fast-checkout-radio-select-add-ons').removeClass('fast-checkout-btn-disable');
