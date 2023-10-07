@@ -222,7 +222,6 @@ background: rgba(93, 179, 59, 0.29);
   color: #fff;
 }
 
-.fast-checkout-radio-select:hover .fa-circle:before, 
 .fast-checkout-radio-select.active .fa-circle:before {
     content: "\f192";
 }
