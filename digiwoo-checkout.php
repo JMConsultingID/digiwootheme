@@ -42,7 +42,6 @@ while ( have_posts() ) :
 	        <!-- Product Category Radio -->
 	        <div class="product-category-section" style="margin-top:10px; margin-bottom:30px;">
 	            <div class="radio-input" style="margin-top:10px; margin-bottom:10px;">
-	            <div class="row">
 	            	<div class="btn-group btn-group-toggle w-100" data-toggle="buttons" role="group" aria-label="First group">
 
 	            <?php
@@ -56,7 +55,6 @@ while ( have_posts() ) :
 	                }
 	            ?>
 	            	</div>
-	            </div>
 	        	</div>
 	        </div>
 
