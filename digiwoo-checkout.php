@@ -45,7 +45,7 @@ while ( have_posts() ) :
 	            <div class="row">	
 	            <?php
 	            $uncategorized = get_term_by('slug', 'uncategorized', 'product_cat');
-	            $product_categories = get_terms('product_cat', array('include' => array(1375, 1376), 'hide_empty' => 0));
+	            $product_categories = get_terms('product_cat', array('include' => array(16, 17), 'hide_empty' => 0));
 	            foreach ($product_categories as $category) {
 	            		echo '<div class="col-md-6" style="margin:10px 0px;">';
 	            		echo '<div class="fast-checkout-radio-select fast-checkout-radio-select-category fast-checkout-border-style-1 fast-checkout-title-category">';
