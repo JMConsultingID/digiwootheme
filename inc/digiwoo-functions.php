@@ -34,7 +34,8 @@ function empty_cart_and_add_product_on_page_load() {
         WC()->cart->empty_cart();
         
         // Tambahkan produk dengan ID 24 ke keranjang
-        WC()->cart->add_to_cart(19);
+        //WC()->cart->add_to_cart(19);
+        WC()->cart->add_to_cart(22);
     }
 }
 add_action('wp', 'empty_cart_and_add_product_on_page_load');
@@ -117,7 +118,8 @@ add_filter('woocommerce_get_item_data', 'display_cart_item_add_ons', 10, 2);
 function clear_cart_overall() {
     WC()->cart->empty_cart();
     wp_send_json_success();
-    WC()->cart->add_to_cart(19);
+    //WC()->cart->add_to_cart(19);
+    WC()->cart->add_to_cart(22);
 }
 add_action('wp_ajax_clear_cart', 'clear_cart_overall');
 add_action('wp_ajax_nopriv_clear_cart', 'clear_cart_overall');
