@@ -108,9 +108,6 @@
 	                action: 'fetch_products_by_category',
 	                category_id: categoryID
 	            },
-                beforeSend:function(){
-                	$('input[name="product-category"]').prop('disabled', true);
-                },
 	            success: function(response) {
 	            	$('.radio-category').hide();
 	                $('#products-radio-container').html(response);
@@ -211,9 +208,6 @@
 		            is_checked: isChecked,
 		            main_product_price: mainProductPrice
 		        },
-		        beforeSend:function(){
-                	$('input[name="add-on-trading[]"]').prop('disabled', true);
-                },
 		        success: function(response) {
 		            if (response.success) {
 		            	$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
@@ -227,7 +221,6 @@
 	    			$('.checkout-order-total').show();
 		        },
                 complete:function(){
-                	$('input[name="add-on-trading[]"]').prop('disabled', false);
                 	$('.add-on-trading-section').removeClass('loading');
                 }
 		    });
