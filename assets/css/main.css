@@ -234,10 +234,10 @@ background: rgba(93, 179, 59, 0.29);
 .fast-checkout-radio-select-category.active,
 .fast-checkout-radio-select-product.active,
 .fast-checkout-radio-select-add-ons.active{
-  border-radius: 12px;
-  border: 3px solid #5DB33B;
-  background: #60B63D;
-  color: #fff;
+  border-radius: 12px!important;
+  border: 3px solid #5DB33B!important;
+  background: #60B63D!important;
+  color: #fff!important;
 }
 
 .fast-checkout-radio-select.active span.fast-checkout-box-color-style-2 {
@@ -414,6 +414,9 @@ background: rgba(93, 179, 59, 0.29);
     position: -o-sticky;
     position: sticky;
     top: 50px;
+}
+.fast-checkout-radio-select:hover{
+  background: transparent!important;
 }
 }
 
