@@ -417,7 +417,7 @@ background: rgba(93, 179, 59, 0.29);
     position: sticky;
     top: 50px;
 }
-.fast-checkout-radio-select:hover{
+.fast-checkout-radio-select-add-ons:hover{
   background: #fff!important;
 }
 }
@@ -443,10 +443,10 @@ background: rgba(93, 179, 59, 0.29);
 .page-template-digiwoo-checkout.woocommerce-checkout .fast-checkout-btn{
     display: contents!important;
 }
-.fast-checkout-radio-select:hover{
+.fast-checkout-radio-select-add-ons:hover{
   background: #fff!important;
 }
-.fast-checkout-radio-select .input-checkbox{
+.fast-checkout-radio-select-add-ons .input-checkbox{
     padding-left: 15px!important;
 }
 }
