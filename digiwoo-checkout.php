@@ -36,8 +36,10 @@ while ( have_posts() ) :
         </div>
 
         	<!-- Products Radio -->
-	        <h1 class="fast-checkout-title">Start a New Challenge</h1>
-	        <p>Select a one phase or two phase assessment to start your trading journey today.</p>
+        	<div class="col-sm-12">
+		        <h1 class="fast-checkout-title">Start a New Challenge</h1>
+		        <p>Select a one phase or two phase assessment to start your trading journey today.</p>
+	        </div>
 
 	        <!-- Product Category Radio -->
 	        <div class="product-category-section" style="margin-top:10px; margin-bottom:30px;">
@@ -61,8 +63,10 @@ while ( have_posts() ) :
 	        </div>
 
 	        <!-- Products Radio -->
-	        <h3>Account Balance</h3>
-	        <p>Select your initial starting capital</p>
+	        <div class="col-sm-12">
+		        <h3>Account Balance</h3>
+		        <p>Select your initial starting capital</p>
+	    	</div>
 	        <div class="products-section" style="margin-top:10px; margin-bottom:30px;">	        	
 	            <div class="radio-input" style="margin-top:10px; margin-bottom:10px;">
 
@@ -77,8 +81,10 @@ while ( have_posts() ) :
 	            </div>
 	        </div>
 
-	        <h3>Addons</h3>
-	        <p>Tailor your account to suit your trading style and preference.</p>
+	        <div class="col-sm-12">
+	        	<h3>Addons</h3>
+	        	<p>Tailor your account to suit your trading style and preference.</p>
+	    	</div>
 	        <div class="add-on-trading-section" style="margin-top:10px; margin-bottom:30px;">    
 	        	<div class="add-on-trading">
 				<div class="row btn-group btn-group-toggle w-100 radio-input add-on-trading-input" data-toggle="buttons" role="group" aria-label="First group">
@@ -151,8 +157,10 @@ while ( have_posts() ) :
 	        	</div>
 	        </div>
 
-	        <h3>Billing Address</h3>
-	        <p>Please fill in your billing details below</p>
+	        <div class="col-sm-12">
+		        <h3>Billing Address</h3>
+		        <p>Please fill in your billing details below</p>
+		    </div>
 
 	        <!-- Billing Fields -->
 		    <div class="fast-checkout-billing">
