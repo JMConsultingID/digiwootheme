@@ -417,9 +417,6 @@ background: rgba(93, 179, 59, 0.29);
     position: sticky;
     top: 50px;
 }
-.fast-checkout-radio-select-add-ons:hover{
-  background: transparent!important;
-}
 }
 
 @media screen and (max-width: 480px) {
@@ -442,9 +439,6 @@ background: rgba(93, 179, 59, 0.29);
 
 .page-template-digiwoo-checkout.woocommerce-checkout .fast-checkout-btn{
     display: contents!important;
-}
-.fast-checkout-radio-select-add-ons:hover{
-  background: transparent!important;
 }
 .fast-checkout-radio-select-add-ons .input-checkbox{
     padding-left: 15px!important;
