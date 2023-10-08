@@ -418,7 +418,7 @@ background: rgba(93, 179, 59, 0.29);
     top: 50px;
 }
 .fast-checkout-radio-select-add-ons:hover{
-  background: #fff!important;
+  background: transparent!important;
 }
 }
 
@@ -444,7 +444,7 @@ background: rgba(93, 179, 59, 0.29);
     display: contents!important;
 }
 .fast-checkout-radio-select-add-ons:hover{
-  background: #fff!important;
+  background: transparent!important;
 }
 .fast-checkout-radio-select-add-ons .input-checkbox{
     padding-left: 15px!important;
