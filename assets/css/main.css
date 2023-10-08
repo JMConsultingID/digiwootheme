@@ -446,7 +446,9 @@ background: rgba(93, 179, 59, 0.29);
 .fast-checkout-radio-select:hover{
   background: #fff!important;
 }
-
+.fast-checkout-radio-select .input-checkbox{
+    padding-left: 15px!important;
+}
 }
 
 @media screen and (max-width: 370px) {
