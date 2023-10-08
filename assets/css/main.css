@@ -418,6 +418,10 @@ background: rgba(93, 179, 59, 0.29);
 }
 
 @media screen and (max-width: 480px) {
+.fast-checkout-title {
+    font-size: 32px;
+    line-height: normal;
+}
 .fast-checkout-title-add-on, .fast-checkout-title-product, .fast-checkout-title-category, .fast-checkout-title-payment-method{
   font-size: 20px;
 }
