@@ -431,6 +431,10 @@ background: rgba(93, 179, 59, 0.29);
     margin-bottom: 50px;
 }
 
+.page-template-digiwoo-checkout.woocommerce-checkout .fast-checkout-btn{
+    display: contents!important;
+}
+
 }
 
 @media screen and (max-width: 370px) {

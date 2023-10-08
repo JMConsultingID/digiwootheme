@@ -26,7 +26,7 @@ while ( have_posts() ) :
 		    <div class="container">
 		        <div class="row">
 
-		<div class="col-md-8">
+		<div class="col-lg-8">
 
 			<!-- Cart Items -->
         <div class="fast-checkout-cart">
@@ -44,7 +44,7 @@ while ( have_posts() ) :
 	        <!-- Product Category Radio -->
 	        <div class="product-category-section" style="margin-top:10px; margin-bottom:30px;">
 	            <div class="radio-input" style="margin-top:10px; margin-bottom:10px;">
-	            	<div class="row btn-group btn-group-toggle w-100" data-toggle="buttons" role="group" aria-label="First group">
+	            	<div class="row btn-group btn-group-toggle w-100 fast-checkout-btn" data-toggle="buttons" role="group" aria-label="First group">
 
 	            <?php
 	            $uncategorized = get_term_by('slug', 'uncategorized', 'product_cat');
@@ -71,7 +71,7 @@ while ( have_posts() ) :
 	            <div class="radio-input" style="margin-top:10px; margin-bottom:10px;">
 
 
-	            <div  id="products-radio-container" class="row btn-group btn-group-toggle w-100" data-toggle="buttons" role="group" aria-label="First group">           	
+	            <div  id="products-radio-container" class="row btn-group btn-group-toggle w-100 fast-checkout-btn" data-toggle="buttons" role="group" aria-label="First group">           	
 					<div class="radio-category">
 						<div class="row" style="margin:0px;">
 
@@ -87,7 +87,7 @@ while ( have_posts() ) :
 	    	</div>
 	        <div class="add-on-trading-section" style="margin-top:10px; margin-bottom:30px;">    
 	        	<div class="add-on-trading">
-				<div class="row btn-group btn-group-toggle w-100 radio-input add-on-trading-input" data-toggle="buttons" role="group" aria-label="First group">
+				<div class="row btn-group btn-group-toggle w-100 fast-checkout-btn radio-input add-on-trading-input" data-toggle="buttons" role="group" aria-label="First group">
 				  <label class="col-sm-8 btn">
 				    <div class="w-100 btn btn-outline-success px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-add-ons fast-checkout-border-style-1 fast-checkout-title-add-on text-left fast-checkout-btn-disable">
 				    <div class="d-flex justify-content-between lh-condensed">
@@ -276,7 +276,7 @@ while ( have_posts() ) :
 
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-lg-4">
 
 			<div class="is-sticky fast-checkout-border-style-2" id="stickySidebar">
 
