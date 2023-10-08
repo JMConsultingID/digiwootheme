@@ -74,12 +74,15 @@
     
 
 	    $('input[name="product-category"]').change(function() {	    	
-	        var categoryID = $(this).val();
+	        var categoryID = $(this).val();	        
 	        $('.fast-checkout-radio-select-category').removeClass('active');
 	        $('.fast-checkout-radio-select-add-ons').removeClass('active');
 	        $('input[name="add-on-trading[]"]').prop('checked', false);
 	        $('input[name="add-on-trading[]"]').prop('disabled', true);
-	        $('.fast-checkout-radio-select-add-ons').addClass('fast-checkout-btn-disable');
+	        $('.fast-checkout-radio-select-add-ons').addClass('fast-checkout-btn-disable');	        
+	        $('.product-category-section').addClass('loading');
+	        $('.products-section').addClass('loading');
+	    	$('.add-on-trading-section').addClass('loading');
 
 		    updateTotalOrder();
 
@@ -105,11 +108,19 @@
 	                action: 'fetch_products_by_category',
 	                category_id: categoryID
 	            },
+                beforeSend:function(){
+                	$('input[name="product-category"]').prop('disabled', true);
+                },
 	            success: function(response) {
 	            	$('.radio-category').hide();
 	                $('#products-radio-container').html(response);
 	                $('input[name="product"]').prop('disabled', false);
-	            }
+	            },
+                complete:function(){
+                	$('.product-category-section').removeClass('loading');
+                	$('.products-section').removeClass('loading');
+                	$('.add-on-trading-section').removeClass('loading');		                    	
+                }
 	            
 	        });
 	        
@@ -121,6 +132,8 @@
 	    	$('.spinner-order-total').show();
 	    	$('.checkout-order-total').hide(); 	
 	    	$('.fast-checkout-radio-select-product').removeClass('active');
+	    	$('.products-section').addClass('loading');
+	    	$('.add-on-trading-section').addClass('loading');
 
 	        // Then, add .active class to the parent div of the checked radio
 	        if ($(this).is(':checked')) {
@@ -143,6 +156,9 @@
 		                        action: 'add_product_to_cart',
 		                        product_id: productId
 		                    },
+		                    beforeSend:function(){
+		                    	$('input[name="product"]').prop('disabled', true);
+		                    },
 		                    success: function(response) {
 		                        if (response.success) {
 		                           	jQuery(document.body).trigger('update_checkout');
@@ -153,6 +169,11 @@
 		                        }
 		                        $('.spinner-order-total').hide();
 	    						$('.checkout-order-total').show();	    						
+		                    },
+		                    complete:function(){
+		                    	$('input[name="product"]').prop('disabled', false);
+		                    	$('.products-section').removeClass('loading');
+		                    	$('.add-on-trading-section').removeClass('loading');
 		                    }
 		                });
 		            }
@@ -167,6 +188,7 @@
 		$(document).on('change', 'input[name="add-on-trading[]"]', function() {
 			$('.spinner-order-total').show();
 	    	$('.checkout-order-total').hide();
+	    	$('.add-on-trading-section').addClass('loading');
 
 	    	if ($(this).is(':checked')) {
             $(this).closest('.fast-checkout-radio-select-add-ons').addClass('active');
@@ -189,6 +211,9 @@
 		            is_checked: isChecked,
 		            main_product_price: mainProductPrice
 		        },
+		        beforeSend:function(){
+                	$('input[name="add-on-trading[]"]').prop('disabled', true);
+                },
 		        success: function(response) {
 		            if (response.success) {
 		            	$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
@@ -200,7 +225,11 @@
 		            }
 		            $('.spinner-order-total').hide();
 	    			$('.checkout-order-total').show();
-		        }
+		        },
+                complete:function(){
+                	$('input[name="add-on-trading[]"]').prop('disabled', false);
+                	$('.add-on-trading-section').removeClass('loading');
+                }
 		    });
 
 		});

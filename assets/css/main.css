@@ -307,6 +307,13 @@ background: rgba(93, 179, 59, 0.29);
   display: none;
 }
 
+.page-template-digiwoo-checkout .products-section.loading,
+.page-template-digiwoo-checkout .product-category-section.loading,
+.page-template-digiwoo-checkout .add-on-trading-section.loading{
+    opacity: 0.3;
+    cursor: no-drop!important;
+}
+
 .page-template-digiwoo-checkout .fast-checkout-payment-wocoommerce .wc_payment_methods{
   border-bottom: none!important;
 }
