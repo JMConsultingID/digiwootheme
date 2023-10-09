@@ -29,21 +29,7 @@
 		console.log("Category ID:", categoryID);
 		console.log("Product ID:", productID);
 
-		setTimeout(function() {
-
-		$.ajax({
-	        type: 'POST',
-	        url: digiwoScriptVars.ajax_url,
-	        data: {
-	            'action': 'clear_and_add_to_cart',
-	            'product_id': productID
-	        },
-	        success: function(response) {
-	            console.log(response);
-	        }
-	    }, 1000); // Delay of 1 second (1000 milliseconds)
-		});
-
+		
 
 		$('input[name="product-category"][value="' + categoryID + '"]').prop('checked', true);
 		$('input[name="product-category"][value="' + categoryID + '"]').closest('.fast-checkout-radio-select-category').addClass('active');
@@ -64,6 +50,19 @@
     
 			    $('input[name="product"][value="' + productID + '"]').prop('checked', true);
 				$('input[name="product"][value="' + productID + '"]').closest('.fast-checkout-radio-select-product').addClass('active');
+
+				$.ajax({
+			        type: 'POST',
+			        url: digiwoScriptVars.ajax_url,
+			        data: {
+			            'action': 'clear_and_add_to_cart',
+			            'product_id': productID
+			        },
+			        success: function(response) {
+			            console.log(response);
+			        }
+			    });
+
 
 				//$('input[name="product"][value="22"]').prop('checked', true);
 				//$('input[name="product"][value="22"]').closest('.fast-checkout-radio-select-product').addClass('active');
