@@ -27,6 +27,7 @@ if( get_field('select_woocommerce_product') ):
     $product = wc_get_product( $product_id );
 
     // Display product details
+    echo '<h2>' . $product_id . '</h2>';
     echo '<h2>' . $product->get_name() . '</h2>';
     echo '<p>Price: ' . $product->get_price_html() . '</p>';
     echo $product->get_description();
