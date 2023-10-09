@@ -29,6 +29,18 @@
 		console.log("Category ID:", categoryID);
 		console.log("Product ID:", productID);
 
+		$.ajax({
+	        type: 'POST',
+	        url: digiwoScriptVars.ajax_url,
+	        data: {
+	            'action': 'clear_and_add_to_cart',
+	            'product_id': productID,
+	        },
+	        success: function(response) {
+	            console.log(response);
+	        }
+	    });
+
 
 		$('input[name="product-category"][value="' + categoryID + '"]').prop('checked', true);
 		$('input[name="product-category"][value="' + categoryID + '"]').closest('.fast-checkout-radio-select-category').addClass('active');

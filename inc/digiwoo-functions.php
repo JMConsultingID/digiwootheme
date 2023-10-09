@@ -7,18 +7,13 @@
 // add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
 
 // sets the correct variables when we're on the checkout pages
-
-
-function empty_cart_and_add_product_on_page_load() {
-    if (is_page('checkout-program')) { // Ganti 'your-page-slug' dengan slug halaman Anda
-        //WC()->cart->empty_cart();
-        
-        // Tambahkan produk dengan ID 24 ke keranjang
-        WC()->cart->add_to_cart(19);
-        //WC()->cart->add_to_cart(22);
+add_action('wp', 'pk_custom_checkout_wp');
+function pk_custom_checkout_wp() {
+    if(in_array(basename(get_page_template()), array('digiwoo-checkout.php'))) {
+        if(!defined('WOOCOMMERCE_CART')) { define('WOOCOMMERCE_CART', true); }
+        add_filter('woocommerce_is_checkout', '__return_true');
     }
 }
-add_action('wp', 'empty_cart_and_add_product_on_page_load');
 
 function enqueue_digiwoo_scripts() {
     if (is_page_template('digiwoo-checkout.php')) {
@@ -41,10 +36,22 @@ function enqueue_digiwoo_fast_checkout_scripts() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_digiwoo_fast_checkout_scripts');
 
-
+function empty_cart_and_add_product_on_page_load() {
+    if (is_page_template('digiwoo-checkout.php')) {
+        WC()->cart->empty_cart();
+        
+        // Tambahkan produk dengan ID 24 ke keranjang
+        WC()->cart->add_to_cart(19);
+        //WC()->cart->add_to_cart(22);
+    }
+}
+add_action('wp', 'empty_cart_and_add_product_on_page_load');
 
 function clear_and_add_to_cart() {
     if (class_exists('WC_Cart')) {
+        // Clear the cart
+        WC()->cart->empty_cart();
+
         // Get the product ID from the AJAX request
         $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
 
@@ -235,11 +242,3 @@ function get_states_for_country() {
 }
 add_action('wp_ajax_get_states_for_country', 'get_states_for_country');         // If user is logged in
 add_action('wp_ajax_nopriv_get_states_for_country', 'get_states_for_country');  // If user is not logged in
-
-add_action('wp', 'pk_custom_checkout_wp',100);
-function pk_custom_checkout_wp() {
-    if(in_array(basename(get_page_template()), array('digiwoo-checkout.php'))) {
-        if(!defined('WOOCOMMERCE_CART')) { define('WOOCOMMERCE_CART', true); }
-        add_filter('woocommerce_is_checkout', '__return_true');
-    }
-}
