@@ -14,20 +14,6 @@
 
 	jQuery(document).ready(function($) {
 
-		// First, clear the cart
-		$.ajax({
-	        url: digiwoScriptVars.ajax_url,
-	        type: 'POST',
-	        data: {
-	            action: 'clear_cart'
-	        },
-	        success: function(response) {
-	            if (response.success) {
-	            	console.log("clear cart");
-	            }
-	        }
-	    });
-
 		var categoryID = document.getElementById('fastCheckoutcategoryID').value;
 		var productID = document.getElementById('fastCheckoutProductID').value;
 
