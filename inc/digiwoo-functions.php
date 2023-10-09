@@ -7,7 +7,7 @@
 // add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
 
 // sets the correct variables when we're on the checkout pages
-add_action('wp', 'pk_custom_checkout_wp');
+add_action('wp', 'pk_custom_checkout_wp', 90);
 function pk_custom_checkout_wp() {
     if(in_array(basename(get_page_template()), array('digiwoo-checkout.php'))) {
         if(!defined('WOOCOMMERCE_CART')) { define('WOOCOMMERCE_CART', true); }
