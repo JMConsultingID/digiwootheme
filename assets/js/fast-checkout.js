@@ -33,10 +33,10 @@
 		$('input[name="product-category"][value="' + categoryID + '"]').closest('.fast-checkout-radio-select-category').addClass('active');
 		$('.no-time-limit').show(); // Show the div
 
-		$('input[name="product"]').prop('checked', false);
+		$('input[name="product"]').prop('disabled', false); 
 		$('input[name="product"][value="' + productID + '"]').prop('checked', true);
 		$('input[name="product"][value="' + productID + '"]').closest('.fast-checkout-radio-select-product').addClass('active');
-
+		updateTotalOrder();
 
 		
         $.ajax({
