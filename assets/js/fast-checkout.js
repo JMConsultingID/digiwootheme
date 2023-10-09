@@ -17,6 +17,9 @@
 		var categoryID = document.getElementById('fastCheckoutcategoryID').value;
 		var productID = document.getElementById('fastCheckoutProductID').value;
 
+		categoryID = categoryID ? categoryID : "1375";
+		productID = productID ? productID : "23";
+
 		console.log("Category ID:", categoryID);
 		console.log("Product ID:", productID);
 
