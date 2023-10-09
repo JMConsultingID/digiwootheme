@@ -108,7 +108,7 @@ function fetch_products_by_category() {
             $en_program_id = wp_encrypt_string($program_id);
             $en_program_id_comb = wp_encrypt_string($program_id_comb);
             $formatted_price = wc_price($product_price);
-            $output .= '<label class="col-sm-6 btn"><div class="w-100 btn btn-outline-success px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-product fast-checkout-border-style-1 fast-checkout-title-product text-left"><div class="d-flex justify-content-between lh-condensed"><div><i class="far fa-circle fa-lg mr-2"></i><input type="radio" name="product" value="' . $product_id . '" data-price="' . $product_price . '" data-id="' . $program_id . '" data-id-addon="' . $program_id_comb . '" disabled>' . $amount. '</div><span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 px-2 py-1 fast-checkout-title-product-price">' .$formatted_price. '</span></div></div>  </label>';
+            $output .= '<label class="col-sm-6 btn"><div class="w-100 btn btn-outline-success px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-product fast-checkout-border-style-1 fast-checkout-title-product text-left"><div class="d-flex justify-content-between lh-condensed"><div><i class="far fa-circle fa-lg mr-2"></i><input type="radio" name="product" value="' . $product_id . '" data-price="' . $product_price . '" data-id="' . $program_id . '" data-idaddon="' . $program_id_comb . '" disabled>' . $amount. '</div><span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 px-2 py-1 fast-checkout-title-product-price">' .$formatted_price. '</span></div></div>  </label>';
         }
 
     }

@@ -150,6 +150,11 @@
 	    	$('.products-section').addClass('loading');
 	    	$('.add-on-trading-section').addClass('loading');
 
+	    	 var selectedDataId = $(this).data('id');
+	    	 $('#fastCheckoutProductID').val(selectedDataId);
+
+	    	 data-id-addon
+
 	        // Then, add .active class to the parent div of the checked radio
 	        if ($(this).is(':checked')) {
 	            $(this).closest('.fast-checkout-radio-select-product').addClass('active');
