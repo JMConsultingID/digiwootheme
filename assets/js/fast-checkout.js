@@ -14,11 +14,25 @@
 
 	jQuery(document).ready(function($) {
 
+		// First, clear the cart
+		$.ajax({
+	        url: digiwoScriptVars.ajax_url,
+	        type: 'POST',
+	        data: {
+	            action: 'clear_cart'
+	        },
+	        success: function(response) {
+	            if (response.success) {
+	            	console.log("clear cart");
+	            }
+	        }
+	    });
+
 		var categoryID = document.getElementById('fastCheckoutcategoryID').value;
 		var productID = document.getElementById('fastCheckoutProductID').value;
 
 		categoryID = categoryID ? categoryID : "1375";
-		productID = productID ? productID : "23";
+		productID = productID ? productID : "19";
 
 		console.log("Category ID:", categoryID);
 		console.log("Product ID:", productID);
