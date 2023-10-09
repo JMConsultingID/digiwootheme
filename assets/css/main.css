@@ -14,6 +14,10 @@ body.page-template-digiwoo-checkout a{
   text-decoration: none;
 }
 
+.page-template-digiwoo-checkout .woocommerce-error a.wc-backward{
+    display: none;
+}
+
 .spinner-order-total{
   margin: 0 auto;
 }
