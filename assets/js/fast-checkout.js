@@ -29,6 +29,14 @@
 		console.log("Category ID:", categoryID);
 		console.log("Product ID:", productID);
 
+		$('input[name="product-category"][value="' + categoryID + '"]').prop('checked', true);
+		$('input[name="product-category"][value="' + categoryID + '"]').closest('.fast-checkout-radio-select-category').addClass('active');
+		$('.no-time-limit').show(); // Show the div
+
+		$('input[name="product"][value="' + productID + '"]').prop('checked', true);
+		$('input[name="product"][value="' + productID + '"]').closest('.fast-checkout-radio-select-product').addClass('active');
+
+		
 		$.ajax({
 	        type: 'POST',
 	        url: digiwoScriptVars.ajax_url,
@@ -41,11 +49,6 @@
 	        }
 	    });
 
-
-		$('input[name="product-category"][value="' + categoryID + '"]').prop('checked', true);
-		$('input[name="product-category"][value="' + categoryID + '"]').closest('.fast-checkout-radio-select-category').addClass('active');
-		$('.no-time-limit').show(); // Show the div
-
         $.ajax({
             url: digiwoScriptVars.ajax_url,
             type: 'POST',
@@ -57,10 +60,8 @@
             	$('.radio-category').hide();
                 $('#products-radio-container').html(response);
                 // Check the radio button for category id 1375
-                $('input[name="product"]').prop('disabled', false);
-    
-			    $('input[name="product"][value="' + productID + '"]').prop('checked', true);
-				$('input[name="product"][value="' + productID + '"]').closest('.fast-checkout-radio-select-product').addClass('active');
+                $('input[name="product"]').prop('disabled', false);  
+			    
 
 				//$('input[name="product"][value="22"]').prop('checked', true);
 				//$('input[name="product"][value="22"]').closest('.fast-checkout-radio-select-product').addClass('active');
