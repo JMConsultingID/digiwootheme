@@ -30,13 +30,6 @@ function enqueue_digiwoo_scripts() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 80);
 
-function empty_cart_and_add_product_on_page_load() {
-    if (is_page('checkout-program')) { // Ganti 'your-page-slug' dengan slug halaman Anda
-        WC()->cart->empty_cart();
-    }
-}
-add_action('wp', 'empty_cart_and_add_product_on_page_load');
-
 function clear_and_add_to_cart() {
     // Clear the cart
     WC()->cart->empty_cart();
