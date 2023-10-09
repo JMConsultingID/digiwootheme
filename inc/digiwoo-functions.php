@@ -33,13 +33,30 @@ add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 80);
 function empty_cart_and_add_product_on_page_load() {
     if (is_page('checkout-program')) { // Ganti 'your-page-slug' dengan slug halaman Anda
         WC()->cart->empty_cart();
-        
-        // Tambahkan produk dengan ID 24 ke keranjang
-        WC()->cart->add_to_cart(19);
-        //WC()->cart->add_to_cart(22);
     }
 }
 add_action('wp', 'empty_cart_and_add_product_on_page_load');
+
+function clear_and_add_to_cart() {
+    // Clear the cart
+    WC()->cart->empty_cart();
+
+    // Get the product ID from the AJAX request
+    $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
+
+    // Add the product to the cart
+    if ($product_id) {
+        WC()->cart->add_to_cart($product_id);
+        echo 'Product added to cart!';
+    } else {
+        echo 'Invalid product ID!';
+    }
+
+    wp_die(); // This is required to terminate immediately and return a proper response
+}
+add_action('wp_ajax_clear_and_add_to_cart', 'clear_and_add_to_cart'); // If user is logged in
+add_action('wp_ajax_nopriv_clear_and_add_to_cart', 'clear_and_add_to_cart'); // If user is not logged in
+
 
 function fetch_products_by_category() {
     $category_id = $_POST['category_id'];
