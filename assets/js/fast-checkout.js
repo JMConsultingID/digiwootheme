@@ -41,7 +41,7 @@
 	        success: function(response) {
 	            console.log(response);
 	        }
-	    }, 1000); // Delay of 1 second (1000 milliseconds)
+	    }, 3000); // Delay of 1 second (1000 milliseconds)
 		});
 
 
