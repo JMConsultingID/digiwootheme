@@ -35,7 +35,6 @@
 	        data: {
 	            'action': 'clear_and_add_to_cart',
 	            'product_id': productID,
-	            'nonce': fc_object.nonce
 	        },
 	        success: function(response) {
 	            console.log(response);
