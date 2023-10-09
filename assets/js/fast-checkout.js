@@ -151,7 +151,7 @@
 	    	$('.add-on-trading-section').addClass('loading');
 
 	    	 var selectedDataId = $(this).data('id');
-	    	 $('#fastCheckoutProductID').val(selectedDataId);
+	    	 $('#fastCheckoutProgramID').val(selectedDataId);
 
 	    	 data-id-addon
 
