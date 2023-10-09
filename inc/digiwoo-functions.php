@@ -15,14 +15,6 @@ function pk_custom_checkout_wp() {
     }
 }
 
-function initialize_woocommerce_session() {
-    if ( ! is_admin() ) {
-        WC()->session->get_cart();  // This initializes the cart session
-    }
-}
-add_action( 'init', 'initialize_woocommerce_session', 10 );
-
-
 function enqueue_digiwoo_scripts() {
     if (is_page_template('digiwoo-checkout.php')) {
             // Enqueue Bootstrap CSS
@@ -137,6 +129,7 @@ add_filter('woocommerce_get_item_data', 'display_cart_item_add_ons', 10, 2);
 
 
 function clear_cart() {
+    WC()->cart->empty_cart();
     wp_send_json_success();
 }
 add_action('wp_ajax_clear_cart', 'clear_cart');
