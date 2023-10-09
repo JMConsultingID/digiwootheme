@@ -48,19 +48,22 @@ function empty_cart_and_add_product_on_page_load() {
 add_action('wp', 'empty_cart_and_add_product_on_page_load');
 
 function clear_and_add_to_cart() {
-    // Clear the cart
-    WC()->cart->empty_cart();
+    if (class_exists('WC_Cart')) {
+        // Clear the cart
+        WC()->cart->empty_cart();
 
-    // Get the product ID from the AJAX request
-    $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
+        // Get the product ID from the AJAX request
+        $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
 
-    // Add the product to the cart
-    if ($product_id) {
-        WC()->cart->add_to_cart($product_id);
-        echo 'Product added to cart!';
-    } else {
-        echo 'Invalid product ID!';
+        // Add the product to the cart
+        if ($product_id) {
+            WC()->cart->add_to_cart($product_id);
+            echo 'Product added to cart!';
+        } else {
+            echo 'Invalid product ID!';
+        }
     }
+    wp_die(); // Ensure AJAX request dies properly
 }
 add_action('wp_ajax_clear_and_add_to_cart', 'clear_and_add_to_cart'); // If user is logged in
 add_action('wp_ajax_nopriv_clear_and_add_to_cart', 'clear_and_add_to_cart'); // If user is not logged in
