@@ -15,6 +15,25 @@ while ( have_posts() ) :
 	the_post();
 	?>
 
+
+<?php
+// Check if the custom field has a value
+if( get_field('select_woocommerce_product') ):
+    
+    // Get the product ID from the custom field
+    $product_id = get_field('select_woocommerce_product')->ID;
+    
+    // Get the product object
+    $product = wc_get_product( $product_id );
+
+    // Display product details
+    echo '<h2>' . $product->get_name() . '</h2>';
+    echo '<p>Price: ' . $product->get_price_html() . '</p>';
+    echo $product->get_description();
+
+endif;
+?>
+
 <main id="content" <?php post_class( 'site-main' ); ?>>
 	<div class="page-content">
 		<?php the_content(); ?>
