@@ -49,9 +49,6 @@ add_action('wp', 'empty_cart_and_add_product_on_page_load');
 
 function clear_and_add_to_cart() {
     if (class_exists('WC_Cart')) {
-        // Clear the cart
-        WC()->cart->empty_cart();
-
         // Get the product ID from the AJAX request
         $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
 
