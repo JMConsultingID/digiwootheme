@@ -19,6 +19,7 @@ while ( have_posts() ) :
 	    $product_id = get_field('select_woocommerce_product')->ID;    
 	    // Get the product object
 	    $product = wc_get_product( $product_id );
+	    $program_id = get_post_meta($product->get_id(), '_program_id', true);
 	    $terms = wp_get_post_terms( $product_id, 'product_cat' );
 	    if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
 	    	$category_id = $terms[0]->term_id;    	
@@ -36,8 +37,9 @@ while ( have_posts() ) :
 		<!--Custom Checkout Start -->
 		<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
-		<input id="fastCheckoutcategoryID" type="hidden" value="<?php echo $category_id; ?>">
-		<input id="fastCheckoutProductID" type="hidden" value="<?php echo $product_id; ?>">
+		<input id="fastCheckoutcategoryID" type="hidden" name="fccategory-id" value="<?php echo $category_id; ?>">
+		<input id="fastCheckoutProductID" type="hidden" name="fcproduct-id" value="<?php echo $product_id; ?>">
+		<input type="fastCheckoutProgramID" name="fcprogram-id" value="<?php echo $program_id; ?>">
 
 
 		<div class="bootstrap-wrapper">
