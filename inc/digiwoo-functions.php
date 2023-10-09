@@ -105,8 +105,10 @@ function fetch_products_by_category() {
             $product_price = get_post_meta($product_id, '_price', true);
             $program_id = get_post_meta($product_id, '_program_id', true);
             $program_id_comb = get_post_meta($product_id, '_program_id_combination', true);
+            $en_program_id = wp_encrypt_string($program_id);
+            $en_program_id_comb = wp_encrypt_string($program_id_comb);
             $formatted_price = wc_price($product_price);
-            $output .= '<label class="col-sm-6 btn"><div class="w-100 btn btn-outline-success px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-product fast-checkout-border-style-1 fast-checkout-title-product text-left"><div class="d-flex justify-content-between lh-condensed"><div><i class="far fa-circle fa-lg mr-2"></i><input type="radio" name="product" value="' . $product_id . '" data-price="' . $product_price . '" data-program-id="' . $program_id . '" data-program-id-comb="' . $program_id_comb . '" disabled>' . $amount. '</div><span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 px-2 py-1 fast-checkout-title-product-price">' .$formatted_price. '</span></div></div>  </label>';
+            $output .= '<label class="col-sm-6 btn"><div class="w-100 btn btn-outline-success px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-product fast-checkout-border-style-1 fast-checkout-title-product text-left"><div class="d-flex justify-content-between lh-condensed"><div><i class="far fa-circle fa-lg mr-2"></i><input type="radio" name="product" value="' . $product_id . '" data-price="' . $product_price . '" data-id="' . $en_program_id . '" data-id-addon="' . $en_program_id_comb . '" disabled>' . $amount. '</div><span class="fast-checkout-box-color-style-2 fast-checkout-text-color-style-1 px-2 py-1 fast-checkout-title-product-price">' .$formatted_price. '</span></div></div>  </label>';
         }
 
     }
@@ -254,3 +256,20 @@ function get_states_for_country() {
 }
 add_action('wp_ajax_get_states_for_country', 'get_states_for_country');         // If user is logged in
 add_action('wp_ajax_nopriv_get_states_for_country', 'get_states_for_country');  // If user is not logged in
+
+function wp_encrypt_string($plaintext) {
+    $encryption_key = wp_salt('nonce');  // Use WordPress salt for added security
+    $iv_length = openssl_cipher_iv_length('aes-256-cbc');
+    $iv = openssl_random_pseudo_bytes($iv_length);
+
+    $encrypted = openssl_encrypt($plaintext, 'aes-256-cbc', $encryption_key, 0, $iv);
+
+    return base64_encode($encrypted . '::' . $iv);  // Combine encrypted data and IV for storage
+}
+
+function wp_decrypt_string($encrypted) {
+    $encryption_key = wp_salt('nonce');
+    list($encrypted_data, $iv) = explode('::', base64_decode($encrypted), 2);  // Split encrypted data and IV
+
+    return openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
+}
