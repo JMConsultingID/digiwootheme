@@ -40,8 +40,7 @@ function empty_cart_and_add_product_on_page_load() {
     if (is_page_template('digiwoo-checkout.php')) {
         WC()->cart->empty_cart();
         
-        // Tambahkan produk dengan ID 24 ke keranjang
-        WC()->cart->add_to_cart(19);
+        //WC()->cart->add_to_cart(19);
         //WC()->cart->add_to_cart(22);
     }
 }
