@@ -15,6 +15,14 @@ function pk_custom_checkout_wp() {
     }
 }
 
+function initialize_woocommerce_session() {
+    if ( ! is_admin() ) {
+        WC()->session->get_cart();  // This initializes the cart session
+    }
+}
+add_action( 'init', 'initialize_woocommerce_session', 10 );
+
+
 function enqueue_digiwoo_scripts() {
     if (is_page_template('digiwoo-checkout.php')) {
             // Enqueue Bootstrap CSS

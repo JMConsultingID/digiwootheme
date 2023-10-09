@@ -29,6 +29,8 @@
 		console.log("Category ID:", categoryID);
 		console.log("Product ID:", productID);
 
+		setTimeout(function() {
+
 		$.ajax({
 	        type: 'POST',
 	        url: digiwoScriptVars.ajax_url,
@@ -39,7 +41,8 @@
 	        success: function(response) {
 	            console.log(response);
 	        }
-	    });
+	    }, 1000); // Delay of 1 second (1000 milliseconds)
+		});
 
 
 		$('input[name="product-category"][value="' + categoryID + '"]').prop('checked', true);
@@ -186,7 +189,6 @@
 		                    },
 		                    success: function(response) {
 		                        if (response.success) {
-		                           	jQuery(document.body).trigger('update_checkout');
 						            $('input[name="add-on-trading[]"]').prop('disabled', false);
 						        	$('.fast-checkout-radio-select-add-ons').removeClass('fast-checkout-btn-disable');
 						        } else {
