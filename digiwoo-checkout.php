@@ -39,7 +39,7 @@ while ( have_posts() ) :
 
 		<input id="fastCheckoutcategoryID" type="hidden" name="fccategory-id" value="<?php echo $category_id; ?>">
 		<input id="fastCheckoutProductID" type="hidden" name="fcproduct-id" value="<?php echo $product_id; ?>">
-		<input id="fastCheckoutProgramID" type="hidden" name="fcprogram-id" value="<?php echo $program_id; ?>">
+		<input id="fastCheckoutProgramID" type="hidden" name="fastCheckoutProgramID" value="<?php echo $program_id; ?>">
 
 
 		<div class="bootstrap-wrapper">
