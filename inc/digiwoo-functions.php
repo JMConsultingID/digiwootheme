@@ -61,8 +61,6 @@ function clear_and_add_to_cart() {
     } else {
         echo 'Invalid product ID!';
     }
-
-    wp_die(); // This is required to terminate immediately and return a proper response
 }
 add_action('wp_ajax_clear_and_add_to_cart', 'clear_and_add_to_cart'); // If user is logged in
 add_action('wp_ajax_nopriv_clear_and_add_to_cart', 'clear_and_add_to_cart'); // If user is not logged in
