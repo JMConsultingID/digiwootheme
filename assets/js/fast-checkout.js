@@ -153,8 +153,6 @@
 	    	 var selectedDataId = $(this).data('id');
 	    	 $('#fastCheckoutProgramID').val(selectedDataId);
 
-	    	 data-id-addon
-
 	        // Then, add .active class to the parent div of the checked radio
 	        if ($(this).is(':checked')) {
 	            $(this).closest('.fast-checkout-radio-select-product').addClass('active');
