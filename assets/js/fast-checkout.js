@@ -141,6 +141,19 @@
 	        
 	    });
 
+	    function setFastCheckoutProductID() {
+	        var $checkedProduct = $('input[name="product"]:checked');
+	        var $noTimeLimitAddon = $('input[name="add-on-trading[]"][value="no-time-limit"]');
+	        
+	        // If 'no-time-limit' checkbox is checked
+	        if ($noTimeLimitAddon.is(':checked')) {
+	            $('#fastCheckoutProgramID').val($checkedProduct.data('idaddon'));
+	        } else {
+	            // If it's unchecked, set the value to the checked product's data-id
+	            $('#fastCheckoutProgramID').val($checkedProduct.data('id'));
+	        }
+	    }
+
 
 	    $(document).on('change', 'input[name="product"]', function() {
 	    	var productId = $(this).val();
@@ -150,8 +163,7 @@
 	    	$('.products-section').addClass('loading');
 	    	$('.add-on-trading-section').addClass('loading');
 
-	    	 var selectedDataId = $(this).data('id');
-	    	 $('#fastCheckoutProgramID').val(selectedDataId);
+	    	setFastCheckoutProductID();
 
 	        // Then, add .active class to the parent div of the checked radio
 	        if ($(this).is(':checked')) {
@@ -213,6 +225,10 @@
 	        } else {
 	            // If checkbox is unchecked, remove .active class from its outermost parent div
 	            $(this).closest('.fast-checkout-radio-select-add-ons').removeClass('active');
+	        }
+
+	        if ($(this).val() === 'no-time-limit') {
+	            setFastCheckoutProductID();
 	        }
 
 
