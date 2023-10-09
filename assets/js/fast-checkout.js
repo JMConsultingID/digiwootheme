@@ -13,11 +13,18 @@
 	
 
 	jQuery(document).ready(function($) {
-		$('input[name="product-category"][value="1375"]').prop('checked', true);
-		$('input[name="product-category"][value="1375"]').closest('.fast-checkout-radio-select-category').addClass('active');
+
+		var categoryID = document.getElementById('fastCheckoutcategoryID').value;
+		var productID = document.getElementById('fastCheckoutProductID').value;
+
+		console.log("Category ID:", categoryID);
+		console.log("Product ID:", productID);
+
+
+		$('input[name="product-category"][value="' + categoryID + '"]').prop('checked', true);
+		$('input[name="product-category"][value="' + categoryID + '"]').closest('.fast-checkout-radio-select-category').addClass('active');
 		$('.no-time-limit').show(); // Show the div
 
-		var categoryID = 1375;
         $.ajax({
             url: digiwoScriptVars.ajax_url,
             type: 'POST',
@@ -31,8 +38,8 @@
                 // Check the radio button for category id 1375
                 $('input[name="product"]').prop('disabled', false);
     
-			    $('input[name="product"][value="19"]').prop('checked', true);
-				$('input[name="product"][value="19"]').closest('.fast-checkout-radio-select-product').addClass('active');
+			    $('input[name="product"][value="' + productID + '"]').prop('checked', true);
+				$('input[name="product"][value="' + productID + '"]').closest('.fast-checkout-radio-select-product').addClass('active');
 
 				//$('input[name="product"][value="22"]').prop('checked', true);
 				//$('input[name="product"][value="22"]').closest('.fast-checkout-radio-select-product').addClass('active');

@@ -13,33 +13,21 @@ global $woocommerce;
 get_header();
 while ( have_posts() ) :
 	the_post();
+	// Check if the custom field has a value
+	if( get_field('select_woocommerce_product') ):	    
+	    // Get the product ID from the custom field
+	    $product_id = get_field('select_woocommerce_product')->ID;    
+	    // Get the product object
+	    $product = wc_get_product( $product_id );
+	    $terms = wp_get_post_terms( $product_id, 'product_cat' );
+	    if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
+	    	$category_id = $terms[0]->term_id;    	
+	    }
+	endif;
+
 	?>
 
 
-<?php
-// Check if the custom field has a value
-if( get_field('select_woocommerce_product') ):
-    
-    // Get the product ID from the custom field
-    $product_id = get_field('select_woocommerce_product')->ID;
-    
-    // Get the product object
-    $product = wc_get_product( $product_id );
-    $terms = wp_get_post_terms( $product_id, 'product_cat' );
-
-    if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
-    	$category_id = $terms[0]->term_id;    	
-    }
-
-    // Display product details
-    echo '<h2>' . $product_id . '</h2>';
-    echo '<h2>' . $category_id . '</h2>';
-    //echo '<h2>' . $product->get_name() . '</h2>';
-    //echo '<p>Price: ' . $product->get_price_html() . '</p>';
-    //echo $product->get_description();
-
-endif;
-?>
 
 <main id="content" <?php post_class( 'site-main' ); ?>>
 	<div class="page-content">
@@ -47,6 +35,10 @@ endif;
 
 		<!--Custom Checkout Start -->
 		<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+
+		<input id="fastCheckoutcategoryID" type="hidden" value="<?php echo $category_id; ?>">
+		<input id="fastCheckoutProductID" type="hidden" value="<?php echo $product_id; ?>">
+
 
 		<div class="bootstrap-wrapper">
 		    <div class="container">
