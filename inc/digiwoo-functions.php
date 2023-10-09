@@ -16,12 +16,15 @@ function pk_custom_checkout_wp() {
 }
 
 function empty_cart_and_add_product_on_page_load() {
-    if (is_page('checkout-program')) { // Ganti 'your-page-slug' dengan slug halaman Anda
-        WC()->cart->empty_cart();
-        
-        // Tambahkan produk dengan ID 24 ke keranjang
-        WC()->cart->add_to_cart(19);
-        //WC()->cart->add_to_cart(22);
+    if (is_page('checkout-program')) { 
+        WC()->cart->empty_cart();        
+        // Get product ID from URL parameter
+        $product_id = isset($_GET['product_id']) ? intval($_GET['product_id']) : 0;
+
+        // If product ID is valid, add to cart
+        if ($product_id) {
+            WC()->cart->add_to_cart($product_id);
+        }
     }
 }
 add_action('wp', 'empty_cart_and_add_product_on_page_load');
