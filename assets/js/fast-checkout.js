@@ -28,37 +28,6 @@
 		console.log("Category ID:", categoryID);
 		console.log("Product ID:", productID);
 
-		$.ajax({
-	        type: 'POST',
-	        url: digiwoScriptVars.ajax_url,
-	        data: {
-	            'action': 'clear_and_add_to_cart',
-	            'product_id': productID
-	        },
-	        success: function(response) {
-	            console.log(response);
-	        }
-	    });
-	});
-	
-
-	jQuery(document).ready(function($) {
-
-		var categoryID = document.getElementById('fastCheckoutcategoryID').value;
-		var productID = document.getElementById('fastCheckoutProductID').value;
-
-		// Set default values if empty
-		if (!categoryID) {
-		    categoryID = 1375;
-		}
-
-		if (!productID) {
-		    productID = 19;
-		}
-
-		console.log("Category ID:", categoryID);
-		console.log("Product ID:", productID);
-
 		$('input[name="product-category"][value="' + categoryID + '"]').prop('checked', true);
 		$('input[name="product-category"][value="' + categoryID + '"]').closest('.fast-checkout-radio-select-category').addClass('active');
 		$('.no-time-limit').show(); // Show the div
