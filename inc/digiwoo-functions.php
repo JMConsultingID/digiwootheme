@@ -236,7 +236,7 @@ function get_states_for_country() {
 add_action('wp_ajax_get_states_for_country', 'get_states_for_country');         // If user is logged in
 add_action('wp_ajax_nopriv_get_states_for_country', 'get_states_for_country');  // If user is not logged in
 
-add_action('wp', 'pk_custom_checkout_wp');
+add_action('wp', 'pk_custom_checkout_wp',100);
 function pk_custom_checkout_wp() {
     if(in_array(basename(get_page_template()), array('digiwoo-checkout.php'))) {
         if(!defined('WOOCOMMERCE_CART')) { define('WOOCOMMERCE_CART', true); }
