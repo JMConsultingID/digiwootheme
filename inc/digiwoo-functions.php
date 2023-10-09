@@ -8,6 +8,7 @@
 
 // sets the correct variables when we're on the checkout pages
 
+
 function empty_cart_and_add_product_on_page_load() {
     if (is_page('checkout-program')) { // Ganti 'your-page-slug' dengan slug halaman Anda
         //WC()->cart->empty_cart();
@@ -234,3 +235,11 @@ function get_states_for_country() {
 }
 add_action('wp_ajax_get_states_for_country', 'get_states_for_country');         // If user is logged in
 add_action('wp_ajax_nopriv_get_states_for_country', 'get_states_for_country');  // If user is not logged in
+
+add_action('wp', 'pk_custom_checkout_wp');
+function pk_custom_checkout_wp() {
+    if(in_array(basename(get_page_template()), array('digiwoo-checkout.php'))) {
+        if(!defined('WOOCOMMERCE_CART')) { define('WOOCOMMERCE_CART', true); }
+        add_filter('woocommerce_is_checkout', '__return_true');
+    }
+}
