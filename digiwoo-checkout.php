@@ -25,9 +25,15 @@ if( get_field('select_woocommerce_product') ):
     
     // Get the product object
     $product = wc_get_product( $product_id );
+    $terms = wp_get_post_terms( $product_id, 'product_cat' );
+
+    if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
+    	$category_id = $terms[0]->term_id;    	
+    }
 
     // Display product details
-    //echo '<h2>' . $product_id . '</h2>';
+    echo '<h2>' . $product_id . '</h2>';
+    echo '<h2>' . $category_id . '</h2>';
     //echo '<h2>' . $product->get_name() . '</h2>';
     //echo '<p>Price: ' . $product->get_price_html() . '</p>';
     //echo $product->get_description();
