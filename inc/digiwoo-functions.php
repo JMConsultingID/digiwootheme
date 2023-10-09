@@ -30,7 +30,8 @@ function enqueue_digiwoo_fast_checkout_scripts() {
     if (is_page_template('digiwoo-checkout.php')) {
             wp_enqueue_script('digiwoo_script', get_stylesheet_directory_uri() . '/assets/js/fast-checkout.js', array('jquery'), '1.0', true);
             wp_localize_script('digiwoo_script', 'digiwoScriptVars', array(
-                'ajax_url' => admin_url('admin-ajax.php')
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce'    => wp_create_nonce('fast_checkout_nonce')
             ));
     }    
 }
