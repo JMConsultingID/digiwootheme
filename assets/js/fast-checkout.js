@@ -191,8 +191,7 @@
 		                    },
 		                    success: function(response) {
 		                        if (response.success) {
-		                           	$(document.body).trigger('update_checkout');		                           	
-							        $(document.body).trigger('wc_fragment_refresh');
+		                           	jQuery(document.body).trigger('update_checkout');
 						            $('input[name="add-on-trading[]"]').prop('disabled', false);
 						        	$('.fast-checkout-radio-select-add-ons').removeClass('fast-checkout-btn-disable');
 						        } else {
