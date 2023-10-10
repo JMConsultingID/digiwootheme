@@ -118,7 +118,7 @@
 
 		    updateTotalOrder();
 
-	        if ($(this).val() == '1375') {
+	        if ($(this).val() == '1376') {
 	            $('.no-time-limit').show(); // Show the div
 	            $('input[name="product"]').prop('checked', false);
 	        } else {
