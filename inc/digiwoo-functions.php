@@ -262,11 +262,3 @@ function wp_decrypt_string($encrypted) {
 
     return openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
 }
-
-function add_custom_order_meta( $order_id ) {
-    if ( isset( $_POST['fcprogram-id'] ) ) {
-        $program_id = sanitize_text_field( $_POST['fcprogram-id'] );
-        update_post_meta( $order_id, '_fcprogram_id', $program_id );
-    }
-}
-add_action( 'woocommerce_new_order', 'add_custom_order_meta' );
