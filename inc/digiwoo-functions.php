@@ -44,7 +44,7 @@ function empty_cart_and_add_product_on_page_load() {
             WC()->cart->add_to_cart($product_id);
         } else {
             // Default product to add if custom field is empty
-            WC()->cart->add_to_cart(19);
+            WC()->cart->add_to_cart(22);
         }
     }
 }
