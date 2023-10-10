@@ -47,6 +47,7 @@ function empty_cart_and_add_product_on_page_load() {
             WC()->cart->add_to_cart(19);
         }
     }
+    wp_die(); // Ensure AJAX request dies properly
 }
 add_action('wp', 'empty_cart_and_add_product_on_page_load');
 
