@@ -190,8 +190,14 @@
 		                    	$('input[name="product"]').prop('disabled', true);
 		                    },
 		                    success: function(response) {
-		                        if (response.success) {		                           	
-		                           	jQuery(document.body).trigger('wc_update_cart');
+		                        if (response.success) {
+		                        	var cartData = $('form.woocommerce-cart-form').serialize();
+							        $.post(digiwoScriptVars.ajax_url, {
+							            action: 'update_cart_custom',
+							            cart: cartData
+							        }, function(response) {
+							            console.log(response);
+							        });                           	
 		                           	jQuery(document.body).trigger('update_checkout');
 		                           	console.log('update cart product');
 						            $('input[name="add-on-trading[]"]').prop('disabled', false);

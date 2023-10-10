@@ -236,6 +236,24 @@ function update_cart_via_ajax() {
 add_action('wp_ajax_update_cart', 'update_cart_via_ajax');
 add_action('wp_ajax_nopriv_update_cart', 'update_cart_via_ajax');
 
+
+function update_cart_custom() {
+    parse_str($_POST['cart'], $cart);
+
+    foreach ($cart['cart'] as $cart_key => $cart_value) {
+        WC()->cart->set_quantity($cart_key, $cart_value['qty']);
+    }
+
+    WC()->cart->calculate_totals();
+    WC()->cart->maybe_set_cart_cookies();
+
+    echo json_encode(['success' => true, 'message' => 'Cart updated!']);
+    wp_die();
+}
+add_action('wp_ajax_update_cart_custom', 'update_cart_custom'); // If user is logged in
+add_action('wp_ajax_nopriv_update_cart_custom', 'update_cart_custom'); // If user is not logged in
+
+
 function get_states_for_country() {
     if(isset($_POST['country']) && !empty($_POST['country'])) {
         $states = WC()->countries->get_states($_POST['country']);
