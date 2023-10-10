@@ -191,13 +191,8 @@
 		                    },
 		                    success: function(response) {
 		                        if (response.success) {
-		                        	jQuery(document.body).trigger('update_checkout');                           	
-		                           	jQuery(document.body).trigger('wc_update_cart');
-		                           	
-		                            // Update cart fragments after a short delay
-							        setTimeout(function() {
-							            $(document.body).trigger('wc_fragment_refresh');
-							        }, 500);
+		                        	jQuery(document.body).trigger('update_checkout');		                           	
+							        $(document.body).trigger('wc_fragment_refresh');
 		                           	console.log('update cart product');
 						            $('input[name="add-on-trading[]"]').prop('disabled', false);
 						        	$('.fast-checkout-radio-select-add-ons').removeClass('fast-checkout-btn-disable');
@@ -255,7 +250,6 @@
 		        success: function(response) {
 		            if (response.success) {
 		            	jQuery(document.body).trigger('wc_update_cart');
-                       	jQuery(document.body).trigger('update_checkout');
                         jQuery(document.body).trigger('wc_fragment_refresh');
                        	console.log('update cart add-on');
 		            	$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
