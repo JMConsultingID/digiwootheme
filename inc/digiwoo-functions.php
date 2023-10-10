@@ -34,18 +34,8 @@ function empty_cart_and_add_product_on_page_load() {
     if (is_page_template('digiwoo-checkout.php')) {
         // Empty the cart
         WC()->cart->empty_cart();
-        
-        // Check if the custom field has a value
-        if (get_field('select_woocommerce_product')) {
-            // Get the product ID from the custom field
-            $product_id = get_field('select_woocommerce_product')->ID;
-
-            // Add the product to the cart
-            WC()->cart->add_to_cart($product_id);
-        } else {
-            // Default product to add if custom field is empty
-            WC()->cart->add_to_cart(19);
-        }
+        $product_id = get_field('select_woocommerce_product')->ID;
+        WC()->cart->add_to_cart($product_id);
     }
 }
 add_action('wp', 'empty_cart_and_add_product_on_page_load');
