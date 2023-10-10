@@ -69,6 +69,9 @@
 			            console.log(response);
 			        }
 			    });
+				$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
+					$('.woocommerce-checkout-review-order-table').replaceWith(data);
+				});
 			    // Call the updateTotalOrder function
 			    updateTotalOrder();
             }
