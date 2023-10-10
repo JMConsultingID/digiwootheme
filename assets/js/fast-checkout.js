@@ -214,9 +214,12 @@
 	    });
 
 
-	
+		var ajaxInProgress = false;
 		$(document).on('change', 'input[name="add-on-trading[]"]', function(e) {
 			e.stopPropagation();
+			if (ajaxInProgress) {
+	            return; // Exit if an AJAX request is already in progress
+	        }
 			$('.spinner-order-total').show();
 	    	$('.checkout-order-total').hide();
 	    	$('.add-on-trading-section').addClass('loading');
@@ -232,11 +235,12 @@
 	            setFastCheckoutProductID();
 	        }
 
-
+	        ajaxInProgress = true; // Set the flag to true
 			var addOnKey = $(this).val();
 		    var isChecked = $(this).prop('checked');
 		    var mainProductPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);  		
 
+		    setTimeout(function() {
 		    $.ajax({
 		        url: digiwoScriptVars.ajax_url,
 		        type: 'POST',
@@ -262,6 +266,8 @@
                 	$('.add-on-trading-section').removeClass('loading');
                 }
 		    });
+		    ajaxInProgress = false;
+		    }, 100); // 100ms delay
 
 		});
 
