@@ -28,7 +28,7 @@ function enqueue_digiwoo_scripts() {
             ));
     }    
 }
-add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 99);
+add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 80);
 
 function empty_cart_and_add_product_on_page_load() {
     if (is_page_template('digiwoo-checkout.php')) {
@@ -178,9 +178,9 @@ function handle_add_on_product() {
 
     // Define your add-ons and their product IDs and percentages here
     $add_ons = array(
-        'increase-profit' => array('product_id' => 377, 'percentage' => 0.20),
+        'increase-profit' => array('product_id' => 233, 'percentage' => 0.20),
         'increase-leverage' => array('product_id' => 234, 'percentage' => 0.25),
-        'no-time-limit' => array('product_id' => 342, 'percentage' => 0.05),
+        'no-time-limit' => array('product_id' => 232, 'percentage' => 0.05),
         'bi-weekly-payouts' => array('product_id' => 235, 'percentage' => 0.05),
         'raw-spreads' => array('product_id' => 236, 'percentage' => 0.20),
     );
@@ -235,24 +235,6 @@ function update_cart_via_ajax() {
 
 add_action('wp_ajax_update_cart', 'update_cart_via_ajax');
 add_action('wp_ajax_nopriv_update_cart', 'update_cart_via_ajax');
-
-
-function update_cart_custom() {
-    parse_str($_POST['cart'], $cart);
-
-    foreach ($cart['cart'] as $cart_key => $cart_value) {
-        WC()->cart->set_quantity($cart_key, $cart_value['qty']);
-    }
-
-    WC()->cart->calculate_totals();
-    WC()->cart->maybe_set_cart_cookies();
-
-    echo json_encode(['success' => true, 'message' => 'Cart updated!']);
-    wp_die();
-}
-add_action('wp_ajax_update_cart_custom', 'update_cart_custom'); // If user is logged in
-add_action('wp_ajax_nopriv_update_cart_custom', 'update_cart_custom'); // If user is not logged in
-
 
 function get_states_for_country() {
     if(isset($_POST['country']) && !empty($_POST['country'])) {
