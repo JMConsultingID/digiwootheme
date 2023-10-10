@@ -22,19 +22,13 @@ function enqueue_digiwoo_scripts() {
             wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js', array('jquery'), '4.6.2', true);
             wp_enqueue_style('font-awesome-css', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css', array(), '6.4.2', false);         
             wp_enqueue_style('fast-checkout-style', get_stylesheet_directory_uri() . '/assets/css/main.css', array(), '1.0.1', false);
-    }    
-}
-add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 80);
-
-function enqueue_digiwoo_fast_checkout_scripts() {
-    if (is_page_template('digiwoo-checkout.php')) {
             wp_enqueue_script('digiwoo_script', get_stylesheet_directory_uri() . '/assets/js/fast-checkout.js', array('jquery'), '1.0', true);
             wp_localize_script('digiwoo_script', 'digiwoScriptVars', array(
                 'ajax_url' => admin_url('admin-ajax.php')
             ));
     }    
 }
-add_action('wp_enqueue_scripts', 'enqueue_digiwoo_fast_checkout_scripts');
+add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 80);
 
 function empty_cart_and_add_product_on_page_load() {
     if (is_page_template('digiwoo-checkout.php')) {
