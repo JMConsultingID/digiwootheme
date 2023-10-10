@@ -31,7 +31,12 @@
 
 		$('input[name="product-category"][value="' + categoryID + '"]').prop('checked', true);
 		$('input[name="product-category"][value="' + categoryID + '"]').closest('.fast-checkout-radio-select-category').addClass('active');
-		$('.no-time-limit').show(); // Show the div
+		if ($('input[name="product-category"][value="1376"]').prop('checked')) {
+		    $('.no-time-limit').show();
+		} else {
+		    $('.no-time-limit').hide();
+		}
+
 
 	
         $.ajax({
