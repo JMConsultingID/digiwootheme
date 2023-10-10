@@ -44,7 +44,7 @@ function empty_cart_and_add_product_on_page_load() {
             WC()->cart->add_to_cart($product_id);
         } else {
             // Default product to add if custom field is empty
-            WC()->cart->add_to_cart(22);
+            WC()->cart->add_to_cart(19);
         }
     }
 }
@@ -122,16 +122,8 @@ function digiwoo_add_product_to_cart() {
 
         // Add the product to the cart
         $added = WC()->cart->add_to_cart($product_id, 1);
+        wp_send_json_success();
 
-        if ($added) {
-            // Handle add-ons (e.g., you can add them as custom cart item data or as separate products)
-            foreach ($add_ons as $add_on) {
-                // For this example, let's add them as custom cart item data
-                $cart_item_data['add_ons'][] = $add_on;
-            }
-
-            wp_send_json_success();
-        }
     }
 
     wp_send_json_error();
