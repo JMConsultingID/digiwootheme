@@ -227,10 +227,6 @@
 	            $(this).closest('.fast-checkout-radio-select-add-ons').removeClass('active');
 	        }
 
-	        if ($(this).val() === 'no-time-limit') {
-	            setFastCheckoutProductID();
-	        }
-
 
 			var addOnKey = $(this).val();
 		    var isChecked = $(this).prop('checked');
