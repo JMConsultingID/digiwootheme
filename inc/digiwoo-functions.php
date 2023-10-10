@@ -28,7 +28,7 @@ function enqueue_digiwoo_scripts() {
             ));
     }    
 }
-add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 80);
+add_action('wp_enqueue_scripts', 'enqueue_digiwoo_scripts', 99);
 
 function empty_cart_and_add_product_on_page_load() {
     if (is_page_template('digiwoo-checkout.php')) {
