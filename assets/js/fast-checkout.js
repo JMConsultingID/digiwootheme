@@ -22,10 +22,6 @@
 		    categoryID = 1375;
 		}
 
-		if (!productID) {
-		    productID = 19;
-		}
-
 		console.log("Category ID:", categoryID);
 		console.log("Product ID:", productID);
 
