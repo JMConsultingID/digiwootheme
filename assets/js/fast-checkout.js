@@ -190,8 +190,7 @@
 		                    	$('input[name="product"]').prop('disabled', true);
 		                    },
 		                    success: function(response) {
-		                        if (response.success) {		                           
-		                           	jQuery(document.body).trigger('wc_update_cart');
+		                        if (response.success) {
 		                           	jQuery(document.body).trigger('update_checkout');
 		                           	$(document.body).trigger('wc_fragment_refresh');
 						            $('input[name="add-on-trading[]"]').prop('disabled', false);
