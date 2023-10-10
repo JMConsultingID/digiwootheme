@@ -58,6 +58,17 @@
 				$('input[name="add-on-trading[]"]').prop('disabled', false);				
 				$('.fast-checkout-radio-select-add-ons').removeClass('fast-checkout-btn-disable');
 
+				 $.ajax({
+			        type: 'POST',
+			        url: digiwoScriptVars.ajax_url,
+			        data: {
+			            action: 'clear_and_add_to_cart',
+			            product_id: productID
+			        },
+			        success: function(response) {
+			            console.log(response);
+			        }
+			    });
 			    // Call the updateTotalOrder function
 			    updateTotalOrder();
             }
