@@ -215,7 +215,8 @@
 
 
 	
-		$(document).on('change', 'input[name="add-on-trading[]"]', function() {
+		$(document).on('change', 'input[name="add-on-trading[]"]', function(e) {
+			e.stopPropagation();
 			$('.spinner-order-total').show();
 	    	$('.checkout-order-total').hide();
 	    	$('.add-on-trading-section').addClass('loading');
@@ -225,6 +226,10 @@
 	        } else {
 	            // If checkbox is unchecked, remove .active class from its outermost parent div
 	            $(this).closest('.fast-checkout-radio-select-add-ons').removeClass('active');
+	        }
+
+	        if ($(this).val() === 'no-time-limit') {
+	            setFastCheckoutProductID();
 	        }
 
 
