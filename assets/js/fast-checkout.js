@@ -133,7 +133,7 @@
 				        } else {
 				            updateTotalOrder();
 				        }
-				        
+
 	                } else {
 	                    alert(response.data.message);
 	                }
@@ -243,7 +243,7 @@
 		                    success: function(response) {
 		                        if (response.success) {
 		                           	jQuery(document.body).trigger('update_checkout');
-		                           	$(document.body).trigger('wc_fragment_refresh');
+		                           	jQuery(document.body).trigger('wc_fragment_refresh');
 		                           	$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
 						                $('.woocommerce-checkout-review-order-table').replaceWith(data);
 						            });
@@ -307,9 +307,11 @@
 		        },
 		        success: function(response) {
 		            if (response.success) {
-		            	$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
-						                $('.woocommerce-checkout-review-order-table').replaceWith(data);
-						            });
+		            	jQuery(document.body).trigger('update_checkout');
+		                jQuery(document.body).trigger('wc_fragment_refresh');
+		                $.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
+						  $('.woocommerce-checkout-review-order-table').replaceWith(data);
+						});
 		                updateTotalOrder();
 		            } else {
 		                alert('There was an error handling the add-on product.');
