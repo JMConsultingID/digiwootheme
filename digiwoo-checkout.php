@@ -307,6 +307,9 @@ while ( have_posts() ) :
 				    <h2 class="fast-checkout-title-price fast-checkout-text-color-style-1">
 				    	<?php echo WC()->cart->get_total(); ?>				    		
 				    </h2>
+
+					<div id="order_total_display"><?php echo wc_price(WC()->cart->get_total()); ?></div>
+					
 				</div>
 				<div class="custom-loader spinner-order-total" role="status" style="display:none;">
 					<span class="sr-only"></span>
@@ -325,7 +328,7 @@ while ( have_posts() ) :
 			<div class="fast-checkout-payment-wocoommerce">
 				<?php
 			    do_action('woocommerce_checkout_before_order_review');
-			    do_action('woocommerce_checkout_order_review');  // Ini menampilkan metode pembayaran
+			    do_action('woocommerce_checkout_order_review');
 			    do_action('woocommerce_checkout_after_order_review');
 			    ?>
 			</div>

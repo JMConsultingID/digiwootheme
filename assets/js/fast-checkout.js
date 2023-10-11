@@ -10,6 +10,20 @@
 	        sidebar.classList.remove('sticky');
 	    }
 	});
+
+    $(document.body).on('updated_checkout', function() {
+        $.ajax({
+            type: 'POST',
+            url: frontendajax.ajaxurl,
+            data: {
+                action: 'get_order_total'
+            },
+            success: function(response) {
+                $('#order_total_display').html(response);
+            }
+        });
+    });
+
 	
 
 	jQuery(document).ready(function($) {
@@ -36,6 +50,20 @@
 		} else {
 		    $('.no-time-limit').hide();
 		}
+
+
+		$(document.body).on('updated_checkout', function() {
+	        $.ajax({
+	            type: 'POST',
+	            url: digiwoScriptVars.ajax_url,
+	            data: {
+	                action: 'get_order_total'
+	            },
+	            success: function(response) {
+	                $('#order_total_display').html(response);
+	            }
+	        });
+	    });
 
 
 	
