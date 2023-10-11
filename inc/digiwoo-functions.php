@@ -264,36 +264,28 @@ function wp_decrypt_string($encrypted) {
 }
 
 function apply_coupon_code() {
-    if (!isset($_POST['coupon_code'])) {
-        wp_send_json_error(array('message' => 'Coupon code not set!'));
-        return;
+    if (isset($_POST['coupon'])) {
+        $coupon_code = sanitize_text_field($_POST['coupon']);
+
+        if (WC()->cart->has_discount($coupon_code)) {
+            do_action('coupon_already_applied', $coupon_code);
+            echo 'Coupon is already applied!';
+        } else {
+            if (WC()->cart->add_discount($coupon_code)) {
+                do_action('coupon_successfully_applied', $coupon_code);
+                $updated_total = WC()->cart->get_total('edit');
+                echo json_encode(['status' => 'success', 'message' => 'Coupon applied successfully!', 'updated_total' => $updated_total]);
+            } else {
+                do_action('coupon_application_failed', $coupon_code);
+                echo 'Failed to apply coupon.';
+            }
+        }
     }
-    
-    $coupon_code = sanitize_text_field($_POST['coupon_code']);
-
-    if (WC()->cart->has_discount($coupon_code)) {
-        wp_send_json_error(array('message' => 'Coupon has already been applied!'));
-        return;
-    }
-
-    // Get the cart total before applying the coupon
-    $total_before = WC()->cart->get_cart_contents_total();
-
-    if (WC()->cart->apply_coupon($coupon_code)) {
-        // Get the cart total after applying the coupon
-        $total_after = WC()->cart->get_cart_contents_total();
-
-        // Calculate the discount amount
-        $discountAmount = $total_before - $total_after;
-
-        // Send the discount amount in the success response
-        wp_send_json_success(array('discountAmount' => $discountAmount));
-    } else {
-        wp_send_json_error(array('message' => 'Failed to apply coupon.'));
-    }
+    wp_die(); // Ensure AJAX request dies properly
 }
-
-
-// Attach the function to wp_ajax and wp_ajax_nopriv actions
-add_action('wp_ajax_apply_coupon_code', 'apply_coupon_code');
-add_action('wp_ajax_nopriv_apply_coupon_code', 'apply_coupon_code');
+add_action('wp_ajax_apply_coupon_code', 'apply_coupon_code'); // If user is logged in
+add_action('wp_ajax_nopriv_apply_coupon_code', 'apply_coupon_code'); // If user is not logged in
+function log_coupon_application($coupon_code) {
+    error_log("Attempted to apply coupon: " . $coupon_code);
+}
+add_action('coupon_successfully_applied', 'log_coupon_application');

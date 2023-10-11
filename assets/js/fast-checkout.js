@@ -125,6 +125,8 @@
 	                if (response.success) {
 	                    jQuery(document.body).trigger('update_checkout');
                     	jQuery(document.body).trigger('wc_fragment_refresh');
+                    	jQuery('#total-order-value').text(formatCurrency(response.updated_total));
+                		jQuery('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(response.updated_total));
 	                } else {
 	                    alert(response.data.message);
 	                }
