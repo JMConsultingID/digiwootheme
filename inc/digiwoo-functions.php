@@ -262,3 +262,27 @@ function wp_decrypt_string($encrypted) {
 
     return openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
 }
+
+function apply_coupon_code() {
+    if (!isset($_POST['coupon_code'])) {
+        wp_send_json_error(array('message' => 'Coupon code not set!'));
+        return;
+    }
+    
+    $coupon_code = sanitize_text_field($_POST['coupon_code']);
+
+    if (WC()->cart->has_discount($coupon_code)) {
+        wp_send_json_error(array('message' => 'Coupon has already been applied!'));
+        return;
+    }
+
+    if (WC()->cart->apply_coupon($coupon_code)) {
+        wp_send_json_success();
+    } else {
+        wp_send_json_error(array('message' => 'Failed to apply coupon.'));
+    }
+}
+
+// Attach the function to wp_ajax and wp_ajax_nopriv actions
+add_action('wp_ajax_apply_coupon_code', 'apply_coupon_code');
+add_action('wp_ajax_nopriv_apply_coupon_code', 'apply_coupon_code');
