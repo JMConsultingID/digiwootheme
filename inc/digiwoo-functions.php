@@ -76,15 +76,11 @@ add_action('wp_ajax_clear_and_add_to_cart', 'clear_and_add_to_cart'); // If user
 add_action('wp_ajax_nopriv_clear_and_add_to_cart', 'clear_and_add_to_cart'); // If user is not logged in
 
 
-function get_order_total_callback() {
-    $order = WC()->cart;
-    echo wc_price($order->get_total());
-    die();
+add_filter('woocommerce_cart_totals_order_total_html', 'custom_order_total_html');
+function custom_order_total_html($value) {
+    $cart_total = WC()->cart->get_total();
+    return $cart_total;
 }
-
-add_action('wp_ajax_get_order_total', 'get_order_total_callback');
-add_action('wp_ajax_nopriv_get_order_total', 'get_order_total_callback');
-
 
 function fetch_products_by_category() {
     $category_id = $_POST['category_id'];

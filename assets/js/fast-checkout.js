@@ -10,8 +10,16 @@
 	        sidebar.classList.remove('sticky');
 	    }
 	});
+	
 
 	jQuery(document).ready(function($) {
+
+
+		// Listen for changes in the checkout form
+	    $('form.checkout').on('change', 'input, select', function() {
+	        // Trigger update event
+	        $(document.body).trigger('update_checkout');
+	    });
 
 		var categoryID = document.getElementById('fastCheckoutcategoryID').value;
 		var productID = document.getElementById('fastCheckoutProductID').value;
@@ -35,20 +43,6 @@
 		} else {
 		    $('.no-time-limit').hide();
 		}
-
-
-		$(document.body).on('updated_checkout', function() {
-	        $.ajax({
-	            type: 'POST',
-	            url: digiwoScriptVars.ajax_url,
-	            data: {
-	                action: 'get_order_total'
-	            },
-	            success: function(response) {
-	                $('#order_total_display').html(response);
-	            }
-	        });
-	    });
 
 
 	
