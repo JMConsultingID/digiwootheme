@@ -276,12 +276,23 @@ function apply_coupon_code() {
         return;
     }
 
+    // Get the cart total before applying the coupon
+    $total_before = WC()->cart->get_cart_contents_total();
+
     if (WC()->cart->apply_coupon($coupon_code)) {
-        wp_send_json_success();
+        // Get the cart total after applying the coupon
+        $total_after = WC()->cart->get_cart_contents_total();
+
+        // Calculate the discount amount
+        $discountAmount = $total_before - $total_after;
+
+        // Send the discount amount in the success response
+        wp_send_json_success(array('discountAmount' => $discountAmount));
     } else {
         wp_send_json_error(array('message' => 'Failed to apply coupon.'));
     }
 }
+
 
 // Attach the function to wp_ajax and wp_ajax_nopriv actions
 add_action('wp_ajax_apply_coupon_code', 'apply_coupon_code');
