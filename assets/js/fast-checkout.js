@@ -94,12 +94,13 @@
 	    }
 
 	    function updateTotalOrder() {
-		    // Get the updated total from the order review section without the currency symbol
-		    var updatedTotal = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount bdi').clone().children().remove().end().text();
+		    // Get the entire content of the payment amount
+		    var updatedContent = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount').html();
 
-		    // Set the new total in your desired location, including the format
-		    $('.fast-checkout-total .woocommerce-Price-amount bdi').html('<span class="woocommerce-Price-currencySymbol">$</span>' + updatedTotal);
+		    // Update the total amount in the desired location with the copied content
+		    $('.fast-checkout-total .woocommerce-Price-amount').html(updatedContent);
 		}
+
 
 
 
