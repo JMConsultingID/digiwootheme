@@ -94,21 +94,10 @@
 	    }
 
 	    function updateTotalOrder() {
-	        var targetNode = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount bdi')[0];
-
-		    var config = { childList: true, subtree: true };
-
-		    var callback = function(mutationsList, observer) {
-		        for(var mutation of mutationsList) {
-		            if (mutation.type == 'childList') {
-		                var newTotal = $(targetNode).text();
-		                $('.fast-checkout-total .woocommerce-Price-amount bdi').text(newTotal);
-		            }
-		        }
-		    };
-
-		    var observer = new MutationObserver(callback);
-		    observer.observe(targetNode, config);
+	        $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount bdi').on('DOMSubtreeModified', function() {
+		        var newTotal = $(this).text();
+		        $('.fast-checkout-total .woocommerce-Price-amount bdi').text(newTotal);
+		    });
 	    }
 
 	    $('button[name="apply_coupon"]').on('click', function(e) {
