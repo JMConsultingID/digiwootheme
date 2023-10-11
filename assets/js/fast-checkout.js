@@ -93,6 +93,15 @@
 	        }).format(value);
 	    }
 
+	    // Listen for updates to the checkout form
+	    $(document.body).on('updated_checkout', function() {
+	        // Get the updated total from the checkout page
+	        var newTotal = $('.order-total .woocommerce-Price-amount').text();
+
+	        // Update your custom total display
+	        $('.custom-order-total').text('Total Order Amount: ' + newTotal);
+	    });
+
 	    function updateTotalOrder() {
 	        var productPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);
 	        var addOnPrice = 0;
