@@ -329,9 +329,7 @@
         }
     });
 
-	});
-	
-	// Listen for updates to the checkout form
+		 // Listen for updates to the checkout form
     jQuery(document.body).on('updated_checkout', function() {
     	setTimeout(function() {
 	        // Get the updated total from the checkout page
@@ -341,5 +339,9 @@
 	        $('.custom-order-total').html('Total Order Amount: ' + newTotal);
     	});
      }, 2000); // 2000 milliseconds = 2 seconds
+
+	});
+	
+
 	
 })( jQuery );
