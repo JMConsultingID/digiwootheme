@@ -93,25 +93,32 @@
 	        }).format(value);
 	    }
 
-	    function updateTotalOrder() {
-		    var updatedContent = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount').html();
-		    $('.fast-checkout-total .woocommerce-Price-amount').html(updatedContent);
-		}
+	   jQuery(document).ready(function() {
 
-		// Setting up a MutationObserver to monitor changes in the .woocommerce-Price-amount content
-		var targetNode = document.querySelector('.fast-checkout-payment-woocommerce .woocommerce-Price-amount');
-		var config = { attributes: true, childList: true, subtree: true };
-
-		var callback = function(mutationsList, observer) {
-		    for(var mutation of mutationsList) {
-		        if (mutation.type == 'childList') {
-		            updateTotalOrder();
-		        }
+		    function updateTotalOrder() {
+		        var updatedContent = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount').html();
+		        $('.fast-checkout-total .woocommerce-Price-amount').html(updatedContent);
 		    }
-		};
 
-		var observer = new MutationObserver(callback);
-		observer.observe(targetNode, config);
+		    var targetNode = document.querySelector('.fast-checkout-payment-woocommerce .woocommerce-Price-amount');
+		    
+		    if (targetNode) { // Check if the target node exists
+		        var config = { attributes: true, childList: true, subtree: true };
+
+		        var callback = function(mutationsList, observer) {
+		            for(var mutation of mutationsList) {
+		                if (mutation.type == 'childList') {
+		                    updateTotalOrder();
+		                }
+		            }
+		        };
+
+		        var observer = new MutationObserver(callback);
+		        observer.observe(targetNode, config);
+		    } else {
+		        console.error("Target node not found!");
+		    }
+		});
 
 
 
