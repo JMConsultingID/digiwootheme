@@ -12,6 +12,22 @@
 	});
 
 	jQuery(document).ready(function($) {
+	    // Listen for updates to the checkout form
+	    $(document.body).on('updated_checkout', function() {
+	        // Introduce a delay of 2 seconds (2000 milliseconds)
+	        setTimeout(function() {
+	            // Get the updated total from the checkout page after the delay
+	            var newTotal = $('.order-total .woocommerce-Price-amount').text();
+
+	            // Update your custom total display
+	            $('.custom-order-total').text('Total Order Amount: ' + newTotal);
+	        }, 2000); // 2000 milliseconds = 2 seconds
+	    });
+	});
+
+	
+
+	jQuery(document).ready(function($) {
 
 		var categoryID = document.getElementById('fastCheckoutcategoryID').value;
 		var productID = document.getElementById('fastCheckoutProductID').value;
@@ -329,19 +345,7 @@
         }
     });
 
-		 // Listen for updates to the checkout form
-    jQuery(document.body).on('updated_checkout', function() {
-    	setTimeout(function() {
-	        // Get the updated total from the checkout page
-	        var newTotal = $('.order-total .woocommerce-Price-amount').html();
-
-	        // Update your custom total display
-	        $('.custom-order-total').html('Total Order Amount: ' + newTotal);
-    	});
-     }, 2000); // 2000 milliseconds = 2 seconds
-
 	});
-	
 
 	
 })( jQuery );
