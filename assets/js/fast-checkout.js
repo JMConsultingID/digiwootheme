@@ -94,12 +94,13 @@
 	    }
 
 	    function updateTotalOrder() {
-		    // Get the updated total from the hidden order review section
-		    var updatedTotal = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount bdi').text();
+		    // Get the updated total from the order review section without the currency symbol
+		    var updatedTotal = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount bdi').clone().children().remove().end().text();
 
-		    // Set the new total in your desired location
-		    $('.fast-checkout-total .woocommerce-Price-amount bdi').text(updatedTotal);
+		    // Set the new total in your desired location, including the format
+		    $('.fast-checkout-total .woocommerce-Price-amount bdi').html('<span class="woocommerce-Price-currencySymbol">$</span>' + updatedTotal);
 		}
+
 
 
 	    $('button[name="apply_coupon"]').on('click', function(e) {
