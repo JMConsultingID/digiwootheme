@@ -14,13 +14,6 @@
 
 	jQuery(document).ready(function($) {
 
-
-		// Listen for changes in the checkout form
-	    $('form.checkout').on('change', 'input, select', function() {
-	        // Trigger update event
-	        $(document.body).trigger('update_checkout');
-	    });
-
 		var categoryID = document.getElementById('fastCheckoutcategoryID').value;
 		var productID = document.getElementById('fastCheckoutProductID').value;
 

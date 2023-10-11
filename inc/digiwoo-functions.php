@@ -76,12 +76,6 @@ add_action('wp_ajax_clear_and_add_to_cart', 'clear_and_add_to_cart'); // If user
 add_action('wp_ajax_nopriv_clear_and_add_to_cart', 'clear_and_add_to_cart'); // If user is not logged in
 
 
-add_filter('woocommerce_cart_totals_order_total_html', 'custom_order_total_html');
-function custom_order_total_html($value) {
-    $cart_total = WC()->cart->get_total();
-    return $cart_total;
-}
-
 function fetch_products_by_category() {
     $category_id = $_POST['category_id'];
     $args = array(
@@ -303,3 +297,24 @@ function apply_coupon_code() {
 // Attach the function to wp_ajax and wp_ajax_nopriv actions
 add_action('wp_ajax_apply_coupon_code', 'apply_coupon_code');
 add_action('wp_ajax_nopriv_apply_coupon_code', 'apply_coupon_code');
+
+
+function display_only_total_order() {
+    ?>
+    <div id="order_review" class="woocommerce-checkout-review-order">
+        <table class="shop_table woocommerce-checkout-review-order-table">
+            <tfoot>
+                <tr class="order-total">
+                    <th><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+                    <td><?php wc_cart_totals_order_total_html(); ?></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <?php
+}
+// Remove the default order review action
+remove_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
+
+// Add our custom function to display only the total order
+add_action('woocommerce_checkout_order_review', 'display_only_total_order');
