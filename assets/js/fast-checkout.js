@@ -96,7 +96,7 @@
 	    function updateTotalOrder() {
 	        $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount bdi').on('DOMSubtreeModified', function() {
 		        var newTotal = $(this).text();
-		        $('.fast-checkout-total .woocommerce-Price-amount bdi').text(newTotal);
+		        $('.fast-checkout-total .woocommerce-Price-amount bdi').text("666");
 		    });
 	    }
 
