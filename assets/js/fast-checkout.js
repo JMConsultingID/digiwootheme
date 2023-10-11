@@ -94,12 +94,25 @@
 	    }
 
 	    function updateTotalOrder() {
-		    // Get the entire content of the payment amount
 		    var updatedContent = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount').html();
-
-		    // Update the total amount in the desired location with the copied content
 		    $('.fast-checkout-total .woocommerce-Price-amount').html(updatedContent);
 		}
+
+		// Setting up a MutationObserver to monitor changes in the .woocommerce-Price-amount content
+		var targetNode = document.querySelector('.fast-checkout-payment-woocommerce .woocommerce-Price-amount');
+		var config = { attributes: true, childList: true, subtree: true };
+
+		var callback = function(mutationsList, observer) {
+		    for(var mutation of mutationsList) {
+		        if (mutation.type == 'childList') {
+		            updateTotalOrder();
+		        }
+		    }
+		};
+
+		var observer = new MutationObserver(callback);
+		observer.observe(targetNode, config);
+
 
 
 
