@@ -82,7 +82,7 @@ background: rgba(93, 179, 59, 0.29);
 }
 
 .woocommerce-checkout-review-order-table, .woocommerce-checkout-review-order {
-  display: none !important;
+
 }
 
 #add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment{
