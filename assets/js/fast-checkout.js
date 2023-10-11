@@ -94,11 +94,13 @@
 	    }
 
 	    function updateTotalOrder() {
-	        $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount bdi').on('DOMSubtreeModified', function() {
-		        var newTotal = $(this).text();
-		        $('.fast-checkout-total .woocommerce-Price-amount bdi').text("666");
-		    });
-	    }
+		    // Get the updated total from the hidden order review section
+		    var updatedTotal = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount bdi').text();
+
+		    // Set the new total in your desired location
+		    $('.fast-checkout-total .woocommerce-Price-amount bdi').text(updatedTotal);
+		}
+
 
 	    $('button[name="apply_coupon"]').on('click', function(e) {
 	        e.preventDefault();
