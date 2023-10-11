@@ -173,9 +173,9 @@ function handle_add_on_product() {
 
     // Define your add-ons and their product IDs and percentages here
     $add_ons = array(
-        'increase-profit' => array('product_id' => 233, 'percentage' => 0.20),
-        'increase-leverage' => array('product_id' => 234, 'percentage' => 0.25),
-        'no-time-limit' => array('product_id' => 232, 'percentage' => 0.05),
+        'increase-profit' => array('product_id' => 377, 'percentage' => 0.20),
+        'increase-leverage' => array('product_id' => 378, 'percentage' => 0.25),
+        'no-time-limit' => array('product_id' => 342, 'percentage' => 0.05),
         'bi-weekly-payouts' => array('product_id' => 235, 'percentage' => 0.05),
         'raw-spreads' => array('product_id' => 236, 'percentage' => 0.20),
     );
