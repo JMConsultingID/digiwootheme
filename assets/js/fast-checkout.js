@@ -214,6 +214,8 @@
 	    	$('.fast-checkout-radio-select-product').removeClass('active');
 	    	$('.products-section').addClass('loading');
 	    	$('.add-on-trading-section').addClass('loading');
+	    	$('input[name="add-on-trading[]"]').prop('checked', false);
+	    	$('.fast-checkout-radio-select-add-ons').removeClass('active');	
 
 	    	setFastCheckoutProductID();
 
