@@ -123,7 +123,8 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
-	                    window.location.reload();
+	                    jQuery(document.body).trigger('update_checkout');
+                    	jQuery(document.body).trigger('wc_fragment_refresh');
 	                } else {
 	                    alert(response.data.message);
 	                }
