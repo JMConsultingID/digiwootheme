@@ -11,21 +11,6 @@
 	    }
 	});
 
-    $(document.body).on('updated_checkout', function() {
-        $.ajax({
-            type: 'POST',
-            url: frontendajax.ajaxurl,
-            data: {
-                action: 'get_order_total'
-            },
-            success: function(response) {
-                $('#order_total_display').html(response);
-            }
-        });
-    });
-
-	
-
 	jQuery(document).ready(function($) {
 
 		var categoryID = document.getElementById('fastCheckoutcategoryID').value;
