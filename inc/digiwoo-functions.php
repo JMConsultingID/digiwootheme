@@ -277,7 +277,7 @@ function apply_coupon_code() {
                 echo json_encode(['status' => 'success', 'message' => 'Coupon applied successfully!', 'updated_total' => $updated_total]);
             } else {
                 do_action('coupon_application_failed', $coupon_code);
-                echo 'Failed to apply coupon.';
+                wp_send_json_error(array('message' => 'Failed to apply coupon.'));
             }
         }
     }
