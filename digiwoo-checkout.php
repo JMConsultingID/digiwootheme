@@ -307,14 +307,14 @@ while ( have_posts() ) :
 				    <h2 class="fast-checkout-title-price fast-checkout-text-color-style-1">
 				    	<?php echo WC()->cart->get_total(); ?>				    		
 				    </h2>
-
-					<div id="order_total_display"><?php echo wc_price(WC()->cart->get_total()); ?></div>
 					
 				</div>
 				<div class="custom-loader spinner-order-total" role="status" style="display:none;">
 					<span class="sr-only"></span>
 				</div>
 			</div>
+
+			<div id="order_total_display"><?php echo wc_price(WC()->cart->get_total()); ?></div>
 
 			<?php if (WC()->cart->get_cart_contents_count() > 0) { ?>
 			    <div class="woocommerce-coupon-form">
