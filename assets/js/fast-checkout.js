@@ -93,8 +93,6 @@
 	        }).format(value);
 	    }
 
-	   jQuery(document).ready(function() {
-
 		    function updateTotalOrder() {
 		        var updatedContent = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount').html();
 		        $('.fast-checkout-total .woocommerce-Price-amount').html(updatedContent);
@@ -118,7 +116,6 @@
 		    } else {
 		        console.error("Target node not found!");
 		    }
-		});
 
 
 
