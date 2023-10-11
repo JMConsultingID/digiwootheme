@@ -93,33 +93,21 @@
 	        }).format(value);
 	    }
 
-		    function updateTotalOrder() {
-		        var updatedContent = $('.fast-checkout-payment-woocommerce .woocommerce-Price-amount').html();
-		        $('.fast-checkout-total .woocommerce-Price-amount').html(updatedContent);
-		    }
-
-		    var targetNode = document.querySelector('.fast-checkout-payment-woocommerce .woocommerce-Price-amount');
-		    
-		    if (targetNode) { // Check if the target node exists
-		        var config = { attributes: true, childList: true, subtree: true };
-
-		        var callback = function(mutationsList, observer) {
-		            for(var mutation of mutationsList) {
-		                if (mutation.type == 'childList') {
-		                    updateTotalOrder();
-		                }
-		            }
-		        };
-
-		        var observer = new MutationObserver(callback);
-		        observer.observe(targetNode, config);
-		    } else {
-		        console.error("Target node not found!");
-		    }
-
-
-
-
+	    function updateTotalOrder() {
+	        var productPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);
+	        var addOnPrice = 0;
+	         $('input[name="add-on-trading[]"]:checked').each(function() {
+	            var addOnPercentage = parseFloat($(this).data('percentage') || 0);
+	            if (addOnPercentage) {
+	                addOnPrice += addOnPercentage * productPrice;
+	            } else {
+	                addOnPrice += parseFloat($(this).data('price') || 0);
+	            }
+	        });
+	        var total = productPrice + addOnPrice;
+	        $('#total-order-value').text(formatCurrency(total));
+	        $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
+	    }
 
 	    $('button[name="apply_coupon"]').on('click', function(e) {
 	        e.preventDefault();
