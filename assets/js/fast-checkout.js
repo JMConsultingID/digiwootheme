@@ -19,11 +19,11 @@
 
 		// Set default values if empty
 		if (!categoryID) {
-		    categoryID = 1375;
+		    categoryID = 1376;
 		}
 
 		if (!productID) {
-		    productID = 19;
+		    productID = 0;
 		}
 
 		console.log("Category ID:", categoryID);
@@ -93,53 +93,21 @@
 	        }).format(value);
 	    }
 
-	    function updateTotalOrder(discountAmount = 0) {
-		    var productPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);
-		    var addOnPrice = 0;
-		    $('input[name="add-on-trading[]"]:checked').each(function() {
-		        var addOnPercentage = parseFloat($(this).data('percentage') || 0);
-		        if (addOnPercentage) {
-		            addOnPrice += addOnPercentage * productPrice;
-		        } else {
-		            addOnPrice += parseFloat($(this).data('price') || 0);
-		        }
-		    });
-		    var total = productPrice + addOnPrice - discountAmount; // Subtract the discount
-		    $('#total-order-value').text(formatCurrency(total));
-		    $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
-		}
-
-
-	    $('button[name="apply_coupon"]').on('click', function(e) {
-	        e.preventDefault();
-	        
-	        var coupon_code = $('input[name="coupon_code"]').val();
-	        
-	        $.ajax({
-	            url: digiwoScriptVars.ajax_url, // This variable is automatically defined by WordPress if you've enqueued your script using wp_enqueue_script
-	            method: 'POST',
-	            data: {
-	                action: 'apply_coupon_code',
-	                coupon_code: coupon_code
-	            },
-	            success: function(response) {
-	                if (response.success) {
-	                    jQuery(document.body).trigger('update_checkout');
-                    	jQuery(document.body).trigger('wc_fragment_refresh');
-
-                    	// If the response contains the discount amount
-				        if(response.data && response.data.discountAmount) {
-				            updateTotalOrder(response.data.discountAmount);
-				        } else {
-				            updateTotalOrder();
-				        }
-
-	                } else {
-	                    alert(response.data.message);
-	                }
+	    function updateTotalOrder() {
+	        var productPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);
+	        var addOnPrice = 0;
+	         $('input[name="add-on-trading[]"]:checked').each(function() {
+	            var addOnPercentage = parseFloat($(this).data('percentage') || 0);
+	            if (addOnPercentage) {
+	                addOnPrice += addOnPercentage * productPrice;
+	            } else {
+	                addOnPrice += parseFloat($(this).data('price') || 0);
 	            }
 	        });
-	    });
+	        var total = productPrice + addOnPrice;
+	        $('#total-order-value').text(formatCurrency(total));
+	        $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
+	    }
     
 
 	    $('input[name="product-category"]').change(function() {	    	
@@ -213,6 +181,8 @@
 	    	$('.fast-checkout-radio-select-product').removeClass('active');
 	    	$('.products-section').addClass('loading');
 	    	$('.add-on-trading-section').addClass('loading');
+	    	$('input[name="add-on-trading[]"]').prop('checked', false);
+	    	$('.fast-checkout-radio-select-add-ons').removeClass('active');	        
 
 	    	setFastCheckoutProductID();
 
@@ -243,7 +213,7 @@
 		                    success: function(response) {
 		                        if (response.success) {
 		                           	jQuery(document.body).trigger('update_checkout');
-		                           	jQuery(document.body).trigger('wc_fragment_refresh');
+		                           	$(document.body).trigger('wc_fragment_refresh');
 		                           	$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
 						                $('.woocommerce-checkout-review-order-table').replaceWith(data);
 						            });
@@ -307,11 +277,9 @@
 		        },
 		        success: function(response) {
 		            if (response.success) {
-		            	jQuery(document.body).trigger('update_checkout');
-		                jQuery(document.body).trigger('wc_fragment_refresh');
-		                $.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
-						  $('.woocommerce-checkout-review-order-table').replaceWith(data);
-						});
+		            	$.get(digiwoScriptVars.ajax_url, { action: 'digiwoo_get_order_review' }, function(data) {
+						                $('.woocommerce-checkout-review-order-table').replaceWith(data);
+						            });
 		                updateTotalOrder();
 		            } else {
 		                alert('There was an error handling the add-on product.');
