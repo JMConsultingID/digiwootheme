@@ -108,6 +108,37 @@
 	        $('#total-order-value').text(formatCurrency(total));
 	        $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
 	    }
+
+	    $('button[name="apply_coupon"]').on('click', function(e) {
+	        e.preventDefault();
+	        
+	        var coupon_code = $('input[name="coupon_code"]').val();
+	        
+	        $.ajax({
+	            url: digiwoScriptVars.ajax_url, // This variable is automatically defined by WordPress if you've enqueued your script using wp_enqueue_script
+	            method: 'POST',
+	            data: {
+	                action: 'apply_coupon_code',
+	                coupon_code: coupon_code
+	            },
+	            success: function(response) {
+	                if (response.success) {
+	                    jQuery(document.body).trigger('update_checkout');
+                    	jQuery(document.body).trigger('wc_fragment_refresh');
+
+                    	// If the response contains the discount amount
+				        if(response.data && response.data.discountAmount) {
+				            updateTotalOrder(response.data.discountAmount);
+				        } else {
+				            updateTotalOrder();
+				        }
+
+	                } else {
+	                    alert(response.data.message);
+	                }
+	            }
+	        });
+	    });
     
 
 	    $('input[name="product-category"]').change(function() {	    	
