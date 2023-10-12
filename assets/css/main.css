@@ -411,6 +411,32 @@ background: rgba(93, 179, 59, 0.29);
     display: none;
 }
 
+
+.fast-checkout-coupon-wocoommerce{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.fast-checkout-coupon-wocoommerce .woocommerce-coupon-form label{
+    display: block;
+}
+
+.fast-checkout-coupon-wocoommerce .woocommerce-coupon-form input#coupon_code{
+    float: left;
+    width: 68%;    
+    margin: 0 5px 0 0;
+    border: 3px solid #5DB33B;
+}
+
+.fast-checkout-coupon-wocoommerce .woocommerce-coupon-form .fast-checkout-coupon-btn{
+    float: left;
+    width: 30%;    
+    border: 3px solid #5DB33B;
+    background: #5DB33B;
+    color: #fff;
+}
+
+
 @media screen and (min-width: 767px) {
 .sticky {
     position: fixed;

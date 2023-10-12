@@ -313,13 +313,15 @@ while ( have_posts() ) :
 				</div>
 			</div>
 
+			<div class="fast-checkout-coupon-wocoommerce">
 			<?php if (WC()->cart->get_cart_contents_count() > 0) { ?>
 			    <div class="woocommerce-coupon-form">
 			        <label for="coupon_code"><?php esc_html_e('Have a coupon?', 'woocommerce'); ?></label>
 			        <input type="text" name="coupon_code" id="coupon_code" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" value="" />
-			        <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_attr_e('Apply', 'woocommerce'); ?></button>
+			        <button type="submit" class="button fast-checkout-coupon-btn" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_attr_e('Apply', 'woocommerce'); ?></button>
 			    </div>
 			<?php } ?>
+			</div>
 
 		    <!-- Payment Methods -->
 			<div class="fast-checkout-payment-wocoommerce">
