@@ -93,21 +93,21 @@
 	        }).format(value);
 	    }
 
-	    function updateTotalOrder() {
-	        var productPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);
-	        var addOnPrice = 0;
-	         $('input[name="add-on-trading[]"]:checked').each(function() {
-	            var addOnPercentage = parseFloat($(this).data('percentage') || 0);
-	            if (addOnPercentage) {
-	                addOnPrice += addOnPercentage * productPrice;
-	            } else {
-	                addOnPrice += parseFloat($(this).data('price') || 0);
-	            }
-	        });
-	        var total = productPrice + addOnPrice;
-	        $('#total-order-value').text(formatCurrency(total));
-	        $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
-	    }
+	    function updateTotalOrder(discountAmount = 0) {
+		    var productPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);
+		    var addOnPrice = 0;
+		    $('input[name="add-on-trading[]"]:checked').each(function() {
+		        var addOnPercentage = parseFloat($(this).data('percentage') || 0);
+		        if (addOnPercentage) {
+		            addOnPrice += addOnPercentage * productPrice;
+		        } else {
+		            addOnPrice += parseFloat($(this).data('price') || 0);
+		        }
+		    });
+		    var total = productPrice + addOnPrice - discountAmount; // Subtract the discount
+		    $('#total-order-value').text(formatCurrency(total));
+		    $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
+		}
 
 	    $('button[name="apply_coupon"]').on('click', function(e) {
 	        e.preventDefault();
