@@ -304,7 +304,7 @@
 
 		        // Send an AJAX request to remove the coupon
 		        $.ajax({
-		            url: ajaxurl,
+		            url: digiwoScriptVars.ajax_url,
 		            method: 'POST',
 		            data: {
 		                action: 'remove_coupon_code',
@@ -398,7 +398,7 @@
 
 		        // Send an AJAX request to remove the coupon
 		        $.ajax({
-		            url: ajaxurl,
+		            url: digiwoScriptVars.ajax_url,
 		            method: 'POST',
 		            data: {
 		                action: 'remove_coupon_code',
