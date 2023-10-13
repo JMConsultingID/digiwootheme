@@ -316,7 +316,7 @@ while ( have_posts() ) :
 			<div class="fast-checkout-coupon-wocoommerce">
 			<?php if (WC()->cart->get_cart_contents_count() > 0) { ?>
 			    <div class="woocommerce-coupon-form">
-			        <label for="coupon_code"><?php esc_html_e('Have a coupon?', 'woocommerce'); ?></label>
+			        <label for="coupon_code"><?php esc_html_e('Have a coupon? Enter your coupon code, after finalizing your product selection', 'woocommerce'); ?></label>
 			        <input type="text" name="coupon_code" id="coupon_code" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" value="" />
 			        <button type="submit" class="button fast-checkout-coupon-btn" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_attr_e('Apply', 'woocommerce'); ?></button>
 			    </div>

@@ -44,6 +44,22 @@ function custom_redirect() {
         wp_redirect(home_url("/challenge/"));
         exit;
     }
+
+    // Match the /ref/{string}/ structure (with or without query parameters).
+    if (preg_match('|^/ref/([\w-]+)/?(\?.*)?$|', $request_uri, $matches)) {
+        // Extract the string from the matches.
+        $dynamic_string = $matches[1];
+
+        // Check for query string and extract if it exists.
+        $query_string = isset($matches[2]) ? $matches[2] : '';
+
+        // Construct the new URL.
+        $new_url = home_url("/challenge/ref/{$dynamic_string}/{$query_string}");
+        
+        // Perform the redirection.
+        wp_redirect($new_url);
+        exit;
+    }
     
     // Use a regex pattern to match the /ref/{dynamic_number}/ structure.
     if ( preg_match('|^/ref/([\d\w]+)/?$|', $request_uri, $matches)) {
