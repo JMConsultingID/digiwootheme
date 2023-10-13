@@ -172,6 +172,35 @@
 	        });
 	    });
 
+	    function removeAppliedCoupon() {
+		    if ($('#displayed-coupon-code span[data-couponcode]').length) {
+		        // Extract the currently applied coupon code
+		        var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
+		        // Send an AJAX request to remove the coupon
+		        $.ajax({
+		            url: ajaxurl,
+		            method: 'POST',
+		            data: {
+		                action: 'remove_coupon_code',
+		                coupon_code: coupon_code
+		            },
+		            success: function(response) {
+		                if (response.success) {
+		                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
+		                } else {
+		                    alert(response.data.message);
+		                }
+		            }
+		        });
+		    }
+		}
+
+		// Use the function on product change
+		$(document).on('change', 'input[name="product"]', function() {
+		    removeAppliedCoupon();
+		});
+
+
 	    $('input[name="product-category"]').change(function() {	    	
 	        var categoryID = $(this).val();	        
 	        $('.fast-checkout-radio-select-category').removeClass('active');
@@ -293,29 +322,8 @@
 		                    	$('.products-section').removeClass('loading');
 		                    	$('.add-on-trading-section').removeClass('loading');
 		                    }
-		                });		              	
-					     
-				        if ($('#displayed-coupon-code span[data-couponcode]').length) {
-					        var coupon_code_product = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
-					        console.log("Coupon code: ", coupon_code_product ); 
-					        $.ajax({
-					            url: digiwoScriptVars.ajax_url,
-					            method: 'POST',
-					            data: {
-					                action: 'remove_coupon_code',
-					                coupon_code: coupon_code_product
-					            },
-					            success: function(response) {
-					                if (response.success) {
-					                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
-					                    jQuery(document.body).trigger('update_checkout');
-					                    jQuery(document.body).trigger('wc_fragment_refresh');
-					                } else {
-					                    alert(response.data.message);
-					                }
-					            }
-					        });
-						}	
+		                });
+
 		            }
 		        }
 		    });
@@ -375,33 +383,7 @@
                 	$('.add-on-trading-section').removeClass('loading');
                 }
 		    });
-		    var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
-		    console.log("Coupon code: ", coupon_code);  
-	        if ($('#displayed-coupon-code span[data-couponcode]').length) {
-		        // Extract the currently applied coupon code
-		        var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
-
-		        // Send an AJAX request to remove the coupon
-		        $.ajax({
-		            url: digiwoScriptVars.ajax_url,
-		            method: 'POST',
-		            data: {
-		                action: 'remove_coupon_code',
-		                coupon_code: coupon_code
-		            },
-		            success: function(response) {
-		                if (response.success) {
-		                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
-		                    jQuery(document.body).trigger('update_checkout');
-		                    jQuery(document.body).trigger('wc_fragment_refresh');
-		                } else {
-		                    alert(response.data.message);
-		                }
-		            }
-		        });
-			}
-		    
-		    updateTotalOrder();
+		    removeAppliedCoupon();
 		    ajaxInProgress = false;
 		    }, 100); // 100ms delay
 
