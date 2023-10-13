@@ -123,6 +123,8 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
+	                	 $('#coupon_code').val('');
+
 	                    jQuery(document.body).trigger('update_checkout');
                     	jQuery(document.body).trigger('wc_fragment_refresh');
 
@@ -133,6 +135,32 @@
 				            updateTotalOrder();
 				        }
 
+	                } else {
+	                    alert(response.data.message);
+	                }
+	            }
+	        });
+	    });
+
+
+	    $('.remove-coupon').on('click', function(e) {
+	        e.preventDefault();
+	        
+	        var coupon_code = $(this).data('coupon');
+	        
+	        $.ajax({
+	            url: ajaxurl,
+	            method: 'POST',
+	            data: {
+	                action: 'remove_coupon_code',
+	                coupon_code: coupon_code
+	            },
+	            success: function(response) {
+	                if (response.success) {
+	                    jQuery(document.body).trigger('update_checkout');
+	                    jQuery(document.body).trigger('wc_fragment_refresh');
+	                    // Remove the displayed coupon from the container
+	                    $('#applied-coupon-container').empty();
 	                } else {
 	                    alert(response.data.message);
 	                }
