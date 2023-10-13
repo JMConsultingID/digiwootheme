@@ -235,6 +235,33 @@
 	        }
 	    }
 
+	    $(document).on('change', 'input[name="product"]', function(e) {
+	    	e.stopPropagation();
+		    var coupon_code_product = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
+		    console.log("Coupon code: ", coupon_code_product );  
+	        if ($('#displayed-coupon-code span[data-couponcode]').length) {
+		        // Send an AJAX request to remove the coupon
+		        $.ajax({
+		            url: digiwoScriptVars.ajax_url,
+		            method: 'POST',
+		            data: {
+		                action: 'remove_coupon_code',
+		                coupon_code: coupon_code_product
+		            },
+		            success: function(response) {
+		                if (response.success) {
+		                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
+		                    jQuery(document.body).trigger('update_checkout');
+		                    jQuery(document.body).trigger('wc_fragment_refresh');
+		                } else {
+		                    alert(response.data.message);
+		                }
+		            }
+		        });
+			}
+		    
+		    updateTotalOrder();
+		});
 
 	    $(document).on('change', 'input[name="product"]', function() {
 	    	var productId = $(this).val();
@@ -296,31 +323,6 @@
 		            }
 		        }
 		    });
-
-		    var coupon_code_product = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
-		    console.log("Coupon code: ", coupon_code_product );  
-	        if ($('#displayed-coupon-code span[data-couponcode]').length) {
-		        // Send an AJAX request to remove the coupon
-		        $.ajax({
-		            url: digiwoScriptVars.ajax_url,
-		            method: 'POST',
-		            data: {
-		                action: 'remove_coupon_code',
-		                coupon_code: coupon_code_product
-		            },
-		            success: function(response) {
-		                if (response.success) {
-		                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
-		                    jQuery(document.body).trigger('update_checkout');
-		                    jQuery(document.body).trigger('wc_fragment_refresh');
-		                } else {
-		                    alert(response.data.message);
-		                }
-		            }
-		        });
-			}
-		    
-		    updateTotalOrder();
 
 	    });
 
