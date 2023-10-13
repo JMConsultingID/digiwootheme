@@ -178,7 +178,7 @@
 		        var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
 		        // Send an AJAX request to remove the coupon
 		        $.ajax({
-		            url: ajaxurl,
+		            url: digiwoScriptVars.ajax_url,
 		            method: 'POST',
 		            data: {
 		                action: 'remove_coupon_code',
@@ -187,6 +187,7 @@
 		            success: function(response) {
 		                if (response.success) {
 		                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
+		                    updateTotalOrder();
 		                } else {
 		                    alert(response.data.message);
 		                }
