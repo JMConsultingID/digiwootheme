@@ -320,16 +320,7 @@ while ( have_posts() ) :
 			        <input type="text" name="coupon_code" id="coupon_code" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" value="" />
 			        <button type="submit" class="button fast-checkout-coupon-btn" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_attr_e('Apply', 'woocommerce'); ?></button>
 
-			        <div id="applied-coupon-container">
-					    <?php
-					    if( WC()->cart->get_coupons() ) {
-					        foreach ( WC()->cart->get_coupons() as $code => $coupon ) {
-					            echo 'Coupon: ' . esc_html($code) . ' <button class="remove-coupon" data-coupon="' . esc_attr($code) . '">[Remove]</button>';
-					        }
-					    }
-					    ?>
-					</div>
-
+			        <div id="displayed-coupon-code"></div>
 			    </div>
 			<?php } ?>
 			</div>
