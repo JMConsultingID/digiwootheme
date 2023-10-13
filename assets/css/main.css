@@ -437,6 +437,10 @@ background: rgba(93, 179, 59, 0.29);
     color: #fff;
 }
 
+.fast-checkout-coupon-wocoommerce .remove-coupon-btn{
+    display: contents;
+}
+
 
 @media screen and (min-width: 767px) {
 .sticky {
