@@ -146,7 +146,7 @@
 	    });
 
 
-	    $('.remove-coupon-btn').on('click', function(e) {
+	    $(document).on('click', '.remove-coupon-btn', function(e) {
 	        e.preventDefault();
 	        
 	        var coupon_code = $(this).prev('span[data-couponcode]').data('couponcode'); // Get the coupon code
