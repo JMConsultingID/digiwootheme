@@ -245,7 +245,9 @@
 	    	$('.products-section').addClass('loading');
 	    	$('.add-on-trading-section').addClass('loading');
 	    	$('input[name="add-on-trading[]"]').prop('checked', false);
-	    	$('.fast-checkout-radio-select-add-ons').removeClass('active');	        
+	    	$('.fast-checkout-radio-select-add-ons').removeClass('active');
+	    	var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
+	    	console.log("Coupon code: ", coupon_code);     
 
 	    	setFastCheckoutProductID();
 
@@ -298,9 +300,7 @@
 		        }
 		    });
 
-		    if ($('#displayed-coupon-code span[data-couponcode]').length) {
-		        // Extract the currently applied coupon code
-		        var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
+		    if ($('#displayed-coupon-code span[data-couponcode]').length) {		        
 
 		        // Send an AJAX request to remove the coupon
 		        $.ajax({
