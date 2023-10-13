@@ -415,7 +415,7 @@ background: rgba(93, 179, 59, 0.29);
 .fast-checkout-coupon-wocoommerce{
     margin-top: 20px;
     margin-bottom: 20px;
-    min-height: 70px;
+    min-height: 100px;
 }
 
 .fast-checkout-coupon-wocoommerce .woocommerce-coupon-form label{
