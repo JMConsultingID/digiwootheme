@@ -328,7 +328,7 @@
 		            }
 		        }
 		    });
-
+		    updateTotalOrder();
 	    });
 
 
