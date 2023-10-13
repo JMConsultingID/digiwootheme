@@ -439,7 +439,15 @@ background: rgba(93, 179, 59, 0.29);
 
 .fast-checkout-coupon-wocoommerce .remove-coupon-btn{
     display: contents;
+    color: #dc3545;
 }
+
+.fast-checkout-coupon-wocoommerce .remove-coupon-btn:hover{
+    color: #dc3545;
+}
+
+
+
 
 
 @media screen and (min-width: 767px) {
