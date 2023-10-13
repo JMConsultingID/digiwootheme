@@ -235,8 +235,7 @@
 	        }
 	    }
 
-	    $(document).on('change', 'input[name="product"]', function(e) {
-	    	e.stopPropagation();
+	    $('input[name="product"]').on('change', function() {
 		    var coupon_code_product = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
 		    console.log("Coupon code: ", coupon_code_product );  
 	        if ($('#displayed-coupon-code span[data-couponcode]').length) {
