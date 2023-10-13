@@ -307,6 +307,7 @@ function remove_coupon_code() {
     } else {
         wp_send_json_error(array('message' => 'Failed to remove coupon or coupon not applied.'));
     }
+    wp_die(); // Ensure AJAX request dies properly
 }
 
 // Attach the function to wp_ajax and wp_ajax_nopriv actions
