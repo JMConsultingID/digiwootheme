@@ -235,8 +235,8 @@
 	        }
 	    }
 
-	    $('input[name="product"]').on('change', function() {
-		    var coupon_code_product = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
+	    $(document).on('change', 'input[name="product"]', function() {
+	    	var coupon_code_product = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
 		    console.log("Coupon code: ", coupon_code_product );  
 	        if ($('#displayed-coupon-code span[data-couponcode]').length) {
 		        // Send an AJAX request to remove the coupon
@@ -257,12 +257,9 @@
 		                }
 		            }
 		        });
-			}
-		    
+			}		    
 		    updateTotalOrder();
-		});
-
-	    $(document).on('change', 'input[name="product"]', function() {
+		    
 	    	var productId = $(this).val();
 	    	$('.spinner-order-total').show();
 	    	$('.checkout-order-total').hide(); 	
