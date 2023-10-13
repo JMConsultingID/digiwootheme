@@ -293,11 +293,11 @@
 		                    	$('.products-section').removeClass('loading');
 		                    	$('.add-on-trading-section').removeClass('loading');
 		                    }
-		                });
-		              	var coupon_code_product = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
-					    console.log("Coupon code: ", coupon_code_product );  
+		                });		              	
+					     
 				        if ($('#displayed-coupon-code span[data-couponcode]').length) {
-					        // Send an AJAX request to remove the coupon
+					        var coupon_code_product = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
+					        console.log("Coupon code: ", coupon_code_product ); 
 					        $.ajax({
 					            url: digiwoScriptVars.ajax_url,
 					            method: 'POST',
