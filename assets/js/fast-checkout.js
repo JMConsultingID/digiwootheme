@@ -298,6 +298,32 @@
 		        }
 		    });
 
+		    var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
+		    console.log("Coupon code: ", coupon_code);  
+	        if ($('#displayed-coupon-code span[data-couponcode]').length) {
+		        // Extract the currently applied coupon code
+		        var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
+
+		        // Send an AJAX request to remove the coupon
+		        $.ajax({
+		            url: digiwoScriptVars.ajax_url,
+		            method: 'POST',
+		            data: {
+		                action: 'remove_coupon_code',
+		                coupon_code: coupon_code
+		            },
+		            success: function(response) {
+		                if (response.success) {
+		                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
+		                    jQuery(document.body).trigger('update_checkout');
+		                    jQuery(document.body).trigger('wc_fragment_refresh');
+		                } else {
+		                    alert(response.data.message);
+		                }
+		            }
+		        });
+			}
+
 	    });
 
 
@@ -354,30 +380,30 @@
                 }
 		    });
 		    var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
-			    console.log("Coupon code: ", coupon_code);  
-		        if ($('#displayed-coupon-code span[data-couponcode]').length) {
-				        // Extract the currently applied coupon code
-				        var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
+		    console.log("Coupon code: ", coupon_code);  
+	        if ($('#displayed-coupon-code span[data-couponcode]').length) {
+		        // Extract the currently applied coupon code
+		        var coupon_code = $('#displayed-coupon-code span[data-couponcode]').data('couponcode');
 
-				        // Send an AJAX request to remove the coupon
-				        $.ajax({
-				            url: digiwoScriptVars.ajax_url,
-				            method: 'POST',
-				            data: {
-				                action: 'remove_coupon_code',
-				                coupon_code: coupon_code
-				            },
-				            success: function(response) {
-				                if (response.success) {
-				                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
-				                    jQuery(document.body).trigger('update_checkout');
-				                    jQuery(document.body).trigger('wc_fragment_refresh');
-				                } else {
-				                    alert(response.data.message);
-				                }
-				            }
-				        });
-				    }
+		        // Send an AJAX request to remove the coupon
+		        $.ajax({
+		            url: digiwoScriptVars.ajax_url,
+		            method: 'POST',
+		            data: {
+		                action: 'remove_coupon_code',
+		                coupon_code: coupon_code
+		            },
+		            success: function(response) {
+		                if (response.success) {
+		                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
+		                    jQuery(document.body).trigger('update_checkout');
+		                    jQuery(document.body).trigger('wc_fragment_refresh');
+		                } else {
+		                    alert(response.data.message);
+		                }
+		            }
+		        });
+			}
 		    
 		    updateTotalOrder();
 		    ajaxInProgress = false;
