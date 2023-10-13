@@ -164,6 +164,7 @@
 	                    jQuery(document.body).trigger('wc_fragment_refresh');
 	                    // Remove the displayed coupon from the container
 	                     $('#displayed-coupon-code').empty();
+	                     updateTotalOrder();
 	                } else {
 	                    alert(response.data.message);
 	                }
