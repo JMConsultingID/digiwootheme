@@ -313,3 +313,12 @@ function remove_coupon_code() {
 // Attach the function to wp_ajax and wp_ajax_nopriv actions
 add_action('wp_ajax_remove_coupon_code', 'remove_coupon_code');
 add_action('wp_ajax_nopriv_remove_coupon_code', 'remove_coupon_code');
+
+function get_total_discount() {
+    $discount = WC()->cart->get_cart_discount_total();
+    echo json_encode(array('total_discount' => $discount));
+    wp_die();
+}
+add_action('wp_ajax_get_total_discount', 'get_total_discount');
+add_action('wp_ajax_nopriv_get_total_discount', 'get_total_discount');
+

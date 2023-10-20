@@ -93,7 +93,7 @@
 	        }).format(value);
 	    }
 
-	    function updateTotalOrder(discountAmount = 0) {
+	    function updateTotalOrder() {
 		    var productPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);
 		    var addOnPrice = 0;
 		    $('input[name="add-on-trading[]"]:checked').each(function() {
@@ -104,10 +104,20 @@
 		            addOnPrice += parseFloat($(this).data('price') || 0);
 		        }
 		    });
-		    var total = productPrice + addOnPrice - discountAmount; // Subtract the discount
-		    $('#total-order-value').text(formatCurrency(total));
-		    $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
+		    
+		    // Calculate the subtotal without any discounts
+		    var subtotal = productPrice + addOnPrice;
+
+		    // Fetch the total discount from WooCommerce
+		    getTotalDiscountFromWooCommerce(function(totalDiscount) {
+		        // Subtract the discount from the subtotal to get the final total
+		        var total = subtotal - totalDiscount;
+
+		        $('#total-order-value').text(formatCurrency(total));
+		        $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
+		    });
 		}
+
 
 	    $('button[name="apply_coupon"]').on('click', function(e) {
 	        e.preventDefault();
@@ -131,12 +141,7 @@
 	                    jQuery(document.body).trigger('update_checkout');
                     	jQuery(document.body).trigger('wc_fragment_refresh');
 
-                    	// If the response contains the discount amount
-				        if(response.data && response.data.discountAmount) {
-				            updateTotalOrder(response.data.discountAmount);
-				        } else {
-				            updateTotalOrder();
-				        }
+                    	 updateTotalOrder();
 
 	                } else {
 	                    alert(response.data.message);
@@ -195,6 +200,28 @@
 		        });
 		    }
 		}
+
+		function getTotalDiscountFromWooCommerce(callback) {
+		    $.ajax({
+		        url: digiwoScriptVars.ajax_url,
+		        method: 'POST',
+		        data: {
+		            action: 'get_total_discount'
+		        },
+		        success: function(response) {
+		            var data = JSON.parse(response);
+		            if (data && data.total_discount) {
+		                callback(data.total_discount);
+		            } else {
+		                callback(0);
+		            }
+		        },
+		        error: function() {
+		            callback(0);
+		        }
+		    });
+		}
+
 
 		// Use the function on product change
 		$(document).on('change', 'input[name="product"]', function() {
