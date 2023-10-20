@@ -149,8 +149,7 @@
 	    $(document).on('click', '.remove-coupon-btn', function(e) {
 	        e.preventDefault();
 	        
-	        var coupon_code = $(this).prev('span[data-couponcode]').data('couponcode'); // Get the coupon code
-	        
+	        var coupon_code = $(this).parent().data('couponcode');
 	        $.ajax({
 	            url: digiwoScriptVars.ajax_url,
 	            method: 'POST',
@@ -160,6 +159,7 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
+	                	$(this).parent().remove();
 	                    jQuery(document.body).trigger('update_checkout');
 	                    jQuery(document.body).trigger('wc_fragment_refresh');
 	                    // Remove the displayed coupon from the container
