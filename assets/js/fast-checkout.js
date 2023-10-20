@@ -93,7 +93,7 @@
 	        }).format(value);
 	    }
 
-	    function updateTotalOrder() {
+	    function updateTotalOrder(discountAmount = 0) {
 		    var productPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);
 		    var addOnPrice = 0;
 		    $('input[name="add-on-trading[]"]:checked').each(function() {
@@ -104,20 +104,10 @@
 		            addOnPrice += parseFloat($(this).data('price') || 0);
 		        }
 		    });
-		    
-		    // Calculate the subtotal without any discounts
-		    var subtotal = productPrice + addOnPrice;
-
-		    // Fetch the total discount from WooCommerce
-		    getTotalDiscountFromWooCommerce(function(totalDiscount) {
-		        // Subtract the discount from the subtotal to get the final total
-		        var total = subtotal - totalDiscount;
-
-		        $('#total-order-value').text(formatCurrency(total));
-		        $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
-		    });
+		    var total = productPrice + addOnPrice - discountAmount; // Subtract the discount
+		    $('#total-order-value').text(formatCurrency(total));
+		    $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
 		}
-
 
 	    $('button[name="apply_coupon"]').on('click', function(e) {
 	        e.preventDefault();
@@ -133,7 +123,7 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
-	                	$('#displayed-coupon-code').append('<div class="applied-coupon" data-couponcode="' + coupon_code + '">' + coupon_code + ' <button class="remove-coupon-btn">[Remove]</button></div>');
+	                	$('#displayed-coupon-code').html('Applied Coupon: <span data-couponcode="' + coupon_code + '">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button>');
 				        
 				        // Clear the coupon code input field if you still want this functionality
 				        $('#coupon_code').val('');
@@ -141,7 +131,12 @@
 	                    jQuery(document.body).trigger('update_checkout');
                     	jQuery(document.body).trigger('wc_fragment_refresh');
 
-                    	 updateTotalOrder();
+                    	// If the response contains the discount amount
+				        if(response.data && response.data.discountAmount) {
+				            updateTotalOrder(response.data.discountAmount);
+				        } else {
+				            updateTotalOrder();
+				        }
 
 	                } else {
 	                    alert(response.data.message);
@@ -154,7 +149,8 @@
 	    $(document).on('click', '.remove-coupon-btn', function(e) {
 	        e.preventDefault();
 	        
-	        var coupon_code = $(this).parent().data('couponcode');
+	        var coupon_code = $(this).prev('span[data-couponcode]').data('couponcode'); // Get the coupon code
+	        
 	        $.ajax({
 	            url: digiwoScriptVars.ajax_url,
 	            method: 'POST',
@@ -164,7 +160,6 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
-	                	$(this).parent().remove();
 	                    jQuery(document.body).trigger('update_checkout');
 	                    jQuery(document.body).trigger('wc_fragment_refresh');
 	                    // Remove the displayed coupon from the container
@@ -200,28 +195,6 @@
 		        });
 		    }
 		}
-
-		function getTotalDiscountFromWooCommerce(callback) {
-		    $.ajax({
-		        url: digiwoScriptVars.ajax_url,
-		        method: 'POST',
-		        data: {
-		            action: 'get_total_discount'
-		        },
-		        success: function(response) {
-		            var data = JSON.parse(response);
-		            if (data && data.total_discount) {
-		                callback(data.total_discount);
-		            } else {
-		                callback(0);
-		            }
-		        },
-		        error: function() {
-		            callback(0);
-		        }
-		    });
-		}
-
 
 		// Use the function on product change
 		$(document).on('change', 'input[name="product"]', function() {
