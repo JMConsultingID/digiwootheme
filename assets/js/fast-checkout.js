@@ -123,7 +123,7 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
-	                	$('#displayed-coupon-code').html('Applied Coupon: <span data-couponcode="' + coupon_code + '">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button>');
+	                	$('#displayed-coupon-code').append('Applied Coupon: <span data-couponcode="' + coupon_code + '">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button>');
 				        
 				        // Clear the coupon code input field if you still want this functionality
 				        $('#coupon_code').val('');

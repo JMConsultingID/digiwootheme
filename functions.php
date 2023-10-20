@@ -45,6 +45,17 @@ function custom_redirect() {
         exit;
     }
 
+    if ('/shop/' === $request_uri) {
+        wp_redirect(home_url("/challenge/"));
+        exit;
+    }
+
+    if (preg_match('|^/product/[\w-]+/?$|', $request_uri)) {
+        wp_redirect(home_url("/challenge/"));
+        exit;
+    }
+    
+
     // Match the /ref/{string}/ structure (with or without query parameters).
     if (preg_match('|^/ref/([\w-]+)/?(\?.*)?$|', $request_uri, $matches)) {
         // Extract the string from the matches.
