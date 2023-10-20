@@ -147,12 +147,29 @@
 
 
 	    $(document).on('click', '.remove-coupon-btn', function(e) {
-	        e.preventDefault();	        
-	        var coupon_code = $(this).parent().data('couponcode');
-		    WC()->cart->remove_coupon(coupon_code);
-		    $(this).parent().remove();
-		    jQuery(document.body).trigger('update_checkout');
-		    jQuery(document.body).trigger('wc_fragment_refresh');
+	        e.preventDefault();
+	        
+	        var coupon_code = $(this).prev('span[data-couponcode]').data('couponcode'); // Get the coupon code
+	        
+	        $.ajax({
+	            url: digiwoScriptVars.ajax_url,
+	            method: 'POST',
+	            data: {
+	                action: 'remove_coupon_code',
+	                coupon_code: coupon_code
+	            },
+	            success: function(response) {
+	                if (response.success) {
+	                    jQuery(document.body).trigger('update_checkout');
+	                    jQuery(document.body).trigger('wc_fragment_refresh');
+	                    // Remove the displayed coupon from the container
+	                     $('#displayed-coupon-code').empty();
+	                     updateTotalOrder();
+	                } else {
+	                    alert(response.data.message);
+	                }
+	            }
+	        });
 	    });
 
 	    function removeAppliedCoupon() {
