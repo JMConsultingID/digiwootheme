@@ -197,7 +197,7 @@
 		                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
 		                    updateTotalOrder();
 		                } else {
-		                    alert(response.data.message);
+		                    updateTotalOrder();
 		                }
 		            }
 		        });
