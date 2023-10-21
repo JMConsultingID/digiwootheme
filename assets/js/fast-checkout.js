@@ -218,9 +218,8 @@
 		        success: function(response) {
 		            if (response.success) {
 		            	// Remove the "Remove All Coupons" button
+		            	$('.single-coupon-display').remove();
                 		$('#remove-all-coupons-btn').remove();
-
-		                $('#displayed-coupon-code').empty(); // Clear the displayed coupons
 
 		                jQuery(document.body).trigger('update_checkout');
 		                jQuery(document.body).trigger('wc_fragment_refresh');
