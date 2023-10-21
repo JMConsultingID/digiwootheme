@@ -93,7 +93,10 @@
 	        }).format(value);
 	    }
 
-	    function updateTotalOrder(discountAmount = 0) {
+	    function updateTotalOrder() {
+		    // Fetch the subtotal from the WooCommerce cart summary
+		    var subtotal = parseFloat($('.woocommerce-Price-amount bdi').first().text().replace('$', ''));
+		    
 		    var productPrice = parseFloat($('input[name="product"]:checked').data('price') || 0);
 		    var addOnPrice = 0;
 		    $('input[name="add-on-trading[]"]:checked').each(function() {
@@ -104,10 +107,15 @@
 		            addOnPrice += parseFloat($(this).data('price') || 0);
 		        }
 		    });
-		    var total = productPrice + addOnPrice - discountAmount; // Subtract the discount
+		    
+		    var totalWithoutDiscount = productPrice + addOnPrice;
+		    var totalDiscount = totalWithoutDiscount - subtotal; // Calculate total discount
+		    var total = totalWithoutDiscount - totalDiscount; // Subtract the total discount
+		    
 		    $('#total-order-value').text(formatCurrency(total));
 		    $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
 		}
+
 
 	    $('button[name="apply_coupon"]').on('click', function(e) {
 	        e.preventDefault();
@@ -123,19 +131,19 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
-				        $('#displayed-coupon-code').append('Applied Coupon: <span data-couponcode="' + coupon_code + '">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button>');
+				        // Check if the coupon code is already displayed, if not, append it
+		                if ($('#displayed-coupon-code span[data-couponcode="' + coupon_code + '"]').length === 0) {
+		                    $('#displayed-coupon-code').append('Applied Coupon: <span data-couponcode="' + coupon_code + '">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button>');
+		                }
+
 				        // Clear the coupon code input field if you still want this functionality
 				        $('#coupon_code').val('');
 
 	                    jQuery(document.body).trigger('update_checkout');
                     	jQuery(document.body).trigger('wc_fragment_refresh');
 
-                    	// If the response contains the discount amount
-				        if(response.data && response.data.discountAmount) {
-				            updateTotalOrder(response.data.discountAmount);
-				        } else {
-				            updateTotalOrder();
-				        }
+                    	 // Update total order
+                		updateTotalOrder();
 
 	                } else {
 	                    alert(response.data.message);
