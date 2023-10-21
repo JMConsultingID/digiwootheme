@@ -143,11 +143,11 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
-				        $('#displayed-coupon-code').append('<div class="single-coupon-display">Coupon: <span data-couponcode="' + coupon_code + '" data-discount="' + response.data.discountAmount + '" data-dis="' + response.data.discountTemp +'">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button></div>');
+				        $('#displayed-coupon-code').append('<div class="single-coupon-display">Coupon: <span data-couponcode="' + coupon_code + '" data-discount="' + response.data.discountAmount + '" data-dis="' + response.data.discountTemp +'">' + coupon_code + '</span></div>');
 						
 				        // If the "Remove All Coupons" button is not present, append it
 		                if ($('#remove-all-coupons-btn').length === 0) {
-		                    $('#displayed-coupon-code').after('<div id="remove-all-coupons-btn">[Remove Coupons]</div>');
+		                    $('#displayed-coupon-code').after('<button class="remove-coupon-btn" id="remove-all-coupons-btn">[Remove Coupons]</button>');
 		                }
 
 						// Clear the coupon code input field if you still want this functionality
