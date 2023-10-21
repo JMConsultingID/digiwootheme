@@ -315,3 +315,13 @@ function remove_coupon_code() {
 // Attach the function to wp_ajax and wp_ajax_nopriv actions
 add_action('wp_ajax_remove_coupon_code', 'remove_coupon_code');
 add_action('wp_ajax_nopriv_remove_coupon_code', 'remove_coupon_code');
+
+function remove_all_coupons() {
+    WC()->cart->remove_coupons(); // This will remove all coupons
+
+    // You can perform additional tasks or checks here
+
+    wp_send_json_success();
+}
+add_action('wp_ajax_remove_all_coupons', 'remove_all_coupons');
+add_action('wp_ajax_nopriv_remove_all_coupons', 'remove_all_coupons');

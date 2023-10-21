@@ -144,6 +144,12 @@
 	            success: function(response) {
 	                if (response.success) {
 				        $('#displayed-coupon-code').append('<div class="single-coupon-display">Coupon: <span data-couponcode="' + coupon_code + '" data-discount="' + response.data.discountAmount + '" data-dis="' + response.data.discountTemp +'">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button></div>');
+						
+				        // If the "Remove All Coupons" button is not present, append it
+		                if ($('#remove-all-coupons-btn').length === 0) {
+		                    $('#displayed-coupon-code').after('<button id="remove-all-coupons-btn">Remove All Coupons</button>');
+		                }
+				        
 						// Clear the coupon code input field if you still want this functionality
 				        $('#coupon_code').val('');
 
@@ -199,6 +205,34 @@
 		        }
 		    });
 		}
+
+		$(document).on('click', '#remove-all-coupons-btn', function(e) {
+		    e.preventDefault();
+
+		    $.ajax({
+		        url: digiwoScriptVars.ajax_url,
+		        method: 'POST',
+		        data: {
+		            action: 'remove_all_coupons'
+		        },
+		        success: function(response) {
+		            if (response.success) {
+		                $('#displayed-coupon-code').empty(); // Clear the displayed coupons
+
+		                jQuery(document.body).trigger('update_checkout');
+		                jQuery(document.body).trigger('wc_fragment_refresh');
+
+		                // Update total if needed
+		                updateTotalOrder();
+
+		                alert('All coupons removed successfully!');
+		            } else {
+		                alert(response.data.message);
+		            }
+		        }
+		    });
+		});
+
 
 
 	    function removeAppliedCoupon() {
