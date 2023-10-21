@@ -279,12 +279,14 @@ function apply_coupon_code() {
     if (WC()->cart->apply_coupon($coupon_code)) {
         // Get the cart total after applying the coupon
         $total_after = WC()->cart->get_cart_discount_total();
+        $subtotal = WC()->cart->get_cart_subtotal();
+        $total = WC()->cart->get_total('edit');
 
         // Calculate the discount amount
         $discountAmount = $total_before - $total_after;
 
         // Send the discount amount in the success response
-        wp_send_json_success(array('discountAmount' => $total_after, 'discountTemp' => $total_before));
+        wp_send_json_success(array('discountAmount' => $total_after, 'discountTemp' => $subtotal));
     } else {
         wp_send_json_error(array('message' => 'Failed to apply coupon.'));
     }
