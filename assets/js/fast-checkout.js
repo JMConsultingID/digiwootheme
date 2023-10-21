@@ -154,6 +154,7 @@
 	        e.preventDefault();
 	        
 	        var coupon_code = $(this).siblings('span').data('couponcode');
+	        console.log(coupon_code); // Add this line to debug
 
 	        $.ajax({
 	            url: digiwoScriptVars.ajax_url,
@@ -165,7 +166,7 @@
 	            success: function(response) {
 	                if (response.success) {
 	                	$(e.target).closest('.coupon-codes').remove();
-	                	
+
 	                    jQuery(document.body).trigger('update_checkout');
 	                    jQuery(document.body).trigger('wc_fragment_refresh');
 	                    // Remove the displayed coupon from the container

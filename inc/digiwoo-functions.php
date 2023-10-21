@@ -298,17 +298,18 @@ function remove_coupon_code() {
         wp_send_json_error(array('message' => 'Coupon code not set!'));
         return;
     }
-    
+
     $coupon_code = sanitize_text_field($_POST['coupon_code']);
 
-    if (WC()->cart->has_discount($coupon_code)) {
-        WC()->cart->remove_coupon($coupon_code);
-        wp_send_json_success();
-    } else {
-        wp_send_json_error(array('message' => 'Failed to remove coupon or coupon not applied.'));
+    if (!WC()->cart->has_discount($coupon_code)) {
+        wp_send_json_error(array('message' => 'Coupon not found in cart!'));
+        return;
     }
-    wp_die(); // Ensure AJAX request dies properly
+
+    WC()->cart->remove_coupon($coupon_code);
+    wp_send_json_success();
 }
+
 
 // Attach the function to wp_ajax and wp_ajax_nopriv actions
 add_action('wp_ajax_remove_coupon_code', 'remove_coupon_code');
