@@ -151,36 +151,34 @@
 
 
 	    $(document).on('click', '.remove-coupon-btn', function(e) {
-	        e.preventDefault();
-	        
-	        var coupon_code = $(this).prev('span').data('couponcode');
-	        console.log(coupon_code); // Add this line to debug
+	    e.preventDefault();
+	    var couponToRemove = $(this).prev('span[data-couponcode]').data('couponcode');
+	    
+	    $.ajax({
+	        url: digiwoScriptVars.ajax_url,
+	        method: 'POST',
+	        data: {
+	            action: 'remove_coupon_code',
+	            coupon_code: couponToRemove
+	        },
+	        success: function(response) {
+	            if (response.success) {
+	                // Remove the coupon display from the DOM.
+	                $('span[data-couponcode="' + couponToRemove + '"]').parent().remove();
 
-	        $.ajax({
-	            url: digiwoScriptVars.ajax_url,
-	            method: 'POST',
-	            data: {
-	                action: 'remove_coupon_code',
-	                coupon_code: coupon_code
-	            },
-	            success: function(response) {
-	                if (response.success) {
-	                	// Remove the displayed coupon code from the DOM
-		                $(e.target).prev('span').remove();
-		                $(e.target).next('br').remove(); // Remove the line break
-		                $(e.target).remove(); // Remove the button itself
-
-	                    jQuery(document.body).trigger('update_checkout');
-	                    jQuery(document.body).trigger('wc_fragment_refresh');
-	                    // Remove the displayed coupon from the container
-	                     $('#displayed-coupon-code').empty();
-	                     updateTotalOrder();
-	                } else {
-	                    alert(response.data.message);
-	                }
+	                // Update the checkout/cart if needed.
+	                jQuery(document.body).trigger('update_checkout');
+	                jQuery(document.body).trigger('wc_fragment_refresh');
+	                
+	                // Optionally, you can update the total order if the coupon removal affects the total.
+	                updateTotalOrder();
+	            } else {
+	                alert(response.data.message);
 	            }
-	        });
+	        }
 	    });
+	});
+
 
 	    function removeAppliedCoupon() {
 		    if ($('#displayed-coupon-code span[data-couponcode]').length) {
