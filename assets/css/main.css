@@ -437,12 +437,14 @@ background: rgba(93, 179, 59, 0.29);
     color: #fff;
 }
 
-.fast-checkout-coupon-wocoommerce .remove-coupon-btn{
+.fast-checkout-coupon-wocoommerce .remove-coupon-btn,
+.fast-checkout-coupon-wocoommerce .remove-coupon-all-btn{
     display: contents;
     color: #dc3545;
 }
 
-.fast-checkout-coupon-wocoommerce .remove-coupon-btn:hover{
+.fast-checkout-coupon-wocoommerce .remove-coupon-btn:hover,
+.fast-checkout-coupon-wocoommerce .remove-coupon-all-btn:hover{
     color: #dc3545;
 }
 

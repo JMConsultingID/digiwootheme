@@ -147,7 +147,7 @@
 						
 				        // If the "Remove All Coupons" button is not present, append it
 		                if ($('#remove-all-coupons-btn').length === 0) {
-		                    $('#displayed-coupon-code').after('<button class="remove-coupon-btn" id="remove-all-coupons-btn">[Remove Coupons]</button>');
+		                    $('#displayed-coupon-code').after('<button class="remove-coupon-all-btn" id="remove-all-coupons-btn">[Remove Coupons]</button>');
 		                }
 
 						// Clear the coupon code input field if you still want this functionality
