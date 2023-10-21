@@ -172,7 +172,7 @@
 		            if (response.success) {
 		                // Remove the coupon display div from the frontend
 		                $(buttonClicked).closest('.single-coupon-display').remove();
-		                
+		                updateTotalOrder();
 		                // Update cart totals or do any other necessary updates
 		                jQuery(document.body).trigger('update_checkout');
 		                jQuery(document.body).trigger('wc_fragment_refresh');
