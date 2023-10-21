@@ -118,6 +118,7 @@
 	        e.preventDefault();
 	        
 	        var coupon_code = $('input[name="coupon_code"]').val();
+	        console.log(coupon_code);
 	        
 	        $.ajax({
 	            url: digiwoScriptVars.ajax_url, // This variable is automatically defined by WordPress if you've enqueued your script using wp_enqueue_script
