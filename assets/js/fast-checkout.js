@@ -128,8 +128,8 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
-				        $('#displayed-coupon-code').append('<div class="coupon-codes">Coupon: <span data-couponcode="' + coupon_code + '">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button></div>');
-				        // Clear the coupon code input field if you still want this functionality
+				        $('#displayed-coupon-code').append('Coupon: <span data-couponcode="' + coupon_code + '">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button><br>');
+						// Clear the coupon code input field if you still want this functionality
 				        $('#coupon_code').val('');
 
 	                    jQuery(document.body).trigger('update_checkout');
@@ -153,7 +153,7 @@
 	    $(document).on('click', '.remove-coupon-btn', function(e) {
 	        e.preventDefault();
 	        
-	        var coupon_code = $(this).siblings('span').data('couponcode');
+	        var coupon_code = $(this).prev('span').data('couponcode');
 	        console.log(coupon_code); // Add this line to debug
 
 	        $.ajax({
@@ -165,7 +165,10 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
-	                	$(e.target).closest('.coupon-codes').remove();
+	                	// Remove the displayed coupon code from the DOM
+		                $(e.target).prev('span').remove();
+		                $(e.target).next('br').remove(); // Remove the line break
+		                $(e.target).remove(); // Remove the button itself
 
 	                    jQuery(document.body).trigger('update_checkout');
 	                    jQuery(document.body).trigger('wc_fragment_refresh');
