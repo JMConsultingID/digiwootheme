@@ -188,6 +188,7 @@
 		                $(buttonClicked).closest('.single-coupon-display').remove();
 		                // Update cart totals
 		                var totalDiscount = getTotalDiscount();
+		                console.log('total dis remove : '+totalDiscount);
 		                updateTotalOrder(totalDiscount);
 		                // Update cart totals or do any other necessary updates
 		                jQuery(document.body).trigger('update_checkout');
