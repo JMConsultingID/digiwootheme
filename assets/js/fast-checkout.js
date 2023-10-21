@@ -93,7 +93,7 @@
 	        }).format(value);
 	    }
 
-		function updateTotalOrder(discountAmount = 0) {
+		function updateTotalOrder() {
 		    // Fetch the subtotal from the WooCommerce cart summary
 		    var subtotal = parseFloat($('.woocommerce-Price-amount bdi').first().text().replace('$', ''));
 		    
