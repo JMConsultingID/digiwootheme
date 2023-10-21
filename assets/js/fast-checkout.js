@@ -114,6 +114,20 @@
 		    $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
 		}
 
+		function getTotalDiscount() {
+		    var totalDiscount = 0;
+		    
+		    // Loop through each displayed coupon and get its discount amount
+		    $('.single-coupon-display span[data-couponcode]').each(function() {
+		        // Assuming you store the discount value in a data attribute like "data-discount"
+		        var discount = parseFloat($(this).data('discount') || 0);
+		        totalDiscount += discount;
+		    });
+
+		    return totalDiscount;
+		}
+
+
 	    $('button[name="apply_coupon"]').on('click', function(e) {
 	        e.preventDefault();
 	        
@@ -172,7 +186,9 @@
 		            if (response.success) {
 		                // Remove the coupon display div from the frontend
 		                $(buttonClicked).closest('.single-coupon-display').remove();
-		                updateTotalOrder();
+		                // Update cart totals
+		                var totalDiscount = getTotalDiscount();
+		                updateTotalOrder(totalDiscount);
 		                // Update cart totals or do any other necessary updates
 		                jQuery(document.body).trigger('update_checkout');
 		                jQuery(document.body).trigger('wc_fragment_refresh');
