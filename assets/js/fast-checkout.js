@@ -129,7 +129,7 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
-				        $('#displayed-coupon-code').append('Coupon: <span data-couponcode="' + coupon_code + '">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button><br>');
+				        $('#displayed-coupon-code').append('<div class="single-coupon-display">Coupon: <span data-couponcode="' + coupon_code + '">' + coupon_code + '</span> <button class="remove-coupon-btn">[Remove]</button></div>');
 						// Clear the coupon code input field if you still want this functionality
 				        $('#coupon_code').val('');
 
@@ -165,17 +165,16 @@
 		        },
 		        success: function(response) {
 		            if (response.success) {
-		                // Remove the coupon display from the page
-		                $(e.currentTarget).prev('span').remove();
-		                $(e.currentTarget).next('br').remove();
-		                $(e.currentTarget).remove();
+		                // Get the parent container for this coupon
+				        var $couponContainer = $(e.currentTarget).parent();
+
+				        // Remove the coupon display from the page
+				        $couponContainer.remove();
 
 		                // Update the checkout/cart if needed.
 		                jQuery(document.body).trigger('update_checkout');
 		                jQuery(document.body).trigger('wc_fragment_refresh');
 		                
-		                // Optionally, you can update the total order if the coupon removal affects the total.
-		                updateTotalOrder();
 		            } else {
 		                alert(response.data.message);
 		            }
