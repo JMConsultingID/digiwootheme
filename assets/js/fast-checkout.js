@@ -104,7 +104,12 @@
 		            addOnPrice += parseFloat($(this).data('price') || 0);
 		        }
 		    });
-		    var total = productPrice + addOnPrice - discountAmount; // Subtract the discount
+		    var total = (productPrice + addOnPrice) - discountAmount; // Subtract the discount
+
+		    console.log("Product Price:", productPrice);
+			console.log("AddOn Price:", addOnPrice);
+			console.log("Discount Amount:", discountAmount);
+
 		    $('#total-order-value').text(formatCurrency(total));
 		    $('.fast-checkout-total .woocommerce-Price-amount bdi').text(formatCurrency(total));
 		}
