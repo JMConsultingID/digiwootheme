@@ -278,7 +278,7 @@ function apply_coupon_code() {
 
     if (WC()->cart->apply_coupon($coupon_code)) {
         // Get the cart total after applying the coupon
-        $total_after = WC()->cart->get_cart_contents_total();
+        $total_after = WC()->cart->get_cart_discount_total();
 
         // Calculate the discount amount
         $discountAmount = $total_before - $total_after;
