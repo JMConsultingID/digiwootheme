@@ -217,6 +217,9 @@
 		        },
 		        success: function(response) {
 		            if (response.success) {
+		            	// Remove the "Remove All Coupons" button
+                		$('#remove-all-coupons-btn').remove();
+
 		                $('#displayed-coupon-code').empty(); // Clear the displayed coupons
 
 		                jQuery(document.body).trigger('update_checkout');
@@ -224,8 +227,6 @@
 
 		                // Update total if needed
 		                updateTotalOrder();
-
-		                alert('All coupons removed successfully!');
 		            } else {
 		                alert(response.data.message);
 		            }
