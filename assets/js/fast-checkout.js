@@ -150,37 +150,38 @@
 	        });
 	    });
 
-
-	    $(document).on('click', '.remove-coupon-btn', function(e) {
+		$(document).on('click', '.remove-coupon-btn', function(e) {
 		    e.preventDefault();
-		    // Get the coupon code from the data attribute
-	    	var coupon_code = $(this).prev('span').data('couponcode');
-		    
+
+		    var couponCodeToRemove = $(this).siblings('span[data-couponcode]').data('couponcode');
+
+		    // Call your AJAX function here to remove the coupon on the backend
+		    // On success, remove the frontend display
+		    removeCouponFromBackend(couponCodeToRemove, this);
+		});
+
+		function removeCouponFromBackend(couponCode, buttonClicked) {
 		    $.ajax({
 		        url: digiwoScriptVars.ajax_url,
 		        method: 'POST',
 		        data: {
 		            action: 'remove_coupon_code',
-		            coupon_code: coupon_code
+		            coupon_code: couponCode
 		        },
 		        success: function(response) {
 		            if (response.success) {
-		                // Get the parent container for this coupon
-				        var $couponContainer = $(e.currentTarget).parent();
-
-				        // Remove the coupon display from the page
-				        $couponContainer.remove();
-
-		                // Update the checkout/cart if needed.
+		                // Remove the coupon display div from the frontend
+		                $(buttonClicked).closest('.single-coupon-display').remove();
+		                
+		                // Update cart totals or do any other necessary updates
 		                jQuery(document.body).trigger('update_checkout');
 		                jQuery(document.body).trigger('wc_fragment_refresh');
-		                
 		            } else {
 		                alert(response.data.message);
 		            }
 		        }
 		    });
-		});
+		}
 
 
 	    function removeAppliedCoupon() {
