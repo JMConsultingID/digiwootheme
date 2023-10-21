@@ -284,7 +284,7 @@ function apply_coupon_code() {
         $discountAmount = $total_before - $total_after;
 
         // Send the discount amount in the success response
-        wp_send_json_success(array('discountAmount' => $total_after, 'discountTemp' => $discountAmount));
+        wp_send_json_success(array('discountAmount' => $total_after, 'discountTemp' => $total_before));
     } else {
         wp_send_json_error(array('message' => 'Failed to apply coupon.'));
     }
