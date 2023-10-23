@@ -250,6 +250,8 @@
 		            success: function(response) {
 		                if (response.success) {
 		                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
+		                    $('.single-coupon-display').remove();
+                			$('#remove-all-coupons-btn').remove();
 		                    updateTotalOrder();
 		                } else {
 		                    updateTotalOrder();
