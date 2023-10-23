@@ -273,12 +273,7 @@ function apply_coupon_code() {
         wp_send_json_error(array('message' => 'Coupon has already been applied!'));
         return;
     }
-    $coupon = new WC_Coupon($coupon_code);
-    if ($coupon->get_individual_use() && count(WC()->cart->get_applied_coupons()) > 0) {
-        wp_send_json_error(array('message' => 'Sorry, coupon "' . $coupon_code . '" has already been applied and cannot be used in conjunction with other coupons.'));
-        return;
-    }
-    $is_individual_use = $coupon->get_individual_use();
+
     // Get the cart total before applying the coupon
     $total_before = WC()->cart->get_cart_contents_total();
 
@@ -290,6 +285,13 @@ function apply_coupon_code() {
 
         // Calculate the discount amount
         $discountAmount = $total_before - $total_after;
+
+        $coupon = new WC_Coupon($coupon_code);
+        if ($coupon->get_individual_use() && count(WC()->cart->get_applied_coupons()) > 0) {
+            wp_send_json_error(array('message' => 'Sorry, coupon "' . $coupon_code . '" has already been applied and cannot be used in conjunction with other coupons.'));
+            return;
+        }
+        $is_individual_use = $coupon->get_individual_use();
 
         // Send the discount amount in the success response
         wp_send_json_success(array('discountAmount' => $total_after, 'discountTemp' => $total, 'is_individual_use' => $is_individual_use));
