@@ -143,8 +143,11 @@
 	            },
 	            success: function(response) {
 	                if (response.success) {
-				        $('#displayed-coupon-code').append('<div class="single-coupon-display">Coupon: <span data-couponcode="' + coupon_code + '" data-discount="' + response.data.discountAmount + '" data-dis="' + response.data.discountTemp +'">' + coupon_code + '</span></div>');
-						
+	                	if (response.data.is_individual_use) {
+				            $('#displayed-coupon-code').html('<div class="single-coupon-display">Coupon: <span data-couponcode="' + coupon_code + '" data-discount="' + response.data.discountAmount + '" data-dis="' + response.data.discountTemp +'">' + coupon_code + '</span></div>');
+						} else {
+				            $('#displayed-coupon-code').append('<div class="single-coupon-display">Coupon: <span data-couponcode="' + coupon_code + '" data-discount="' + response.data.discountAmount + '" data-dis="' + response.data.discountTemp +'">' + coupon_code + '</span></div>');
+						}
 				        // If the "Remove All Coupons" button is not present, append it
 		                if ($('#remove-all-coupons-btn').length === 0) {
 		                    $('#displayed-coupon-code').after('<button class="remove-coupon-all-btn" id="remove-all-coupons-btn">[Remove Coupons]</button>');
