@@ -274,10 +274,6 @@ function apply_coupon_code() {
         return;
     }
     $coupon = new WC_Coupon($coupon_code);
-    if ($coupon->get_individual_use() && count(WC()->cart->get_applied_coupons()) > 0) {
-        wp_send_json_error(array('message' => 'Sorry, coupon "' . $coupon_code . '" has already been applied and cannot be used in conjunction with other coupons.'));
-        return;
-    }
     $is_individual_use = $coupon->get_individual_use();
     // Get the cart total before applying the coupon
     $total_before = WC()->cart->get_cart_contents_total();
