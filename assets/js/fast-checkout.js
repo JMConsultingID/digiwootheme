@@ -247,7 +247,7 @@
 		            url: digiwoScriptVars.ajax_url,
 		            method: 'POST',
 		            data: {
-		                action: 'remove_coupon_code',
+		                action: 'remove_all_coupons',
 		                coupon_code: coupon_code
 		            },
 		            success: function(response) {
@@ -255,6 +255,8 @@
 		                    $('#displayed-coupon-code').empty();  // Remove displayed coupon code and the "Remove" button
 		                    $('.single-coupon-display').remove();
                 			$('#remove-all-coupons-btn').remove();
+                			jQuery(document.body).trigger('update_checkout');
+		                	jQuery(document.body).trigger('wc_fragment_refresh');
 		                    updateTotalOrder();
 		                } else {
 		                    updateTotalOrder();
