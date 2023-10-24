@@ -274,7 +274,7 @@ function apply_coupon_code() {
         wp_send_json_error(array('message' => 'Billing email not provided!'));
         return;
     }
-    
+
     $coupon_code = sanitize_text_field($_POST['coupon_code']);
     if (WC()->cart->has_discount($coupon_code)) {
         wp_send_json_error(array('message' => 'Coupon has already been applied!'));
@@ -289,9 +289,9 @@ function apply_coupon_code() {
     $current_user = wp_get_current_user();
     $billing_email = $current_user->user_email;
 
-    if ($allowed_emails && !in_array($billing_email, $allowed_emails)) {
+    if (!empty($allowed_emails) && !in_array($billing_email, $allowed_emails)) {
         wp_send_json_error(array('message' => 'This coupon is not valid for your email address.'));
-        return;
+    return;
     }
 
     if (WC()->cart->apply_coupon($coupon_code)) {
