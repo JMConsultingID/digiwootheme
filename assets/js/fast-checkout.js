@@ -139,7 +139,8 @@
 	            method: 'POST',
 	            data: {
 	                action: 'apply_coupon_code',
-	                coupon_code: coupon_code
+	                coupon_code: coupon_code,
+	                billing_email: jQuery('#billing_email').val()
 	            },
 	            success: function(response) {
 	                if (response.success) {

@@ -267,7 +267,14 @@ function apply_coupon_code() {
     if (!isset($_POST['coupon_code'])) {
         wp_send_json_error(array('message' => 'Coupon code not set!'));
         return;
-    }    
+    }
+
+    $billing_email = isset($_POST['billing_email']) ? sanitize_email($_POST['billing_email']) : '';
+    if (empty($billing_email)) {
+        wp_send_json_error(array('message' => 'Billing email not provided!'));
+        return;
+    }
+    
     $coupon_code = sanitize_text_field($_POST['coupon_code']);
     if (WC()->cart->has_discount($coupon_code)) {
         wp_send_json_error(array('message' => 'Coupon has already been applied!'));
