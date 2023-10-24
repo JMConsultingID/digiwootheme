@@ -286,9 +286,6 @@ function apply_coupon_code() {
     // Get the cart total before applying the coupon
     $total_before = WC()->cart->get_cart_contents_total();
 
-    $current_user = wp_get_current_user();
-    $billing_email = $current_user->user_email;
-
     if (!empty($allowed_emails) && !in_array($billing_email, $allowed_emails)) {
         wp_send_json_error(array('message' => 'This coupon is not valid for your email address.'));
     return;
