@@ -275,8 +275,17 @@ function apply_coupon_code() {
     }
     $coupon = new WC_Coupon($coupon_code);
     $is_individual_use = $coupon->get_individual_use();
+    $allowed_emails = $coupon->get_email_restrictions();
     // Get the cart total before applying the coupon
     $total_before = WC()->cart->get_cart_contents_total();
+
+    $current_user = wp_get_current_user();
+    $billing_email = $current_user->user_email;
+
+    if ($allowed_emails && !in_array($billing_email, $allowed_emails)) {
+        wp_send_json_error(array('message' => 'This coupon is not valid for your email address.'));
+        return;
+    }
 
     if (WC()->cart->apply_coupon($coupon_code)) {
         // Get the cart total after applying the coupon
@@ -286,9 +295,9 @@ function apply_coupon_code() {
 
         // Calculate the discount amount
         $discountAmount = $total_before - $total_after;
-
+        $notices = wc_get_notices();
         // Send the discount amount in the success response
-        wp_send_json_success(array('discountAmount' => $total_after, 'discountTemp' => $total, 'is_individual_use' => $is_individual_use));
+        wp_send_json_success(array('discountAmount' => $total_after, 'discountTemp' => $total, 'is_individual_use' => $is_individual_use,'notices' => $notices));
     } else {
         wp_send_json_error(array('message' => 'Failed to apply coupon.'));
     }
