@@ -68,14 +68,14 @@ while ( have_posts() ) :
 
 	            <?php
 	            $uncategorized = get_term_by('slug', 'uncategorized', 'product_cat');
-	            $product_categories = get_terms('product_cat', array('include' => array(23, 24), 'hide_empty' => 0));
+	            $product_categories = get_terms('product_cat', array('include' => array(1375, 1376), 'hide_empty' => 0));
 	            // Define a custom comparison function to sort by ID in ascending order
 				function compareByIdAsc($a, $b) {
 				    return $a->term_id - $b->term_id;
 				}
 
 				usort($product_categories, 'compareByIdAsc');
-
+				
 	            foreach ($product_categories as $category) {
 	            		echo '<label class="col-sm-6 btn">';
 	            		echo '<div class="w-100 btn btn-outline-success px-3 rounded fast-checkout-radio-select fast-checkout-radio-select-category fast-checkout-border-style-1 fast-checkout-title-category text-left">';

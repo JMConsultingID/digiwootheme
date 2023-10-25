@@ -19,7 +19,7 @@
 
 		// Set default values if empty
 		if (!categoryID) {
-		    categoryID = 1376;
+		    categoryID = 1375;
 		}
 
 		if (!productID) {
