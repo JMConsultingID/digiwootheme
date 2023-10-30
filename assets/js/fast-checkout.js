@@ -340,6 +340,7 @@
 	    	   
 
 	    	var productId = $(this).val();
+	    	$('.spinner-order-total').show();
 	    	$('.checkout-order-total').hide(); 	
 	    	$('.fast-checkout-radio-select-product').removeClass('active');
 	    	$('.products-section').addClass('loading');
@@ -385,6 +386,7 @@
 						        } else {
 		                            alert('There was an error adding the product to the cart.');
 		                        }
+		                        $('.spinner-order-total').hide();
 	    						$('.checkout-order-total').show();	    						
 		                    },
 		                    complete:function(){
@@ -407,6 +409,7 @@
 			if (ajaxInProgress) {
 	            return; // Exit if an AJAX request is already in progress
 	        }
+			$('.spinner-order-total').show();
 	    	$('.checkout-order-total').hide();
 	    	$('.add-on-trading-section').addClass('loading');
 
@@ -445,6 +448,7 @@
 		            } else {
 		                alert('There was an error handling the add-on product.');
 		            }
+		            $('.spinner-order-total').hide();
 	    			$('.checkout-order-total').show();
 		        },
                 complete:function(){
