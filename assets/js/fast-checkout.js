@@ -339,9 +339,7 @@
 	    $(document).on('change', 'input[name="product"]', function() {
 	    	   
 
-	    	var productId = $(this).val();
-	    	$('.spinner-order-total').show();
-	    	$('.checkout-order-total').hide(); 	
+	    	var productId = $(this).val();	
 	    	$('.fast-checkout-radio-select-product').removeClass('active');
 	    	$('.products-section').addClass('loading');
 	    	$('.add-on-trading-section').addClass('loading');
@@ -385,9 +383,7 @@
 						        	$('.fast-checkout-radio-select-add-ons').removeClass('fast-checkout-btn-disable');
 						        } else {
 		                            alert('There was an error adding the product to the cart.');
-		                        }
-		                        $('.spinner-order-total').hide();
-	    						$('.checkout-order-total').show();	    						
+		                        }	    						
 		                    },
 		                    complete:function(){
 		                    	$('input[name="product"]').prop('disabled', false);
@@ -409,8 +405,6 @@
 			if (ajaxInProgress) {
 	            return; // Exit if an AJAX request is already in progress
 	        }
-			$('.spinner-order-total').show();
-	    	$('.checkout-order-total').hide();
 	    	$('.add-on-trading-section').addClass('loading');
 
 	    	if ($(this).is(':checked')) {
@@ -448,8 +442,6 @@
 		            } else {
 		                alert('There was an error handling the add-on product.');
 		            }
-		            $('.spinner-order-total').hide();
-	    			$('.checkout-order-total').show();
 		        },
                 complete:function(){
                 	$('.add-on-trading-section').removeClass('loading');
