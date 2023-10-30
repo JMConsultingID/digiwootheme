@@ -314,7 +314,7 @@ background: rgba(93, 179, 59, 0.29);
 .page-template-digiwoo-checkout .products-section.loading,
 .page-template-digiwoo-checkout .product-category-section.loading,
 .page-template-digiwoo-checkout .add-on-trading-section.loading{
-    opacity: 0.8;
+    opacity: 0.5;
     cursor: no-drop!important;
     cursor: not-allowed!important;
     pointer-events: none!important;
